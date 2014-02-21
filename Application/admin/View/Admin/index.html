@@ -2,7 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Simpla Admin</title>
 <link rel="stylesheet" href="/Public/resources/css/reset.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/Public/resources/css/style.css" type="text/css" media="screen" />
@@ -13,6 +13,10 @@
 <script type="text/javascript" src="/Public/resources/scripts/jquery.wysiwyg.js"></script>
 <script type="text/javascript" src="/Public/resources/scripts/jquery.datePicker.js"></script>
 <script type="text/javascript" src="/Public/resources/scripts/jquery.date.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){$("[id^='p_nav_']").click(function(){$("[id^='p_nav_']").removeClass("current"),$(this).addClass("current");});});	
+	$(document).ready(function(){$("[id^='s_nav_']").click(function(){$("[id^='s_nav_']").removeClass("current"),$(this).addClass("current");});});	
+</script>
 </head>
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 		
@@ -31,25 +35,31 @@
 			</div>        
 			
 			<ul id="main-nav">  <!-- Accordion Menu -->
-				
 				<li>
-					<a href="http://www.google.com/" class="nav-top-item no-submenu"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
+					<a id="p_nav_0" href="" class="nav-top-item no-submenu current"> <!-- Add the class "no-submenu" to menu items with no sub menu -->
 						Dashboard
 					</a>       
 				</li>
+			<?php foreach($nav as $value){ ?>	
+				<?php if(strlen($value["n_path"]) == 2){ ?>
 				
 				<li> 
-					<a href="#" class="nav-top-item current"> <!-- Add the class "current" to current menu item -->
-					Articles
+					<a id="p_nav_<?php echo $value["n_id"];?>" href="#" class="nav-top-item"> <!-- Add the class "current" to current menu item -->
+					<?php echo $value["n_title"]?>
 					</a>
 					<ul>
-						<li><a href="#">Write a new Article</a></li>
+				<?php foreach($nav as $v){ ?>	
+					<?php if(strlen($v["n_path"]) == 4 && substr($v["n_path"],0,2) == $value["n_path"]){ ?>
+						<li><a id="s_nav_<?php echo $v["n_id"];?>" href="#"><?php echo $v["n_title"]?></a></li>
+					<?php } ?>
+				<?php } ?>	
 						<li><a class="current" href="#">Manage Articles</a></li> <!-- Add class "current" to sub menu items also -->
 						<li><a href="#">Manage Comments</a></li>
 						<li><a href="#">Manage Categories</a></li>
 					</ul>
 				</li>
-				
+				<?php } ?>
+			<?php } ?>	
 				<li>
 					<a href="#" class="nav-top-item">
 						Pages
