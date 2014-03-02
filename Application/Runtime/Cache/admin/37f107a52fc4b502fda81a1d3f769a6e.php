@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="/Public/resources/css/invalid.css" type="text/css" media="screen" />	
 <script type="text/javascript" src="/Public/resources/scripts/jquery-1.3.2.min.js"></script>
 <script type="text/javascript" src="/Public/resources/scripts/simpla.jquery.configuration.js"></script>
+<script type="text/javascript" src="/Public/resources/scripts/simplaplus.jquery.configuration.js"></script>
 <script type="text/javascript" src="/Public/resources/scripts/facebox.js"></script>
 <script type="text/javascript" src="/Public/resources/scripts/jquery.wysiwyg.js"></script>
 <script type="text/javascript" src="/Public/resources/scripts/jquery.datePicker.js"></script>
@@ -16,6 +17,51 @@
 <script type="text/javascript">
 	$(document).ready(function(){$("[id^='p_nav_']").click(function(){$("[id^='p_nav_']").removeClass("current"),$(this).addClass("current");});});	
 	$(document).ready(function(){$("[id^='s_nav_']").click(function(){$("[id^='s_nav_']").removeClass("current"),$(this).addClass("current");});});	
+	$(document).ready(function(){$("[id^='test']").click(function(){$([id^='p_nav_']).hide();});});	
+	function show_frame(url){
+		var xmlhttp;
+		if(window.XMLHttpRequest){
+			xmlhttp = new XMLHttpRequest();
+		}
+		else{
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange=function(){
+			if(xmlhttp.readyState ==4 && xmlhttp.status == 200){
+				document.getElementById("main-content").innerHTML = xmlhttp.responseText;
+				reload_js();
+				reload_ajax_js(xmlhttp.responseText);
+			}
+		}
+		xmlhttp.open("POST", url, true);
+		xmlhttp.send();
+	}
+	function reload_ajax_js(ajaxLoadedData){
+		var regDetectJs = /<script(.|\n)*?>(.|\n|\r\n)*?<\/script>/ig;
+		var jsContained = ajaxLoadedData.match(regDetectJs);
+
+		// 第二步：如果包含js，则一段一段的取出js再加载执行
+		if(jsContained) {
+			// 分段取出js正则
+			var regGetJS = /<script(.|\n)*?>((.|\n|\r\n)*)?<\/script>/im;
+
+			// 按顺序分段执行js
+			var jsNums = jsContained.length;
+			for (var i=0; i<jsNums; i++) {
+				var jsSection = jsContained[i].match(regGetJS);
+
+				if(jsSection[2]) {
+					if(window.execScript) {
+						// 给IE的特殊待遇
+						window.execScript(jsSection[2]);
+																									} else {
+																										// 给其他大部分浏览器用的
+																										window.eval(jsSection[2]);
+																									}
+				}
+			}
+		}
+	}
 </script>
 </head>
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
@@ -44,67 +90,27 @@
 				<?php if(strlen($value["n_path"]) == 2){ ?>
 				
 				<li> 
-					<a id="p_nav_<?php echo $value["n_id"];?>" href="#" class="nav-top-item"> <!-- Add the class "current" to current menu item -->
+					<a id="p_nav_<?php echo $value["n_id"];?>" class="nav-top-item"> <!-- Add the class "current" to current menu item -->
 					<?php echo $value["n_title"]?>
 					</a>
 					<ul>
 				<?php foreach($nav as $v){ ?>	
 					<?php if(strlen($v["n_path"]) == 4 && substr($v["n_path"],0,2) == $value["n_path"]){ ?>
-						<li><a id="s_nav_<?php echo $v["n_id"];?>" href="#"><?php echo $v["n_title"]?></a></li>
+						<li><a id="s_nav_<?php echo $v["n_id"];?>" onclick="show_frame('<?php echo $v['n_url'];?>')"><?php echo $v["n_title"]?></a></li>
 					<?php } ?>
 				<?php } ?>	
-						<li><a class="current" href="#">Manage Articles</a></li> <!-- Add class "current" to sub menu items also -->
-						<li><a href="#">Manage Comments</a></li>
-						<li><a href="#">Manage Categories</a></li>
 					</ul>
 				</li>
 				<?php } ?>
 			<?php } ?>	
 				<li>
-					<a href="#" class="nav-top-item">
-						Pages
+					<a id="p_nav_last" class="nav-top-item">
+						导航管理	
 					</a>
 					<ul>
-						<li><a href="#">Create a new Page</a></li>
-						<li><a href="#">Manage Pages</a></li>
+						<li><a id="s_nav_last_1" onclick="show_frame('/index.php/admin/Admin/add_nav')">导航管理</a></li>
 					</ul>
 				</li>
-				
-				<li>
-					<a href="#" class="nav-top-item">
-						Image Gallery
-					</a>
-					<ul>
-						<li><a href="#">Upload Images</a></li>
-						<li><a href="#">Manage Galleries</a></li>
-						<li><a href="#">Manage Albums</a></li>
-						<li><a href="#">Gallery Settings</a></li>
-					</ul>
-				</li>
-				
-				<li>
-					<a href="#" class="nav-top-item">
-						Events Calendar
-					</a>
-					<ul>
-						<li><a href="#">Calendar Overview</a></li>
-						<li><a href="#">Add a new Event</a></li>
-						<li><a href="#">Calendar Settings</a></li>
-					</ul>
-				</li>
-				
-				<li>
-					<a href="#" class="nav-top-item">
-						Settings
-					</a>
-					<ul>
-						<li><a href="#">General</a></li>
-						<li><a href="#">Design</a></li>
-						<li><a href="#">Your Profile</a></li>
-						<li><a href="#">Users and Permissions</a></li>
-					</ul>
-				</li>      
-				
 			</ul> <!-- End #main-nav -->
 			
 			<div id="messages" style="display: none"> <!-- Messages are shown when a link with these attributes are clicked: href="#messages" rel="modal"  -->
