@@ -62,6 +62,23 @@
 			}
 		}
 	}
+	function form_post(form, url){
+		var $form = $(form);
+		var _submit = function(){$.ajax({
+			type: 'POST',
+			url: $form.attr("action"),
+			data:$form.serializeArray(),
+			success: form_bridge,
+			dataType:"json",
+			cache:false, 
+		})};
+		_submit();
+		return false;
+	}
+	function form_bridge(json){
+		var obj = eval(json);
+		show_frame(obj["url"]);
+	}
 </script>
 </head>
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->

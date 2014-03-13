@@ -82,7 +82,7 @@
 								   <th>路径</th>
 								   <th>链接</th>
 								   <th>排序</th>
-								   <th>操作</th>
+								   <th>排序</th>
 								</tr>
 								
 							</thead>
@@ -113,22 +113,33 @@
 							</tfoot>
 						 
 							<tbody>
-								<?php foreach($nav as $value){ ?>
-								<tr>
-									<td><input type="checkbox" /></td>
-									<td><?php echo $value["n_title"];?></td>
-									<td><?php echo $value["n_path"];?></td>
-									<td><?php echo $value["n_url"];?></td>
-									<td><?php echo $value["n_sort"];?></td>
+																<tr>
+									<td>百度</td>
+									<td>10</td>
+									<td>http://www.baidu.com/</td>
+									<td>1</td>
+									<td>Donec tortor diam</td>
 									<td>
 										<!-- Icons -->
 										 <a href="#" title="Edit"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete" onclick="show_frame('')"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
+										 <a href="#" title="Delete"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
 										 <a href="#" title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
 									</td>
 								</tr>
-								<?php } ?>
-								
+																<tr>
+									<td>谷歌</td>
+									<td>1010</td>
+									<td>http://www.google.com.hk/</td>
+									<td>2</td>
+									<td>Donec tortor diam</td>
+									<td>
+										<!-- Icons -->
+										 <a href="#" title="Edit"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
+										 <a href="#" title="Delete"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
+										 <a href="#" title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
+									</td>
+								</tr>
+																
 								<tr>
 									<td><input type="checkbox" /></td>
 									<td>Lorem ipsum dolor</td>
@@ -234,7 +245,7 @@
 					
 					<div class="tab-content" id="tab2">
 					
-						<form action="/index.php/admin/Admin/addnav_save" method="post" onsubmit="return form_post(this,'www.baidu.com')">
+						<form action="#" method="post">
 							
 							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								

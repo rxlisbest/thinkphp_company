@@ -113,13 +113,12 @@
 							</tfoot>
 						 
 							<tbody>
-								<?php foreach($nav as $value){ ?>
-								<tr>
+																<tr>
 									<td><input type="checkbox" /></td>
-									<td><?php echo $value["n_title"];?></td>
-									<td><?php echo $value["n_path"];?></td>
-									<td><?php echo $value["n_url"];?></td>
-									<td><?php echo $value["n_sort"];?></td>
+									<td>百度</td>
+									<td>10</td>
+									<td>http://www.baidu.com/</td>
+									<td>1</td>
 									<td>
 										<!-- Icons -->
 										 <a href="#" title="Edit"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
@@ -127,8 +126,20 @@
 										 <a href="#" title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
 									</td>
 								</tr>
-								<?php } ?>
-								
+																<tr>
+									<td><input type="checkbox" /></td>
+									<td>谷歌</td>
+									<td>1010</td>
+									<td>http://www.google.com.hk/</td>
+									<td>2</td>
+									<td>
+										<!-- Icons -->
+										 <a href="#" title="Edit"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
+										 <a href="#" title="Delete" onclick="show_frame('')"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
+										 <a href="#" title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
+									</td>
+								</tr>
+																
 								<tr>
 									<td><input type="checkbox" /></td>
 									<td>Lorem ipsum dolor</td>

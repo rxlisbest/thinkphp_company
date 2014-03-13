@@ -19,10 +19,16 @@ class AdminController extends Controller {
     }
 
     public function add_nav(){
+	echo 111;
 	$nav_model = D("Nav");
 	$nav = $nav_model->select();
 	$this->assign('nav',$nav);
     	$content = $this->fetch("nav_list");
 	$this->show($content);
     }
+	
+	public function addnav_save(){
+		$json["url"] = "/index.php/admin/Admin/addnav_save";
+		echo json_encode($json);
+	}
 }
