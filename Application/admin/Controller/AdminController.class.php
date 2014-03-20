@@ -18,10 +18,18 @@ class AdminController extends Controller {
 		echo 111;
 	}
 
-	public function add_nav(){
+	public function add_nav($page=1){
 		$nav_model = D("Nav");
-		$nav_list = $nav_model->select();
+		$url = "/index.php/admin/Admin/add_nav";
+
+		$curPage = $page ?: 1;
+		$pageSize = 1;
+		$offset = ($curPage-1)*$pageSize;
+		$rowNum = $nav_model->count();
+		$nav_list = $nav_model->limit($offset, $pageSize)->select();
+		$pagination = $this->getPagination($curPage, $pageSize, $rowNum, $url);
 		$this->assign('nav_list',$nav_list);
+		$this->assign('pagination',$pagination);
 		$content = $this->fetch("nav_list");
 		$this->show($content);
 	}
@@ -113,5 +121,22 @@ class AdminController extends Controller {
 		$nav .= "</ul>";
 		$nav .= "</li>";
 		return $nav;
+	}
+
+	public function getPagination($curPage, $pageSize, $rowNum, $url){
+		$pages = ceil($rowNum/$pageSize);
+		$pagination = "";
+		$pagination .= "<div class=\"pagination\">";
+		$pagination .= "<a href=\"#\" title=\"First Page\">&laquo; First</a><a href=\"#\" title=\"Previous Page\">&laquo; Previous</a>";
+		for($i=1;$i<=$pages;$i++){
+			$pagination .= "<a href=\"#\" onclick=\"show_frame('".$url."/page/".$i."')\" class=\"number";
+			if($i==$curPage){
+				$pagination .= " current";
+			}
+			$pagination .= "\" title=\"".$i."\">".$i."</a>";
+		}
+		$pagination .= "<a href=\"#\" title=\"Next Page\">Next &raquo;</a><a href=\"#\" title=\"Last Page\">Last &raquo;</a>";
+		$pagination .= "</div> <!-- End .pagination -->";
+		return $pagination;
 	}
 }
