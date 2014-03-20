@@ -125,9 +125,17 @@ class AdminController extends Controller {
 
 	public function getPagination($curPage, $pageSize, $rowNum, $url){
 		$pages = ceil($rowNum/$pageSize);
+		if($curPage==1)
+			$prePage = 1;
+		else
+			$prePage = $curPage - 1;
+		if($curPage==$pages)
+			$nextPage = $pages;
+		else
+			$nextPage = $curPage + 1;
 		$pagination = "";
 		$pagination .= "<div class=\"pagination\">";
-		$pagination .= "<a href=\"#\" title=\"First Page\">&laquo; First</a><a href=\"#\" title=\"Previous Page\">&laquo; Previous</a>";
+		$pagination .= "<a href=\"#\" onclick=\"show_frame('".$url."/page/1')\" title=\"First Page\">&laquo; First</a><a href=\"#\" onclick=\"show_frame('".$url."/page/".$prePage."')\" title=\"Previous Page\">&laquo; Previous</a>";
 		for($i=1;$i<=$pages;$i++){
 			$pagination .= "<a href=\"#\" onclick=\"show_frame('".$url."/page/".$i."')\" class=\"number";
 			if($i==$curPage){
@@ -135,7 +143,7 @@ class AdminController extends Controller {
 			}
 			$pagination .= "\" title=\"".$i."\">".$i."</a>";
 		}
-		$pagination .= "<a href=\"#\" title=\"Next Page\">Next &raquo;</a><a href=\"#\" title=\"Last Page\">Last &raquo;</a>";
+		$pagination .= "<a href=\"#\" onclick=\"show_frame('".$url."/page/".$nextPage."')\" title=\"Next Page\">Next &raquo;</a><a href=\"#\" onclick=\"show_frame('".$url."/page/".$pages."')\" title=\"Last Page\">Last &raquo;</a>";
 		$pagination .= "</div> <!-- End .pagination -->";
 		return $pagination;
 	}
