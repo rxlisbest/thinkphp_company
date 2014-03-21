@@ -72,7 +72,7 @@
 								This is a Content Box. You can put whatever you want in it. By the way, you can close this notification with the top-right cross.
 							</div>
 						</div>
-						
+					<form method="post" action="/index.php/admin/Admin/batch/page/<?php echo $page;?>" onsubmit="return form_post(this,'www.baidu.com')" >	
 						<table>
 							
 							<thead>
@@ -91,12 +91,11 @@
 								<tr>
 									<td colspan="6">
 										<div class="bulk-actions align-left">
-											<select name="dropdown">
-												<option value="option1">Choose an action...</option>
-												<option value="option2">Edit</option>
-												<option value="option3">Delete</option>
+											<select name="choose">
+												<option value="select">选择...</option>
+												<option value="delete">删除</option>
 											</select>
-											<a class="button" href="#">Apply to selected</a>
+											<input type="submit" class="button" value="提交选择" />
 										</div>
 									<?php echo $pagination;?>	
 										<div class="clear"></div>
@@ -107,15 +106,15 @@
 							<tbody>
 								<?php foreach($nav_list as $value){  ?>
 								<tr>
-									<td><input type="checkbox" /></td>
+									<td><input type="checkbox" name="<?php echo $value["n_id"];?>" /></td>
 									<td><?php echo $value["n_title"];?></td>
 									<td><?php echo $value["n_path"];?></td>
 									<td><?php echo $value["n_url"];?></td>
 									<td><?php echo $value["n_sort"];?></td>
 									<td>
 										<!-- Icons -->
-										 <a href="#" title="Edit" onclick="show_frame('/index.php/admin/Admin/edit_nav/n_id/<?php echo $value["n_id"];?>')"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete" onclick="url_post('/index.php/admin/Admin/delete/n_id/<?php echo $value["n_id"];?>')"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
+										 <a href="#" title="Edit" onclick="show_frame('/index.php/admin/Admin/edit_nav/page/<?php echo $page;?>/n_id/<?php echo $value["n_id"];?>')"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
+										 <a href="#" title="Delete" onclick="url_post('/index.php/admin/Admin/delete/page/<?php echo $page;?>/n_id/<?php echo $value["n_id"];?>')"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
 										 <a href="#" title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
 									</td>
 								</tr>
@@ -124,12 +123,13 @@
 							</tbody>
 							
 						</table>
+					</form>
 						
 					</div> <!-- End #tab1 -->
 					
 					<div class="tab-content<?php if(isset($nav)){echo ' default-tab';}?>" id="tab2">
 					
-						<form action="/index.php/admin/Admin/nav_save" method="post" onsubmit="return form_post(this,'www.baidu.com')">
+						<form action="/index.php/admin/Admin/nav_save/page/<?php echo $page;?>" method="post" onsubmit="return form_post(this,'www.baidu.com')">
 							
 							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								<input name="n_id" style="display:none;" value="<?php echo $nav["n_id"];?>" />
@@ -149,7 +149,7 @@
 									<?php } ?>
 									<?php if(!($nav["n_id"] && strlen($nav["n_path"])==4)){?>
 										<optgroup label="所属导航">
-										<?php foreach($nav_list as $value){
+										<?php foreach($nav_class as $value){
 												if(strlen($value["n_path"])==4){	
 										 ?>
 											<option value="<?php echo $value["n_path"];?>" <?php if(strlen($nav["n_path"])==6 and substr($nav["n_path"], 0, 4)==$value["n_path"]){echo ' selected';}?> ><?php echo $value["n_title"];?></option>

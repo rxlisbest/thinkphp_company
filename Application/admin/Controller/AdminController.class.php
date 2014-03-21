@@ -1,5 +1,7 @@
 <?php
-// 本类由系统自动生成，仅供测试用途
+/*
+ *create by roy
+ */
 namespace admin\Controller;
 use Think\Controller;
 class AdminController extends Controller {
@@ -22,29 +24,55 @@ class AdminController extends Controller {
 		$nav_model = D("Nav");
 		$url = "/index.php/admin/Admin/add_nav";
 
-		$curPage = $page ?: 1;
-		$pageSize = 1;
-		$offset = ($curPage-1)*$pageSize;
 		$rowNum = $nav_model->count();
-		$nav_list = $nav_model->limit($offset, $pageSize)->select();
-		$pagination = $this->getPagination($curPage, $pageSize, $rowNum, $url);
+		$pageSize = 2;
+		$pages = ceil($rowNum/$pageSize);
+		if($page > $pages)
+			$page = $pages;
+		if($page < 1)
+			$page = 1;
+		$curPage = $page ?: 1;
+		$offset = ($curPage-1)*$pageSize;
+		$nav_list = $nav_model->order("n_path")->limit($offset, $pageSize)->select();
+		$pagination = $this->getPagination($curPage, $pages, $url);
+		$nav_class = $nav_model->order("n_path")->select();
+		$this->assign('page',$page);
+		$this->assign('nav_class',$nav_class);
 		$this->assign('nav_list',$nav_list);
 		$this->assign('pagination',$pagination);
 		$content = $this->fetch("nav_list");
 		$this->show($content);
 	}
 
-	public function edit_nav($n_id=0){
+	public function edit_nav($page=1, $n_id=0){
 		$nav_model = D("Nav");
+		$url = "/index.php/admin/Admin/add_nav";
+
+		$rowNum = $nav_model->count();
+		$pageSize = 2;
+		$pages = ceil($rowNum/$pageSize);
+		if($page > $pages)
+			$page = $pages;
+		if($page < 1)
+			$page = 1;
+		$curPage = $page ?: 1;
+		$offset = ($curPage-1)*$pageSize;
+		$curPage = $page ?: 1;
+		$nav_list = $nav_model->order("n_path")->limit($offset, $pageSize)->select();
+		$pagination = $this->getPagination($curPage, $pages, $url);
 		$nav = $nav_model->where("n_id = ".$n_id)->find();
-		$nav_list = $nav_model->select();
+		$nav_class = $nav_model->order("n_path")->select();
+		$this->assign('page',$page);
+		$this->assign('nav_class',$nav_class);
+		$this->assign('nav_list',$nav_list);
 		$this->assign('nav',$nav);
 		$this->assign('nav_list',$nav_list);
+		$this->assign('pagination',$pagination);
 		$content = $this->fetch("nav_list");
 		$this->show($content);
 	}
 
-	public function nav_save(){
+	public function nav_save($page=1){
 		$post = $_POST;
 		if($post){
 			$n_id = $post["n_id"];
@@ -70,18 +98,34 @@ class AdminController extends Controller {
 			}
 
 			$json["value"] = $post["n_path"] ;
-			$json["url"] = "/index.php/admin/Admin/add_nav";
+			$json["url"] = "/index.php/admin/Admin/add_nav/page/".$page;
 			$json["path"] = "last_1";
 			$json["nav"] = $this->getNavHtml();
 			echo json_encode($json);
 		}
 	}
 
-	public function delete($n_id = 0){
+	public function delete($page=1, $n_id = 0){
 		$nav_model = D("Nav");
 		$nav = $nav_model->where("n_id = ".$n_id)->find();
 		$nav_model->where("n_path like '".$nav["n_path"]."%'")->delete();
-		$json["url"] = "/index.php/admin/Admin/add_nav";
+		$json["url"] = "/index.php/admin/Admin/add_nav/page/".$page;
+		$json["path"] = "last_1";
+		$json["nav"] = $this->getNavHtml();
+		echo json_encode($json);
+	}
+
+	public function batch($page=1){
+		$post = $_POST;
+		$nav_model = D("Nav");
+		if($post["choose"]=='delete'){
+			unset($post["choose"]);
+			foreach($post as $key=>$value){
+				$n_ids[] = $key;
+			}
+			$nav = $nav_model->where("n_id in (".implode(",",$n_ids).")")->delete();
+		}
+		$json["url"] = "/index.php/admin/Admin/add_nav/page/".$page;
 		$json["path"] = "last_1";
 		$json["nav"] = $this->getNavHtml();
 		echo json_encode($json);
@@ -123,8 +167,7 @@ class AdminController extends Controller {
 		return $nav;
 	}
 
-	public function getPagination($curPage, $pageSize, $rowNum, $url){
-		$pages = ceil($rowNum/$pageSize);
+	public function getPagination($curPage, $pages, $url){
 		if($curPage==1)
 			$prePage = 1;
 		else
