@@ -18,7 +18,7 @@ function show_frame(){
 	}
 	xmlhttp.onreadystatechange=function(){
 		if(xmlhttp.readyState ==4 && xmlhttp.status == 200){
-			document.getElementById("main-content").innerHTML = xmlhttp.responseText;
+			document.getElementById("main-content-nofoot").innerHTML = xmlhttp.responseText;
 			reload_js();
 			reload_ajax_js(xmlhttp.responseText);
 			if(path){
@@ -30,6 +30,8 @@ function show_frame(){
 				$("#p_nav_"+p_path).addClass("current");	
 				$("#s_nav_"+path).addClass("current");	
 			}
+			$("[id^='p_nav_']").click(function(){$("#main-info").html("")});	
+			$("[id^='s_nav_']").click(function(){$("#main-info").html("")});	
 		}
 	}
 	xmlhttp.open("POST", url, true);
@@ -86,6 +88,9 @@ function url_post(url){
 }
 function form_bridge(json){
 	var obj = eval(json);
+	if(obj["info"]){
+		$("#main-info").html(obj["info"]);	
+	}
 	if(obj["nav"]){
 		$("#main-nav").html(obj["nav"]);
 		//Sidebar Accordion Menu:

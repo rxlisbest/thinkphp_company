@@ -9,7 +9,7 @@ class AdminController extends Controller {
 		//echo 111;
 		//$nav_model = \admin\Model\NavModel();
 		$nav_model = D("Nav");
-		$nav = $nav_model->select();
+		$nav = $nav_model->order("n_sort")->select();
 		//var_dump($nav);
 		$this->assign('nav',$nav);
 		$view = $this->display("index");
@@ -25,7 +25,7 @@ class AdminController extends Controller {
 		$url = "/index.php/admin/Admin/add_nav";
 
 		$rowNum = $nav_model->count();
-		$pageSize = 2;
+		$pageSize = 12;
 		$pages = ceil($rowNum/$pageSize);
 		if($page > $pages)
 			$page = $pages;
@@ -49,7 +49,7 @@ class AdminController extends Controller {
 		$url = "/index.php/admin/Admin/add_nav";
 
 		$rowNum = $nav_model->count();
-		$pageSize = 2;
+		$pageSize = 12;
 		$pages = ceil($rowNum/$pageSize);
 		if($page > $pages)
 			$page = $pages;
@@ -79,24 +79,40 @@ class AdminController extends Controller {
 			unset($post["submit"]);
 			unset($post["n_id"]);
 			$path = $post["n_path"];		
+			$edit_path = $post["edit_path"];
+			unset($post["edit_path"]);
 			$nav_model = D("Nav");
 			if($n_id){
-				$old_nav = $nav_model->where("n_id = ".$n_id)->find();
-				if($path == $old_nav["n_path"])	{
+				if(strlen($edit_path)==6 and substr($edit_path, 0, 4)==$path or strlen($edit_path)==4){
 					unset($post["n_path"]);
 				}
 				else{
 					$s_path = $nav_model->query("select (case count(0) when 0 then 10 else max(cast(substr(n_path,length(".$path.")+1,2) as signed))+1 end) as current_path from admin_nav where left(n_path,length(".$path."))='".$path."' and n_path <> '".$path."'");
 					$post["n_path"] .= $s_path[0]["current_path"];
 				}
-				$nav_model->where("n_id = ".$n_id)->save($post);
+				if($id=$nav_model->where("n_id = ".$n_id)->save($post)){
+					$type = "success";
+					$infomation = "修改成功!";
+				}
+				else{
+					$type = "error";
+					$infomation = "修改失败!";
+				}
 			}
 			else{
 				$s_path = $nav_model->query("select (case count(0) when 0 then 10 else max(cast(substr(n_path,length(".$path.")+1,2) as signed))+1 end) as current_path from admin_nav where left(n_path,length(".$path."))='".$path."' and n_path <> '".$path."'");
 				$post["n_path"] .= $s_path[0]["current_path"];
-				$nav_model->data($post)->add();
+				if($id=$nav_model->data($post)->add()){
+					$type = "success";
+					$infomation = "添加成功!";
+				}
+				else{
+					$type = "error";
+					$infomation = "添加失败!";
+				}
 			}
-
+			
+			$json["info"] = $this->getInfomation($type, $infomation);
 			$json["value"] = $post["n_path"] ;
 			$json["url"] = "/index.php/admin/Admin/add_nav/page/".$page;
 			$json["path"] = "last_1";
@@ -107,8 +123,17 @@ class AdminController extends Controller {
 
 	public function delete($page=1, $n_id = 0){
 		$nav_model = D("Nav");
-		$nav = $nav_model->where("n_id = ".$n_id)->find();
-		$nav_model->where("n_path like '".$nav["n_path"]."%'")->delete();
+		//$nav = $nav_model->where("n_id = ".$n_id)->find();
+		//if($nav_model->where("n_path like '".$nav["n_path"]."%'")->delete()){
+		if($nav_model->where("n_id = ".$n_id)->delete()){
+			$type = "success";
+			$infomation = "删除成功!";
+		}
+		else{
+			$type = "error";
+			$infomation = "删除失败!";
+		}
+		$json["info"] = $this->getInfomation($type, $infomation);
 		$json["url"] = "/index.php/admin/Admin/add_nav/page/".$page;
 		$json["path"] = "last_1";
 		$json["nav"] = $this->getNavHtml();
@@ -123,8 +148,17 @@ class AdminController extends Controller {
 			foreach($post as $key=>$value){
 				$n_ids[] = $key;
 			}
-			$nav = $nav_model->where("n_id in (".implode(",",$n_ids).")")->delete();
+			$delete_num = count($n_ids);
+			if($nav = $nav_model->where("n_id in (".implode(",",$n_ids).")")->delete()){
+				$type = "success";
+				$infomation = "删除成功".$delete_num."条!";
+			}
+			else{
+				$type = "error";
+				$infomation = "删除失败!";
+			}
 		}
+		$json["info"] = $this->getInfomation($type, $infomation);
 		$json["url"] = "/index.php/admin/Admin/add_nav/page/".$page;
 		$json["path"] = "last_1";
 		$json["nav"] = $this->getNavHtml();
@@ -189,5 +223,19 @@ class AdminController extends Controller {
 		$pagination .= "<a href=\"#\" onclick=\"show_frame('".$url."/page/".$nextPage."')\" title=\"Next Page\">Next &raquo;</a><a href=\"#\" onclick=\"show_frame('".$url."/page/".$pages."')\" title=\"Last Page\">Last &raquo;</a>";
 		$pagination .= "</div> <!-- End .pagination -->";
 		return $pagination;
+	}
+
+	//infomation,error,success,attention
+	public function getInfomation($type="success", $infomation){
+		$info = "";
+		$info .= "<div class=\"notification ";
+		$info .= $type;
+		$info .= " png_bg\">";
+		$info .= "<a href=\"#\" class=\"close\"><img src=\"/Public/resources/images/icons/cross_grey_small.png\" title=\"Close this notification\" alt=\"close\" /></a>";
+		$info .= "<div>";
+		$info .= $infomation;
+		$info .= "</div>";
+		$info .= "</div>";
+		return $info;
 	}
 }
