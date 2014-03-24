@@ -34,7 +34,7 @@ function show_frame(){
 			$("[id^='s_nav_']").click(function(){$("#main-info").html("")});	
 		}
 	}
-	xmlhttp.open("POST", url, true);
+	xmlhttp.open("GET", url, true);
 	xmlhttp.send();
 }
 function reload_ajax_js(ajaxLoadedData){
