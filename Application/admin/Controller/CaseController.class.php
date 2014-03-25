@@ -139,4 +139,73 @@ class CaseController extends \admin\Controller\AdminController {
 		$json["path"] = "101010";
 		echo json_encode($json);
 	}
+
+	public function caselist($page=1, $cs_id=0){
+		$caseclass_model = D("Caseclass");
+		$caseclasses = $caseclass_model->order("c_sort")->select();
+		foreach($caseclasses as $value){
+			$caseclass[$value["c_id"]] = $value["c_title"];
+		}
+		$case_model = D("Case");
+		$url = "/index.php/admin/Case/caselist";
+
+		$rowNum = $case_model->count();
+		$pageSize = 12;
+		$pages = ceil($rowNum/$pageSize);
+		if($page > $pages)
+			$page = $pages;
+		if($page < 1)
+			$page = 1;
+		$curPage = $page ?: 1;
+		$offset = ($curPage-1)*$pageSize;
+		$case_list = $case_model->order("cs_sort")->limit($offset, $pageSize)->select();
+		$pagination = $this->getPagination($curPage, $pages, $url);
+		$this->assign('page',$page);
+		$this->assign('caseclass',$caseclass);
+		if($cs_id){
+			$case = $case_model->where("cs_id = ".$cs_id)->find();
+			$this->assign('case',$case);
+		}
+		$this->assign('case_list',$case_list);
+		$this->assign('pagination',$pagination);
+		$content = $this->fetch("case_list");
+		$this->show($content);
+		//$this->display("login");
+	}
+
+	public function case_save($page=1){
+		$post = $_POST;
+		if($post){
+			$cs_id = $post["cs_id"];
+			unset($post["submit"]);
+			unset($post["cs_id"]);
+			$post["cs_time"] = date("Y-m-d H:m:s");
+			$case_model = D("Case");
+			if($cs_id){
+				if($id=$case_model->where("cs_id = ".$cs_id)->save($post)){
+					$type = "success";
+					$infomation = "修改成功!";
+				}
+				else{
+					$type = "error";
+					$infomation = "修改失败!";
+				}
+			}
+			else{
+				if($id=$case_model->data($post)->add()){
+					$type = "success";
+					$infomation = "添加成功!";
+				}
+				else{
+					$type = "error";
+					$infomation = "添加失败!";
+				}
+			}
+			
+			$json["info"] = $this->getInfomation($type, $infomation);
+			$json["url"] = "/index.php/admin/Case/caselist/page/".$page;
+			$json["path"] = "101011";
+			echo json_encode($json);
+		}
+	}
 }
