@@ -29,7 +29,7 @@
 								This is a Content Box. You can put whatever you want in it. By the way, you can close this notification with the top-right cross.
 							</div>
 						</div-->
-					<form method="post" action="/index.php/admin/Case/batch/page/<?php echo $page;?>" onsubmit="return form_post(this,'www.baidu.com')" >	
+					<form method="post" action="/index.php/admin/Case/case_batch/page/<?php echo $page;?>" onsubmit="return form_post(this,'www.baidu.com')" >	
 						<table>
 							
 							<thead>
@@ -37,6 +37,7 @@
 								   <th><input class="check-all" type="checkbox" /></th>
 								   <th>标题</th>
 								   <th>所属分类</th>
+								   <th>链接</th>
 								   <th>添加时间</th>
 								   <th>排序</th>
 								   <th>操作</th>
@@ -69,28 +70,31 @@
 									<td><input type="checkbox" name="<?php echo $value["cs_id"];?>" /></td>
 									<td><?php echo $value["cs_title"];?></td>
 									<td><?php echo $caseclass[$value["c_id"]];?></td>
+									<td><?php echo $value["cs_url"];?></td>
 									<td><?php echo $value["cs_time"];?></td>
 									<td><?php echo $value["cs_sort"];?></td>
 									<td>
 										<!-- Icons -->
 										 <a href="#" title="Edit" onclick="show_frame('/index.php/admin/Case/caselist/page/<?php echo $page;?>/cs_id/<?php echo $value["cs_id"];?>')"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete" onclick="url_post('/index.php/admin/Case/delete/page/<?php echo $page;?>/c_id/<?php echo $value["cs_id"];?>')"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
-										 <a href="#" title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
+										 <a href="#" title="Delete" onclick="url_post('/index.php/admin/Case/case_delete/page/<?php echo $page;?>/cs_id/<?php echo $value["cs_id"];?>')"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
+										 <!--a href="#" title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a-->
 									</td>
 								</tr>
 								<?php } ?>
 								<?php for($i=0;$i<$n;$i++){  ?>
 								<tr>
-									<td><input type="checkbox" /></td>
+									<td><!--input type="checkbox" /--></td>
+									<td></td>
 									<td></td>
 									<td></td>
 									<td></td>
 									<td></td>
 									<td>
 										<!-- Icons -->
-										 <a title="Edit"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
+										 <!--a title="Edit"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
 										 <a title="Delete"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
-										 <a title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
+										 <a title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a-->
+										<div style="height:20px;width:20px;"></div>
 									</td>
 								</tr>
 								<?php } ?>
@@ -125,6 +129,12 @@
 								<p>
 									<label>案例图片:</label>
 										<input class="text-input small-input" type="file" name="cs_image" value="<?php echo $case["cs_image"];?>"/> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
+										<br /><!--small></small-->
+								</p>
+
+								<p>
+									<label>案例链接:</label>
+										<input class="text-input small-input" type="text" name="cs_url" value="<?php echo $case["cs_url"];?>"/> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
 										<br /><!--small></small-->
 								</p>
 

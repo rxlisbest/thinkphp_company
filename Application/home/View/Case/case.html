@@ -1,0 +1,53 @@
+        <extend name="./Public/home/home.html" />
+	<block name="title"><title><?php echo $title;?></title></block>
+<block name="content">
+	<!-- Filter Bar
+        ================================================== -->
+        <section id="filter-bar">
+            <div class="row">
+                <!--<div class="right">
+                    <ul class="link-list">
+                        <li><a href="https://twitter.com/ttackPattern"><span aria-hidden="true" class="icon icon-twitter"></span></a></li>
+                        <li><a href="https://www.facebook.com/AttackPattern"><span aria-hidden="true" class="icon icon-facebook"></span></a></li>
+                        <li><a href="https://github.com/AttackPattern"><span aria-hidden="true" class="icon icon-github"></span></a></li>
+                    </ul>
+                </div>-->
+
+                <div class="left ddwrap">
+                    <span>案例分类</span>
+                    <ul class="dd">
+                        <li class="filter" data-filter="all">
+                            全部案例 
+                        </li>
+		<?php foreach($caseclass as $value){ ?>
+                        <li class="filter active" data-filter="<?php echo $value["c_id"];?>">
+                            <?php echo $value["c_title"];?>
+                        </li>
+		<?php } ?>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Posts
+        ================================================== -->
+        <section id="blog-posts">
+            <div class="row">
+                <ul id="Grid" class="block-grid four-up">
+		<?php foreach($case as $value){ ?>
+                    <li class="mix all <?php echo $value["c_id"];?> mix_all">
+                        <article id="post-116" class="box">
+                            <a href="#" class="divlink invert">
+                                <img src="<?php echo $value["cs_image"];?>">
+                            </a>
+                            <div class="box-inner invert">
+                                <h4><a href="<?php echo $value["cs_url"];?>"><?php echo $value["cs_title"];?></a></h4>
+                                <p class="meta date"><?php echo date("Y-m-d",strtotime($value["cs_time"]));?></p>
+                            </div>
+                        </article>
+                    </li>
+		<?php } ?>
+                </ul>
+            </div>
+        </section>
+</block>

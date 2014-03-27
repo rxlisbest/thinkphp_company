@@ -208,4 +208,46 @@ class CaseController extends \admin\Controller\AdminController {
 			echo json_encode($json);
 		}
 	}
+
+	public function case_delete($page=1, $cs_id = 0){
+		$case_model = D("Case");
+		//$nav = $nav_model->where("n_id = ".$n_id)->find();
+		//if($nav_model->where("n_path like '".$nav["n_path"]."%'")->delete()){
+		if($case_model->where("cs_id = ".$cs_id)->delete()){
+			$type = "success";
+			$infomation = "删除成功!";
+		}
+		else{
+			$type = "error";
+			$infomation = "删除失败!";
+		}
+		$json["info"] = $this->getInfomation($type, $infomation);
+		$json["url"] = "/index.php/admin/Case/caselist/page/".$page;
+		$json["path"] = "101011";
+		echo json_encode($json);
+	}
+
+	public function case_batch($page=1){
+		$post = $_POST;
+		$case_model = D("Case");
+		if($post["choose"]=='delete'){
+			unset($post["choose"]);
+			foreach($post as $key=>$value){
+				$cs_ids[] = $key;
+			}
+			$delete_num = count($cs_ids);
+			if($case = $case_model->where("cs_id in (".implode(",",$cs_ids).")")->delete()){
+				$type = "success";
+				$infomation = "删除成功".$delete_num."条!";
+			}
+			else{
+				$type = "error";
+				$infomation = "删除失败!";
+			}
+		}
+		$json["info"] = $this->getInfomation($type, $infomation);
+		$json["url"] = "/index.php/admin/Case/caselist/page/".$page;
+		$json["path"] = "101011";
+		echo json_encode($json);
+	}
 }

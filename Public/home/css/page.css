@@ -1,0 +1,2511 @@
+/*
+* AttackPattern : Page Specific Styles
+* Author   : Stephen Scaff of SoSweet! Creative
+* Version  : 1.0
+* Date     : 8-27-13
+*/
+
+
+/*==================================================
+
+GLOBAL SECTIONS ELEMENTS
+
+==================================================== */
+
+body{
+	background: #ecf5f7;
+	overflow-x: hidden;
+	margin: 0;
+	padding: 0;
+}
+@-moz-document url-prefix(){
+p *, p, html, body, a, h2, h3, h4, h5, * {
+    font-weight: normal !important;
+font-family: "Microsoft YaHei", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif}
+}
+
+::selection {
+	background-color: rgb(0, 170, 180);
+	color: rgb(236, 245, 247);
+	text-shadow: none;
+}
+
+::-moz-selection {
+	background-color: rgb(0, 170, 180);
+	color: rgb(236, 245, 247);
+	text-shadow: none;
+}
+
+/*==================================================
+Page Content - main wrapper requirement for fixed masthead/heros.
+================================================== */
+#page-content{
+	background: #ecf5f7;
+	z-index: 9;
+	position: relative;
+}
+
+/*==================================================
+
+Navigation 
+
+================================================== */
+
+/*------------------------------------------------
+Mobile menu
+================================================== */
+.menu-btn{
+	position: relative;
+	z-index: 99;
+	color: #fff;
+	position: fixed;
+	top: 17px;
+	right: 10px;
+	margin: 0;
+	z-index: 999;
+	cursor: pointer;
+}
+
+.icon-menu:before {
+	content: "n6e";
+	font-size: 2em;
+}
+
+.mobilenav{
+  background: #111;
+  font-size: 0.9em;
+  font-weight: 700;
+  position: fixed;
+  z-index: 9999;
+  width: 200px;
+  height: 100% !important;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  -webkit-box-shadow: inset 10px 0 6px -9px rgba(0,0,0,0.7);
+  -moz-box-shadow: inset -10px 0 6px -9px rgba(0,0,0,0.7);
+  box-shadow: inset 10px 0 6px -9px rgba(0,0,0,0.7);
+}
+
+.mobilenav a{
+	display: block;
+	color: #b3b3b1;
+	padding: 15px 30px;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	border-top: 1px solid rgba(255,255,255,0.1);
+	text-decoration: none;
+}
+
+.mobilenav a:hover{
+  background: #00aabb;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.mobilenav ul{list-style-type: none;}
+/* Menu Movement */
+
+.mobilenav-right{
+	-webkit-transform: translate3d(200px,0,0);
+	-moz-transform: translate3d(-200px,0,0);
+	-ms-transform: translate3d(-200px,0,0);
+	-o-transform: translate3d(-200px,0,0);
+	transform: translate3d(200px,0,0);
+}
+
+.pushy-open{
+	-webkit-transform: translate3d(0,0,0);
+	-moz-transform: translate3d(0,0,0);
+	-ms-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.container-push {
+	-webkit-transform: translate3d(-200px,0,0);
+	-moz-transform: translate3d(200px,0,0);
+	-ms-transform: translate3d(200px,0,0);
+	-o-transform: translate3d(200px,0,0);
+	transform: translate3d(-200px,0,0);
+}
+
+/* Menu Transitions */
+.mobilenav, #content-slide{
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-webkit-transition: all 0.5s ease-in-out;
+}
+
+/* Site Overlay - to click anywhere and close*/
+.site-overlay{
+  display: none;
+}
+
+.pushy-active .site-overlay{
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 200px;
+	z-index: 9999;
+}
+
+/*------------------------------------------------
+Headerbar - Nav & Logo
+================================================== */
+#header-bar{
+	position: fixed !important;
+	width: 100%;
+	display: block;
+	top: 0;
+	padding: 1.4em 0 .2em;
+	z-index: 99;
+	background: #060d15; /*#0c1d31*/
+	/*background: rgba(6, 13, 21, 0.6);#060d15*/
+		background: rgba(0,0,0, 0.6);
+	border-bottom: 1px solid rgba(0, 170, 187, .2);
+   -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+   -webkit-backface-visibility:  hidden;
+   -webkit-perspective: 1000;
+}
+
+#header-bar, #header-bar nav, #header-bar nav li a{
+	-webkit-transition: all .4s ease-in-out;
+	-moz-transition: all .4s ease-in-out;
+	-o-transition: all .4s ease-in-out;
+	-ms-transition: all .4s ease-in-out;
+	transition: all .4s ease-in-out;
+}
+
+h1#logo { 
+	font-size: 2em;
+	width: 7em; 
+	margin: .1em;
+	float: left;
+	padding-left: 0.5em;
+}
+
+nav {
+	/*padding: 2.1em 0 .7em 0.5em;*/
+	padding-right: .5em;
+	float: right;
+}
+
+nav ul li {
+	list-style: none;
+	float: left;
+	display: block;
+}
+
+nav ul li a {
+ 	/*font-family: "Proxima Nova", Helvetica, "Segoe UI", Arial, sans-serif;*/
+    font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	display: block;
+	font-size: 1em;
+	color: #fff;
+	text-shadow: -1px 1px 0px rgba(0,0,0,0.9);
+}
+
+nav ul li a:hover {color: #00aabb !important;}
+nav ul li a:active{color: #00aabb !important;}
+
+
+/*--Sticky classes on scroll --*/
+#header-bar.sticky {
+	background: #060d15; /*#0c1d31*/
+	background: rgba(6, 13, 21, 0.98);/*#060d15*/
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.065);
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.065);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.065);
+	border-bottom: 0px;
+	-webkit-backface-visibility:  hidden;
+}
+/*
+#header-bar.sticky  h1#logo{
+	padding-top: .7em;
+}
+
+#header-bar.sticky  nav{
+	padding: 1.3em 0 .2em;
+}
+
+
+.single #header-bar.sticky {
+	background: #060d15; 
+	background: rgba(6, 13, 21, 1);
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+	-moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.365);
+	-webkit-backface-visibility:  hidden;
+}
+*/
+/* ==============================================
+
+Mastheads & Banners -
+body class #masthead  holds background images.
+#hero-section and banner-section holds titles
+
+=================================================*/
+.home #masthead{
+	background: #061316 url('../images/bg-home-hero.jpg');
+	display: block;
+	background-attachment: fixed;
+	background-position: 50% 0;
+	background-size: cover;
+	/*fake the full viewport fill */
+}
+
+.about #masthead{
+	background: #1B3037 url('../images/bg-hero-about.jpg');
+	background-position: 50% 0%;
+	background-attachment: fixed;
+	background-size: 100%;
+	padding: 17% 0 20%;
+	border-bottom: 7px solid #060d15;
+}
+
+.blog #masthead,
+.archive #masthead{
+	background: #1B3037 url('../images/bg-hero-blog.jpg');
+	background-position: center top;
+	background-attachment: fixed;
+	background-size: 100%;
+	padding: 13% 0 16%;
+	border-bottom: 7px solid #060d15;
+}
+
+.single #masthead{
+	background: #1B3037 url('../images/bg-hero-singlepost.jpg');
+	background-position: 50% 0%;
+	background-attachment: fixed;
+	background-size: 100%;
+	padding: 12em 0 10em;
+}
+
+.single-portfolio #masthead {
+	background-position: 50% 0% !important;
+	background-attachment: fixed !important;
+	min-height: 40em;
+	background-color: #000 !important;
+	border-bottom: 2px groove #FFF;
+}
+.contact #masthead{
+	/*background: #000 url('../images/stars-bg-horizon.jpg');*/
+	background-position: 50% 0%;
+	background-attachment: fixed;
+	background-size: 100%;
+	padding: 15% 0 22%;
+	border-bottom: 5px solid #060D15;
+}
+
+.ie9 .contact #masthead,
+.ie8 .contact #masthead{
+  /*background: url('../images/bg-contact-hero-ie.jpg');*/
+}
+
+/*------------------------------------------------
+@ < 70em Mastheads
+================================================== */
+@media only screen and (min-width: 70em) {
+.home #masthead{
+  /*padding: 2% 0 5%;*/
+  min-height: 51em;
+}
+}
+
+/*------------------------------------------------
+Hero Section - For Homepage
+================================================== */ 
+#hero-section{
+	background-size: cover;
+	background-position: center 0;
+	-webkit-font-smoothing: antialiased;
+	-webkit-backface-visibility:  hidden;
+	background-repeat: no-repeat;
+	width: 100%;
+	margin: 0 auto;
+	top: 0;
+	z-index: -2;
+}
+
+#hero-section #intro { 
+	padding: 17% 0 10%;
+	max-width: 90%;
+}
+
+#hero-section #intro h2{
+	font-size: 3em;
+	color: #fff;
+	font-weight: 400;
+	letter-spacing: 6px;
+	line-height: 1.15;
+	padding: 2em 0 1em;
+    font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+/*to hold position with binary shuffle callback */
+#hero-section #intro h3{
+	position: absolute;
+    letter-spacing: 3px;
+    font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+#hero-section .btn {
+    font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 1.4em !important;
+    letter-spacing: 3px;
+}
+
+/*To ensure white link*/
+#hero-section .btn a{color: #fff !important; }
+
+
+/*------------------------------------------------
+Banner-section - for all non home pages
+================================================== */
+#banner-section{
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+}
+
+#banner-section h2{
+	color: #fff;
+    font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 5em;
+	text-align: center;
+	letter-spacing: 2px;
+	opacity: .8;
+	position: relative;
+	margin: 0 0 .1em;
+	text-transform: uppercase;
+
+	-webkit-animation: glow 5s infinite ease-in;
+	-moz-animation: grow 1500ms ease-in-out;
+	-ms-animation: grow 1500ms ease-in-out;
+	animation: glow 5s infinite ease-in-out;
+}
+
+#banner-section p{
+	color: #fff;
+    font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 5em;
+	text-align: center;
+	letter-spacing: 2px;
+	opacity: .8;
+}
+
+/*------------------------------------------------
+Foliobanner - for portfolio items
+================================================== */
+#foliobanner-section{
+	position: fixed;
+	width: 100%;
+	z-index: 0;
+	top: 0;
+}
+
+#foliobanner-section #intro {
+	padding: 15% 0 1%;
+}
+
+#foliobanner-section h1{
+	color: #fff;
+    font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 5em;	
+	margin-bottom: 0;
+}
+
+#foliobanner-section h2{
+	color: #fff;
+	font-size: 3.5em;
+}
+
+/*------------------------------------------------
+Section Title Elements
+================================================== */
+.section-title{
+	text-align: center;
+	margin: 2em auto !important;
+}
+
+.section-title p{
+	font-size: 1.5em;
+	text-shadow: -1px 1px 0px #fff;
+    font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+.section-title img{
+	margin: 1em auto 0em !important;
+}
+.section-title.noline{
+	text-align: center;
+	margin: 2.5em auto 2em !important;
+}
+.section-title h3{
+  font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  /*font-size: 3em;*/
+  text-align: center;
+}
+
+/*.divline{border-top: 2px groove white;}*/
+.divline h3{
+	font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 3em;
+	/*background: #ecf5f7;
+	display: table;*/
+	text-align: center;
+	margin: -0.6em auto .4em;
+	padding: 0 2em;
+}
+
+.divline h4{
+	font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	background: #ecf5f7;
+	display: table;
+	text-align: center;
+	margin: -0.6em auto 0em;
+	padding: 0 2em;
+}
+
+
+/*------------------------------------------------
+Title Section - main page titles after heros
+================================================== */
+#title-section{
+	padding: 2em 0;
+	margin: 0 0 3em;
+}
+
+#title-section{
+	position: relative;
+	display: block;
+	margin-bottom: .5em;
+	width: 100%;
+}
+
+#title-section h3{
+	font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 2.5em;
+	margin: .4em 0 .2em;
+    letter-spacing: 6px;
+}
+
+#title-section h2{
+	-webkit-hyphens: none !important;
+	-epub-hyphens:   none;
+	-moz-hyphens:    none;
+	hyphens:         none;
+}
+
+#title-section p{
+	font-size: 1.6em;
+    font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    letter-spacing: 3px;
+}
+
+.about #title-section{
+  margin: 0;
+  padding-bottom: 0;
+}
+
+
+
+/*==================================================
+Footer
+==================================================*/
+#footer{ 
+	color: #8698A8; 
+	background: #060d15; 
+	padding: 2em 0 1em;
+}
+
+.home #footer{
+	border-top: 8px solid rgba(0,170,187,0.8);
+}
+
+#footer a{
+    color: #8698A8;
+    font-family: "Microsoft YaHei", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+footer ul {
+    list-style: none;
+}
+footer ul li{
+	font-size: 1em;
+}
+#footer h4{
+    font-size: 1.2em;
+	color: #f1f1f1;
+	font-weight: 400;
+	text-shadow: -1px 1px 0px #222;
+    font-family: "Microsoft YaHei", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+footer .icon{
+	color: #fff;
+	color: rgba(255,255,255,0.8);
+	font-size: 1.2em;
+}
+
+footer .icon-mail-3, 
+footer .icon-right-chev {font-size: 0.875em; padding-right: .3em;}
+
+footer ul.social-list a{
+	font-size: 1em;
+	color: #00aabb !important;
+}
+
+footer ul.social-list a:hover{
+	color: #8698A8 !important;
+}
+
+#copyright p { font-size: 1em; font-family: "Microsoft YaHei", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif}
+
+#copyright hr{
+	border-top: 1px solid #8698A8;
+	border-bottom: none;
+}
+
+#copyright .love{
+	font-size: .9em;
+	opacity: .4;
+}
+
+/* Scroll to Top fade in 
+================================================== */
+.scroll_to_top{
+  width:50px;
+  height:50px;
+  padding:14px;
+  font-size: 1.4em;
+  text-align:center;
+  background: #060d15 !important;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: -1px 1px 0px rgba(0,0,0,0.1);
+  text-decoration: none;
+  position:fixed;
+  z-index:9999 !important;
+  bottom:75px;
+  right:40px;
+  border-radius: 100px;
+  display:none;
+  -webkit-transition: background 400ms ease-in-out;
+  -moz-transition: background 400ms ease-in-out;
+  -o-transition: background 400ms ease-in-out;
+  transition: background 400ms ease-in-out;
+   -webkit-backface-visibility:  hidden;
+}
+
+.scroll_to_top:hover{
+  text-decoration:none;
+  color: #fff !important;
+  background: #00aabb !important;
+  -webkit-transition: background 400ms ease-in-out;
+  -moz-transition: background 400ms ease-in-out;
+  -o-transition: background 400ms ease-in-out;
+  transition: background 400ms ease-in-out;
+}
+
+
+/*================================================== 
+
+PAGE SPECIFIC SECTIONS
+
+================================================== */
+
+
+/*================================================== 
+
+Homepage
+
+==================================================== */
+
+/*------------------------------------------------
+Services Section
+================================================== */
+#services-section{padding: 1em 0 4em;}
+
+#services-section img{
+	margin: 0 auto 1em;
+	display: block;
+	max-width: 75%;
+}
+
+#services-section h3{
+	font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	color: #060d15;
+	font-size: 1.7em;
+	border-top: 2px groove white;
+	border-bottom: 2px groove white;
+	padding: .3em 0 ;
+	margin: 0 0 .6em;
+}
+
+#services-section p{
+    font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	text-align: justify;
+	text-shadow: -1px 1px 0px #fff;
+    font-size: 1em;
+}
+
+#services-section .btn{
+	font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	color: #fff;
+}
+
+#services-section p{
+  margin-bottom: 2em;
+}
+.services-section img{
+	position: relative;
+	-webkit-animation: grow 1500ms ease-in-out;
+	-moz-animation: grow 1500ms ease-in-out;
+	-ms-animation: grow 1500ms ease-in-out;
+	animation: grow 1500ms ease-in-out;
+}
+
+@-moz-document url-prefix(){
+#services-section p{margin-bottom: 4em;}
+}
+.ie8 #services-section p,
+.ie9 #services-section p{
+margin-bottom: 4em;
+}
+
+/*------------------------------------------------
+Folio-section
+================================================== */
+
+#folio-section-title{
+  padding: 1em 0 0;
+}
+
+#folio-section{
+  padding: 0em 0 3em;
+}
+
+#folio-section img{
+	display: table;
+	margin: 0 auto;
+	width: 100%;
+	
+}
+
+.folio-item img, 
+#folio-section .hover-over{
+	padding: 0px;
+
+}
+
+.folio-items li img {
+	display: block;
+	height:auto;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	border-left: 0px solid #ecf5f7;
+}
+
+.folio-items li a {
+	color: #FFF;
+}
+
+.folio-items:after {
+	content: '';
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.folio-img{
+	position: relative;
+	display: table;
+	/*margin-right: 20px;*/
+	width: 100%;
+	-webkit-transition: all .9s linear;
+	-moz-transition: all .9s linear;
+	-o-transition: all .9s linear;
+	-ms-transition: all .9s linear;
+	transition: all .9s linear;
+}
+  
+.hover-over {
+  position:absolute;
+  color: white;
+  top:0px;
+  left:0px;
+  width:100%;
+  height: 100%;
+  z-index:100;
+  background-color: #153b5c;
+  background-color: rgba(0,0,0,0.9);
+  display:none;
+}
+
+.hover-over p{
+	font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 2em;
+	font-weight: 100;
+	text-shadow: -1px 1px 0px rgba(0,0,0,0.5);
+	color: white;
+	text-align: center;
+	text-transform: uppercase;
+	margin-top: 20%;
+}
+
+/*
+.hover-over-sub:before{
+content: '';
+display: block;
+width: 50%;
+height: 3px;
+margin: 10px auto 0;
+background: transparent url('../images/div-folioprev.png');
+}
+*/
+
+.hover-over-sub {
+    font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: .75em;
+	color: #00aabb;
+	padding-top: .4em;
+	border-top: 1px solid #00aabb;
+	clear:left;
+	text-transform: none;
+}
+
+.folio-img:hover .hover-over p{
+	position: relative;
+	-webkit-animation: grow 1500ms ease-in-out;
+	-moz-animation: grow 1500ms ease-in-out;
+	-ms-animation: grow 1500ms ease-in-out;
+	animation: grow 1500ms ease-in-out;
+	-webkit-transition: backgorund .9s ease-in-out;
+	-moz-transition: all .9s ease-in-out ;
+	-o-transition: all .9s ease-in-out;
+	-ms-transition: all .9s ease-in-out;
+	transition: all .9s ease-in-out;
+}
+
+
+/*------------------------------------------------
+Logos Section
+================================================== */
+
+#logos-section {
+  /*padding: 3em 0 1em;*/
+  padding: 1em 0 3em;
+  border-top: 1px solid #D9EFF1;
+}
+
+
+/*------------------------------------------------
+Quote Section
+================================================== */
+#quote-section{
+	background: url(../images/bg-launch-4.jpg) no-repeat center top;
+	background-attachment: fixed;
+	vertical-align: top;
+	background-position: 50% bottom;
+	display: block;
+	background-size:cover;
+	text-shadow: -1px 1px 5px rgba(0,0,0,0.2);
+}
+
+.quote{
+	text-align: center;
+	font-size: 2.3em;
+	color: #fff; 
+	line-height: 1.4;
+}
+
+.quoter{
+	text-align: center;
+	font-size: 1.7em;
+	color: #ccc;
+	color: #A8E4E9;
+}
+
+/* Cooler CSS way to add smart quotes. 
+   To enable, first pull smart quote html characters in page templates
+q, .quote {quotes: "“" "”" "‘" "’";}
+q:before, quote:before {content: open-quote;}
+q:after, quote:after {content: close-quote;}
+*/
+
+.mids{
+	color: #FFF;
+	display: table;
+	padding: 13% 10% 10%;
+	vertical-align: middle;
+	display: table;
+	margin: 0 auto;
+	max-width: 95%;
+}
+
+/*------------------------------------------------
+Testimonials Section - Slider
+================================================== */
+#testimonial-slider{
+  min-height: 26em;
+}
+
+#testimonial-slider .testimonial-quote{                                                                                    
+  width: 80%;
+  margin: 0 auto;
+}
+    
+.testimonial-nav .icon{
+  font-size: 4em;
+  color: rgba(255,255,255,0.9);
+  opacity: .9;
+  position: absolute;
+  top: 2px;
+}
+
+#testimonial-slider .slides { color: #555;}
+
+#testimonial-slider .previous{
+  position: absolute; 
+  left: 0;
+  top: 40%;
+  display: block;
+  z-index: 999;
+}
+
+#testimonial-slider .next{
+  position: absolute; 
+  right: 1%;
+  top: 40%;
+  display: block;
+  z-index: 999;
+}
+
+#testimonial-slider .flex-control-paging{display: none;}
+
+
+/*------------------------------------------------
+Twitter Section
+================================================== */
+#tweet-section{
+	padding: 4em 0 2em;
+}
+
+#tweet-section .icon{
+	font-size: 3em;
+	color: #060d15;
+	text-shadow: -1px 1px 0px rgba(255,255,255,0.4);
+}
+
+.tweethandle {
+	font-size: 1.5em;
+	text-align: center;
+	padding: 0 60px;
+	margin: -30px auto 40px;
+	display: block;
+	color: rgba(255,255,255,0.8) !important;
+}
+
+#tweets {
+	margin:20px  20%;	
+	-moz-border-radius: 6px;
+	border-radius: 6px; 
+}
+
+#tweets p{
+	font-size: 1.5em;
+	text-align: center;
+}
+#tweets a {
+	text-align:center; 
+	font-size: 1em; 
+	color: rgba(255,255,255,0.8);
+}
+
+#tweets li {
+	padding: 5px;
+	color:#222;
+	border-bottom:1px solid #000000;
+	border-top:1px solid #353434;
+	line-height:150%;
+	list-style: none;
+}
+
+#tweets li .timestamp {
+	text-align:center; 
+	font-size: 1em; 
+	color: rgba(255,255,255,0.3);
+}
+
+#tweets li.tweet_content_0 {
+	border-top:0px none;
+}
+
+#tweets li:last-child{
+	border-bottom:0px none;	
+}
+
+#tweets .hash { color: rgba(255,255,255,0.8) !important; } 
+#tweets .reply { color:#666; } 
+
+
+/*==================================================
+
+About Page
+
+==================================================== */
+
+/*------------------------------------------------
+Intro Section
+================================================== */
+#intro-section{padding: 0 0 2em;}
+
+/*------------------------------------------------
+Team Section
+================================================== */
+#team-section{
+	text-shadow: -1px 1px 0px #fff;
+	padding:  0 0 3em;
+}
+#team-section .img-1,
+#team-section .img-2{
+	/*max-width: 90%;*/
+	max-width: 56%;
+	margin: 0 auto;
+	display: table;
+	-webkit-filter: grayscale(100%) saturate(0%);
+	-moz-filter: grayscale(100%) saturate(0%);
+	filter: grayscale(100%) saturate(0%);
+	-webkit-transition: all ;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s ease-in-out;
+	-ms-transition: all 1s  ease-in-out;
+	transition: all 1s ease-in-out;
+	opacity: 1;
+}
+
+#team-section a{
+	color: #333;
+}
+
+#team-section img:hover,
+#team-section .img-1:hover
+#team-section .img-2:hover{
+	-webkit-filter: grayscale(0.3) saturate(3) hue-rotate(2deg);
+	-moz-filter: grayscale(0.3) saturate(3) hue-rotate(2deg);
+	-o-filter: grayscale(0.3) saturate(3) hue-rotate(2deg);
+	-ms-filter: grayscale(0.3) saturate(3) hue-rotate(2deg);
+	filter: grayscale(30%) saturate(3) hue-rotate(2deg);
+	-webkit-transition: all 1s ease-in-out;
+	-moz-transition: all 1s ease-in-out;
+	-o-transition: all 1s  ease-in-out;
+	-ms-transition: all 1s  ease-in-out;
+	transition: all 1s ease-in-out;
+	-webkit-transform-style: preserve-3d;
+	opacity: .8;
+}
+
+#team-section .six.columns:first-child {
+  border-right: 1px solid #DDD;
+}
+
+#team-section h2{
+	text-align: center;
+	padding: .5em 0 0;
+	font-size: 2.5em;
+	font-weight: 600;
+	margin: 0 auto;
+}
+
+#team-section p{
+	font-size: 2em;
+	text-align: center;
+}
+
+/*team section - bios section accordian */
+#team-bios-section{
+  padding: 0em 0 2em !important;
+  text-align: center;
+   text-shadow: -1px 1px 0px rgba(255,255,255,0.3) !important;
+}
+
+#team-bios-section h3{
+	font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	padding: 1em 0 0;
+	color: rgba(255,255,255,0.9);
+	text-shadow: -1px 1px 0px rgba(0,0,0,0.1);
+}
+
+#team-bios-section h4{
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  text-shadow: -1px 1px 0px rgba(0,0,0,0.0);
+}
+
+.team_bio{
+  padding: 2em 0; 
+  text-shadow: -1px 1px 0px rgba(255,255,255,0.3) !important;
+}
+
+#team-bios-section .link-list{
+  display: table;
+  margin: 0 auto;
+  padding: 1em 0;
+}
+
+#team-bios-section .link-list li{
+  font-size: 1.4em;
+}
+
+#about-section{
+  padding-bottom: 40px;
+  border-top: 11px solid #ccc;
+}
+
+#about-section .pagetitle{
+  color: #19374b;
+}
+
+/*------------------------------------------------
+About Page Tabs - ftodo: clean up a bit
+================================================== */
+.current{
+  background: #0ab !important;
+  display: inline-block;
+}
+
+.about-tabs ul.btn-group{
+  margin: 0 auto;
+  padding-top: 4em;
+  display: table;
+}
+
+.about-tabs ul.btn-group li.btn-tab {
+  display: inline-block;
+  background: #060d15;
+}
+
+.about-tabs ul.btn-group a {
+  font-family: "Proxima Nova", Helvetica, "Segoe UI", Arial, sans-serif;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: -1px 1px 0px rgba(0,0,0,0.4);
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  letter-spacing: .2em;
+  padding: 1.2em 2em 1em;
+  text-transform: uppercase;
+  min-width: 14em;
+  -webkit-transition: background-color ease-in-out 500ms;
+  -moz-transition: background-color ease-in-out 500ms;
+  -o-transition: background-color ease-in-out 500ms;
+  transition: background-color ease-in-out 500ms;
+}
+
+.btn-group > li.btn-tab a:hover{
+  background: #8bb5ba;
+}
+.btn-group > li.btn-tab:first-child {
+  -moz-border-bottom-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  -moz-border-top-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.btn-group > li.btn-tab:last-child{
+  -moz-border-top-right-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  border-top-right-radius: 3px;
+  -moz-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  border-border-bottom-right-radius: 3px;
+}
+
+/*------------------------------------------------
+Snapshots - Image Collage
+================================================== */
+
+.Collage{
+/*This is where you set the padding you want between the images*/
+  padding:.7em;
+}
+.Collage img,
+.gallery img,
+.gal-img{
+  margin:0;
+  padding:0;
+  display:inline-block;
+  vertical-align:bottom;
+  opacity:1; 
+  -webkit-filter: grayscale(.6) saturate(.3) hue-rotate(7deg);
+  -moz-filter: grayscale(.6) saturate(.3) hue-rotate(7deg);
+  -o-filter: grayscale(.6) saturate(.3) hue-rotate(7deg);
+  -ms-filter: grayscale(.6) saturate(.3) hue-rotate(7deg);
+  filter: grayscale(.6) saturate(.3) hue-rotate(7deg);
+  -webkit-transition: -webkit-filter 1s ease-in-out;
+  -moz-transition: -moz-filter 1s ease-in-out;
+  -o-transition: -o-filter .5s ease-in-out;
+  -ms-transition: -ms-filter 1s ease-in-out;
+  transition: filter 1s ease-in-out;
+  -webkit-transform-style: preserve-3d
+}
+
+.Collage img:hover,
+.gallery img:hover,
+.gal-img:hover {
+  -webkit-filter: grayscale(0) saturate(1) hue-rotate(7deg);
+  -moz-filter: grayscale(0.3) saturate(2) hue-rotate(7deg);
+  -o-filter: grayscale(0.3) saturate(2) hue-rotate(7deg);
+  -ms-filter: grayscale(0.3) saturate(2) hue-rotate(7deg);
+  filter: grayscale(0.3) saturate(2) hue-rotate(7deg);
+  -webkit-transition: -webkit-filter 1s ease-in-out;
+  -moz-transition: -moz-filter 1s ease-in-out;
+  -o-transition: -o-filter 1s ease-in-out;
+  transition: filter 1s ease-in-out;
+  -webkit-transform-style: preserve-3d
+}
+
+/*------------------------------------------------
+About Services Section
+================================================== */
+
+#about-services-section{}
+
+#about-services-section img{
+	max-width: 40%;
+}
+
+#about-services-section .bullet{
+	font-size: 1.5em;
+	padding: 0 1em;
+	color: #060d15;
+}
+
+#about-services-section h4{
+	font-size: 2em;
+	font-weight: 600;
+	text-align: center;
+	margin: 0em auto 1em;
+	padding: 0;
+	text-shadow: -1px 1px 0px #fff;
+}
+
+#about-services-section h5{
+	font-size: 1.3em;
+	color: #3d5359;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+#makesusunique{
+  padding: 3em 0;
+  margin: 2em 0 1em;
+  text-shadow: -1px 1px 0px rgba(255,255,255,0.7);
+}
+
+#makesusunique h3{
+  font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-size: 2.5em;
+  text-transform: uppercase;
+  padding: 0 0 0.5em;
+}
+
+/*------------------------------------------------
+Process Section
+================================================== */
+#process-section {padding: 0 0 4em;}
+#process-section img{
+  margin: 0 auto 1em;
+  display: block;
+  max-width: 85%;
+}
+
+#process-section h2{
+	font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 2.8em;
+	margin: 0 auto 0;
+}
+#process-section-content p{
+	font-size: 1.8em;
+	font-weight: 600;
+}
+
+#seperates-section{
+  padding: 2em 0;
+}
+
+/*================================================
+
+Blog Elements - blog-section & blog pages
+-see base.css for wider, list-based grid-
+
+==================================================*/
+
+/*------------------------------------------------
+Boxes
+================================================== */
+.box{
+	background: #fff;
+	box-shadow: 0px 2px 2px rgba(0,0,0,0.3);
+	padding: 0 0 1em;
+}
+
+.box-inner{
+	padding: 0em 1.3em .5em;
+	clear: right;
+    font-family: "Microsoft YaHei", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+.box h4{
+	font-size: 1.2em;
+	margin: .8em 0 .2em;
+	font-weight: 600;
+}
+
+.box p {
+	font-size: 0.75em;
+	line-height: 1.7em;
+}
+
+.meta{
+	color: #999;
+	margin: 0 0 .2em;
+}
+
+
+#blog-section-title{
+	padding: 1em 0 0;
+}
+
+#blog-section{
+	padding: 0em 0 5em;
+}
+
+#blog-section .box{
+	min-height: 480px;
+	-webkit-transition: all .2s ease-out;
+	-moz-transition: all .2s ease-out;
+	-o-transition: all .2s ease-out;
+	-ms-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+	opacity: 1;
+}
+
+#blog-section .box:hover {
+	margin-top: -0.9em;
+	cursor: pointer;
+	-webkit-transition: all .5s ease-in-out 0s;
+	-moz-transition: all .5s ease-in-out 0s;
+	-o-transition: all .5s ease-in-out 0s;
+	-ms-transition: all .5s ease-in-out 0s;
+	transition: all .5s ease-in-out 0s;
+	box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4);
+}
+
+#blog-posts {
+  padding: 0 0 7em;
+}
+
+#blog-posts .box{
+//	min-height: 28em;
+	-webkit-transition: all .2s ease-out;
+	-moz-transition: all .2s ease-out;
+	-o-transition: all .2s ease-out;
+	-ms-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+	opacity: 1;
+	margin: 1em auto 0;	
+}
+
+#blog-posts a,
+#blog-posts h4,
+#blog-posts p{
+  color: #222;
+  -webkit-transition: all 1s ease-in-out 0s;
+  -moz-transition: all 1s ease-in-out 0s;
+  -o-transition: all 1s ease-in-out 0s;
+  transition: all ease-in-out 1s;
+}
+
+#blog-posts a:hover,
+#blog-posts h4:hover,
+#blog-posts p:hover{
+  color: #0ab;
+  -webkit-transition: all 1s ease-in-out 0s;
+  -moz-transition: all 1s ease-in-out 0s;
+  -o-transition: all 1s ease-in-out 0s;
+  transition: all ease-in-out 1s;
+}
+
+#blog-posts img{
+	-webkit-filter: grayscale(0.3) saturate(1) hue-rotate(7deg);
+	-moz-filter: grayscale(0.3) saturate(1) hue-rotate(7deg);
+	-o-filter: grayscale(0.3) saturate(1) hue-rotate(7deg);
+	-ms-filter: grayscale(0.3) saturate(1) hue-rotate(7deg);
+	filter: grayscale(0.3) saturate(1) hue-rotate(7deg);
+	-webkit-transition: all 2s ease-in-out;
+	-moz-transition: all 2s ease-in-out;
+	-o-transition: all 2s ease-in-out;
+	transition: all 2s ease-in-out;
+	 -webkit-transform-style: preserve-3d
+}
+
+.colorhover:hover, #blog-posts img:hover  {
+	-webkit-filter: grayscale(0.7) saturate(1);
+	-moz-filter: grayscale(0.7) saturate(1);
+	-o-filter: grayscale(0.7) saturate(1);
+	-ms-filter: grayscale(0.7) saturate(1);
+	filter: grayscale(0.7) saturate(1);
+	-webkit-transition: all 2s ease-in-out;
+	-moz-transition: all 2s ease-in-out;
+	-o-transition: all 2s ease-in-out;
+	transition: all 2s ease-in-out;
+	 -webkit-transform-style: preserve-3d
+}
+
+#blog-posts .box:hover {
+	cursor: pointer;
+	background: #ecf5f7;
+  -webkit-transition: all 1s ease-in-out 0s;
+  -moz-transition: all 1s ease-in-out 0s;
+  -o-transition: all 1s ease-in-out 0s;
+  transition: all ease-in-out 1s;
+	box-shadow: 0px 2px 2px #00aabb;
+}
+
+#blog-article h1{
+    font-family: "Microsoft YaHei", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	margin: 1em 0 .3em;
+    font-size: 1.65em;
+}
+
+.single-post #header-bar{
+	border: 0;
+}
+
+.single-post #filter-bar{
+	/*background: #060d15*/
+	background: #8bb5ba;
+	border-bottom: 1px solid #fff;
+	padding: 1.6em 0em 0 1em;
+	max-height: 5.5em;
+	margin: 0;
+}
+
+.single-post #filter-bar a{
+	color: #060d15;
+}
+
+.single-post #filter-bar a:hover{
+	color: #0ab;
+}
+
+.icon.icon-grid {
+  font-size: 2.4em !important;
+  position: relative;
+  top: -0.06em;
+}
+
+.metas{
+	padding:0;
+}
+
+.metas p{
+	font-size:1em;
+	/*margin-left: -5%;*/
+    margin-bottom: 0;
+    font-family: "Microsoft YaHei", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+.metas * {
+text-align: center;
+}
+
+.metas .icon{
+	font-size: 1.5em;
+	color: #8bb5ba;
+	text-shadow: -1px 1px 0px #fff;
+	position: relative;
+	top: 4px;
+  padding: 0 .6em 0 .5em;
+}
+
+.updated.date {
+  font-size: .9em;
+}
+
+ul.socials{
+	margin: 2em auto 1em;
+	display: table;
+}
+
+ul.socials li a{
+	font-size: 2em;
+	color: #bbb !important;
+}
+
+.single-content{
+	padding: 1em 0 1.5em;
+    font-family: "Microsoft YaHei", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+.single-content p, .single-content h3{
+	text-shadow: -1px 1px 0px #fff;
+}
+.single-content p{font-size: 1em; line-height: 1.8;
+}
+
+.single-content p:first-of-type {
+  font-size: 1em;
+  font-weight: bold;
+    /*text-align: center;*/
+  text-align: justify;
+  -webkit-hyphens: none;
+   -moz-hyphens: none;
+    -ms-hyphens: none;
+        hyphens: none; 
+}
+
+.single-content h3{
+  font-weight: 600;
+  margin: 1em 0 .5em;
+}
+
+.single-content h4{
+  color: #4E7C81;
+	font-size: 1.8em;
+	font-weight: 600;
+	margin: 1em 0 .5em;
+}
+
+.single-content strong, 
+.single-content b{
+  font-size: 1.2em;
+  color: rgba(14, 64, 83, 0.8);
+}
+.single-content figure img{
+  margin: 0 auto .3em;
+  display: block;
+}
+
+.single-content ul,
+.single-content ol{
+  font-size: 1em;
+  line-height: 1.9;
+  margin: 1em 0;
+}
+
+.single-content ul li,
+.single-content ol li{
+  font-size: 0.875em;
+}
+
+.single-content ol {
+    counter-reset: li;
+    margin: 1em 0 0;
+    padding-left: 0;
+}
+.single-content ol > li {
+    position: relative;
+    margin-left: 1.9em;
+    list-style: none;
+}
+.single-content ol > li:before {
+    content: counter(li);
+    counter-increment: li;
+    position:absolute;
+    top: -.15em;
+    left: -1.5em;
+    width: 1.5em;
+    color: rgba(14, 64, 83, 0.8);;
+}
+
+.tags {
+  padding: 0 0 2em;
+}
+
+#comments-section{
+  padding: 1em 0 1.5em;
+}
+
+#comments-section .expand-comments{
+  font-size: 2em;
+}
+
+#comments-section .expand-comments .icon{
+  font-size: 1em;
+}
+
+/*------------------------------------------------
+Blog Page sorting
+================================================== */
+#Grid .mix{
+	display: none;
+	opacity: 0;
+	vertical-align: top;	
+}
+
+#filter-bar{
+	padding: 2em 0 1em;
+}
+
+#filter-bar .icon{
+	font-size: 2em;
+}
+
+/*------------------------------------------------
+Blog - Social Loves
+================================================== */
+#sociallove-section {
+  display: block;
+  padding: 1.3em 0 3.7em;
+  margin: 3em 0 0;
+  border-top: 2px solid #DDD;
+  border-bottom: 2px solid #DDD;
+}
+
+h5.sharelove {
+	font-size: 1.6em;
+	float: left;
+	padding-right: 2em;
+}
+
+#sociallove-share-btns {
+  float: left;
+  padding: .2em 0 0;
+  margin: 0 !important;
+}
+
+li.gplusshare {
+  padding-top: .2em;
+}
+
+/*------------------------------------------------
+Blog - More posts Section
+================================================== */
+#more-posts-section{
+	padding: 1em 0 3em;
+	background: #fff;
+}
+#more-posts-section .section-title{
+  margin: 2em auto 1em !important
+}
+#more-posts-section .divline h3{background: #fff;}
+#more-posts-section .meta.date{
+	font-size: 0.875em;
+	padding: 1em 0 0;
+}
+
+#more-posts-section h4{
+	font-size: 1em;
+}
+
+/*================================================
+
+Folio Pages
+
+==================================================*/
+
+/*------------------------------------------------
+Process Section
+================================================== */
+.single-portfolio .section-title {
+  margin: 2em auto 1em !important;
+}
+/*
+.westerndigital #masthead{
+	background: url('..../images/folio-bg-wd-2.jpg') no-repeat 50% top !important;
+	background-attachment: fixed !important;
+	background-size: cover !important;
+}
+*/
+#solution-section,
+#results-section,
+#highlights-section{
+	padding: 1em 0 4em;
+}
+
+/* Folio Sections
+==================================================*/
+.single-portfolio #title-section img{
+	margin: -13.5em auto 3em;
+}
+
+.single-portfolio .big{
+  margin: 0 0 2em;
+}
+
+.single-portfolio figcaption{
+  margin: .1em auto .6em;
+}
+
+/*------------------------------------------------
+Setup Section
+================================================== */
+#setup-section{
+	padding: 3em 0 10em;
+	color: #fff;
+}
+
+#setup-section h3{
+	font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 3em;
+	text-transform: uppercase;
+}
+
+
+#folio-big-image img{
+	margin: -9em auto 0em;	
+	position: relative;
+	border: 1px solid rgb(255, 255, 255);
+	box-shadow: 0px 0px 2px rgb(204, 204, 204);
+}
+
+/*------------------------------------------------
+Results Section
+================================================== */
+#results-section img{
+	margin: 0 auto;
+	width: 100%;
+	border: 1px solid rgb(255, 255, 255);
+	box-shadow: 0px 0px 2px rgb(204, 204, 204);
+}
+#results-section p{
+  padding: 0 0 1em;
+}
+
+#results-section .divline h3{
+	background: #fff;
+}
+
+/*------------------------------------------------
+Solution Section
+================================================== */
+
+#solution-section p{
+  padding: 0 0 1em;
+}
+
+
+/*------------------------------------------------
+Highlights Section
+================================================== */
+#highlights-section ul li{
+	list-style: none;	
+	font-weight: 600;
+	line-height: 2.5;
+	text-shadow: -1px 1px 0px rgba(255,255,255,0.8);
+}
+
+#highlights-section ul.highlights li{line-height: 1.4;padding: 0 0 1em;}
+#highlights-section ul li:nth-child(odd) { color:#060d15; }
+#highlights-section ul li:nth-child(even) { color:#8bb5ba; }
+
+ul.highlights li{
+  border-bottom: 1px solid #D7E9E8;
+  margin: .1em auto 1em;
+  max-width: 85%;
+}
+ul.highlights li:last-child{border-bottom: 0;}
+/*------------------------------------------------
+Canvas based circular charts
+================================================== */
+canvas, video {display: inline-block;}
+
+.circular-stats {
+  position: relative;
+  display:block;
+  overflow:hidden;
+}
+
+.circular-stats li {
+  display: inline-block;
+  margin: 0 -23% 0 28%;
+  position: relative;
+  float: left;
+  width:250px !important;
+  height: 250px !important;  
+  display:block;
+}
+
+.circular-stat .digit-label {
+  color:  #060d15;
+  font-size: 1.6em;
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  top: 20%;
+  width: 65%;
+  left: 11.5%;
+  padding: 0px 0 0 15%;
+  text-shadow:-1px 1px 0px #fff;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.circular-stat .text-label {
+  color: #060d15;
+  font-size:1.3em;
+  top: 36%;
+  left: 22.875%;
+  width: 56.25%;
+  padding-top: 6px;
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+  font-weight: 100;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.circular-stat .text-dates{
+  font-size: 1em !important;
+  color: #00aabb;
+  font-weight: 400;
+  text-shadow: -1px 1px 0px #fff;font-size:1.4em;
+  top: 54%;
+  left: 21.875%;
+  width: 56.25%;
+  padding-top: 6px;
+  display: inline-block;
+  position: absolute;
+  text-align: center;
+}
+
+/*------------------------------------------------
+Circular Charts responds - 
+Okay, not the prettiest, 
+but, it will do until I work out something better
+================================================== */
+
+
+@media only screen and (max-width: 80em) { 
+.stats-container li {margin: 0 2.2em 5px;}
+
+.circular-stats li {
+  display: inline-block;
+  display: inline-block;
+   margin: 0 -23% 0 29%;
+  position: relative;
+  float: left;
+  width:210px !important;
+  height: 210px !important;  
+  display:block;
+}
+
+.circular-stat canvas{width: 210px;}
+.circular-stat canvas.front {width: 210px !important}
+.circular-stat canvas.back {width: 210px !important}
+.circular-stat .text-dates{font-size: .8em !important;}
+}
+
+@media only screen and (max-width: 70em) { 
+.circular-stats {
+  margin: -1% auto ;
+  padding: 0 !important;
+  display: block;
+}
+
+.circular-stats li {
+  width:170px !important;
+  height: 170px !important;  
+  margin: 0 -19% 0 28%;
+}
+
+.circular-stat canvas{width: 170px;}
+.circular-stat canvas.front {width: 170px !important}
+.circular-stat canvas.back {width: 170px !important}
+.circular-stat .digit-label {font-size: 1em;}
+.circular-stat .text-label {font-size: .9em;}
+.circular-stat .text-dates{font-size: .6em !important;}
+}
+
+@media only screen and (max-width: 50em) { 
+.circular-stats li {
+  margin: 0 -14% 0 21%;
+  width:170px !important;
+  height: 170px !important;  
+}
+}
+
+@media only screen and (max-width: 45em) { 
+#circluar-stats-section{display: none; }
+}
+
+/*------------------------------------------------
+Folio Quote Section
+================================================== */
+#folioquote-section{
+	color: #fff;
+	padding: 6em 0 4em;
+}
+
+#folioquote-section .quoter{font-weight: 600;}
+
+#folioquote-section .quoter-title{
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+  margin-top: -1em;
+}
+
+/*------------------------------------------------
+Work With Us Div Link
+================================================== */
+
+#work-with-us{
+	background: #fff;
+	width: 100%;
+	padding: 3em 0 2em;
+	text-align: center;
+	-webkit-transition: all 1s ease-in-out 0s;
+	-moz-transition: all 1s ease-in-out 0s;
+	-o-transition: all 1s ease-in-out 0s;
+	-ms-transition: all 1s ease-in-out 0s;
+	-webkit-transition: all 1s ease-in-out 0s;
+}
+
+#work-with-us:hover{background: #8bb5ba;}
+#work-with-us .icon-rocket{
+	font-size: 1.4em;
+	margin-left: 1em;
+}
+
+/*------------------------------------------------
+Folio nav
+================================================== */
+#folio-nav .icon {
+  color: rgb(255, 255, 255);
+  font-size: 2.5em;
+  line-height: .6em;
+}
+
+.next-post a, 
+.prev-post a {
+  width: 1em;
+  height: 1.5em;
+  display: block;
+  background: rgba(0, 0, 0, 0.9);
+  background: rgba(6, 13, 21, 0.7);
+  -webkit-transition: opacity .1s linear;
+  -moz-transition: opacity .1s linear;
+  -o-transition: opacity .1s linear;
+  -ms-transition: opacity .1s linear;
+  transition: opacity .1s linear;
+  position: fixed;
+  top: 40%;
+  z-index: 9;
+  text-align: center;
+  -webkit-transition: background 400ms ease-in-out;
+  -moz-transition: background 400ms ease-in-out;
+  -o-transition: background 400ms ease-in-out;
+  transition: background 400ms ease-in-out;
+}
+
+.prev-post a {
+  padding: 0.4em 1.6em 2em 0.4em;
+}
+
+.next-post a {
+  right: 0;
+  padding: 0.4em 1.3em 2em .7em;
+}
+
+.next-post a:hover, .prev-post a:hover {
+  background: #0ab;
+  -webkit-transition: background 400ms ease-in-out;
+  -moz-transition: background 400ms ease-in-out;
+  -o-transition: background 400ms ease-in-out;
+  transition: background 400ms ease-in-out;
+}
+
+
+/*==================================================
+ 
+Contact Page
+
+==================================================*/
+
+/*------------------------------------------------
+Contact Hero Animation
+keyframes defined in style.css
+================================================== */
+
+#galaxy * {}
+
+#galaxy [class^="stars"] {
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
+}
+
+.satellite{
+  -webkit-animation: satellite 160s infinite linear;
+  -moz-animation: satellite 160s infinite linear;
+  -o-animation: satellite 160s infinite linear;
+  -ms-animation: satellite 160s infinite linear;
+  animation: satellite 160s infinite linear;
+  position: fixed!important;
+  top: -1px;
+}
+
+.stars-back {
+	background: url('../images/stars-back.png');
+	-webkit-animation: orbit-clock-wise 440s infinite linear;
+	-moz-animation: orbit-clock-wise 440s infinite linear;
+	-o-animation: orbit-clock-wise 440s infinite linear;
+	-ms-animation: orbit-clock-wise 440s infinite linear;
+	animation: orbit-clock-wise 440s infinite linear;
+	position: fixed;
+	margin: 0 auto;
+}
+
+.stars-front {
+	background: url('../images/stars-front.png');
+	-webkit-animation: orbit-counter-clock-wise 360s infinite linear;
+	-moz-animation: orbit-counter-clock-wise 360s infinite linear;
+	-o-animation: orbit-counter-clock-wise 360s infinite linear;
+	-ms-animation: orbit-counter-clock-wise 360s infinite linear;
+	animation: orbit-counter-clock-wise 360s infinite linear;
+	position: fixed;
+	margin: 0 auto;
+}
+.ie8 .satellite, .ie9 .satellite,
+.ie8 .stars-back, .ie9 .stars-back, 
+.ie8 .stars-front, .ie9 .stars-front,
+.ie8 #galaxy, #ie9 #galaxy{
+  display: none;
+}
+
+/*------------------------------------------------
+Contact Info Section
+================================================== */
+#contact-info-section {
+  padding: 1em 0 4em;
+}
+
+#contact-info-section h3 {
+  font-size: 2em;
+  font-weight: 700;
+}
+
+/*------------------------------------------------
+Contact Form Section
+================================================== */
+#contact-form-section {
+  padding: 2em 0 8em;
+}
+
+.contact input[type="text"], 
+.contact input[type="email"], 
+.contact input[type="number"], 
+.contact input[type="tel"], 
+.contact input[type="url"], 
+
+.contact textarea {
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid #258496;
+}
+
+/*------------------------------------------------
+Contact Form 7 alerts
+================================================== */
+div.wpcf7-mail-sent-ok {
+  border: 7px solid #04B98E !important;
+}
+
+div.wpcf7-validation-errors {
+border: 6px solid #FF3F0F !important;
+}
+
+div.wpcf7-response-output {
+  margin: 2em 0.5em 1em !important;
+  padding: 2.2em 2em !important;
+  font-size: 1.3em !important;
+  background: #fff !important;
+}
+
+span.wpcf7-not-valid-tip {
+  background: rgb(18, 68, 97) !important;
+  color: #fff !important;
+  font-size: .7em !important;
+  width: 24em !important;
+  padding: 1em !important;
+  border: 0 !important;
+}
+
+/*==================================================
+
+404 Page
+
+==================================================*/
+html, body.error404 {
+  height: 100%;
+}
+
+body.error404 {
+  background-image: url(../images/404-mc.jpg) !important;
+  height: 100% !important;
+  background-size: cover !important;
+  background: #000;
+  background-position: 50% top;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.error404 footer{
+  display: none;
+}
+
+#fourohfour{
+  margin: 0 auto;
+  padding-top: 16em;
+  display: block;
+}
+
+#fourohfour h1{
+	font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 2.5em;
+}
+
+#fourohfour h2{
+	font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	font-size: 2em;
+	padding: 2% 0 3%;
+}
+
+#fourohfour .btn-outline{
+  	border-width: 3px;
+  	border-radius: 0;
+  	font-weight: 400;
+	font-family: "Microsoft YaHei","Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+}
+
+.bg-color{
+  background: rgba(0,170,187,0.0);
+  height: 100%;
+}
+
+/*===================================================== 
+
+MEDIA QUERIES - 
+
+=====================================================*/ 
+
+/*----------------------------------------------------  
+@ > 79 em - Large and up
+=====================================================*/ 
+@media only screen and (min-width: 60em) { 
+
+/*General & Layout
+----------------------------------------------------*/
+#contact .row{max-width: 70em;}
+}
+
+/*----------------------------------------------------  
+@ 96 em - Large / Laptop
+=====================================================*/ 
+@media only screen and (max-width:96em){}
+
+/*----------------------------------------------------  
+@ 79 em - Large / Laptop
+=====================================================*/ 
+@media only screen and (max-width:80em){
+
+/*Mastheads, Heros, Banners
+----------------------------------------------------*/
+
+#hero-section #intro h2{font-size: 3.5em;}
+#hero-section #intro h3{font-size: 1.75em;}
+#banner-section{background-size: 170%}
+#banner-section h2{font-size: 4em;}
+.about #masthead{padding: 18% 0 19%;}
+.single-portfolio #masthead {min-height: 34em;}
+#foliobanner-section h1{font-size:4em;}
+#foliobanner-section h2{font-size:3em;}
+
+/*Titles - section and title-section
+----------------------------------------------------*/
+#title-section p {font-size: 1.8em;}
+#title-section h3{font-size: 2em;} 
+#services-section h3 {font-size: 1.35em;padding: .6em 0 0.5em;}
+#quote-section .mids{background-position: 50% 100%;padding: 14% 0 11%;}
+
+/*Portfolio Sections
+----------------------------------------------------*/
+#highlights-section ul.highlights li{font-size: 1em;}
+
+/*Home Page Sections
+----------------------------------------------------*/ 
+.hover-over p {font-size: 1.5em;line-height: 2;}
+
+/*About Page Sections
+----------------------------------------------------*/ 
+#process-section-content p {font-size: 1.5em;}
+
+}
+
+/*----------------------------------------------------  
+@ < 60 em - Large / tablet-ish
+=====================================================*/ 
+
+@media only screen and (max-width:60em) {
+
+/*Header Bar & Nav
+----------------------------------------------------*/
+#header-bar nav,
+#header-bar.sticky nav{font-size: 1.1em;}
+
+/*Mastheads, Heros, Banners
+----------------------------------------------------*/
+#hero-section #intro{padding: 25% 0 16%;max-width: 100%;}
+#hero-section #intro h2{font-size: 3em;}
+
+.about #masthead h2{font-size: 3em;}
+.blog #masthead,.archive #masthead{padding: 21% 0 22%;}
+.single-portfolio #masthead {min-height: 29em;}
+
+#foliobanner-section h1{font-size:3em;}
+#foliobanner-section h2{font-size:2.5em;}
+
+/*Titles - section and title-section
+----------------------------------------------------*/
+#title-section p{font-size: 1.7em;}
+#title-section .btn{display: none;}
+.section-title img {max-width: 110px !important;}
+#quote-section{padding: 10% 0;}
+.mids {padding: 20% 10% 10%;}
+.quote {font-size: 1.9em;}
+
+/*About Page Sections
+----------------------------------------------------*/ 
+#team-section h2, #team-bios-section h3 {font-size: 2em;}
+#team-section p, #team-bios-section h4 {font-size: 1.7em;}
+
+#about-services-section h4{font-size: 1.7em}
+#about-services-section h5{font-size: 1.3em;}
+#about-services-section .bullet{font-size: 1em;padding: 0 0.6em;}
+#process-section h2{font-size: 1.9em;}
+#process-section p{font-size: 1.2em;}
+
+#contact-info-section ul.vert-list {font-size: 1em;}
+#work-with-us .biggie{font-size: 1.5em;}
+#work-with-us .icon-rocket {font-size: 1em; margin-left: .3em;}
+
+/*Home Page Sections
+----------------------------------------------------*/ 
+.hover-over p {font-size: 1.3em; line-height: 2;}
+#services-section h3 {font-size: 1.2em;}
+
+/*Blog Elements
+----------------------------------------------------*/ 
+.metas p{font-size: 1.3em;}
+.single-content p:first-of-type {font-size: 1.5em;}
+
+}
+
+
+/*----------------------------------------------------  
+@ > 48 em - Medium - Breakpoint
+=====================================================*/ 
+@media only screen and (min-width: 48em){
+/*Mobile Nav
+----------------------------------------------------*/
+.menu-btn {display: none !important;}
+}
+
+/*----------------------------------------------------  
+@ < 48 em - Medium - Breakpoint
+=====================================================*/ 
+@media only screen and (max-width:48em) {
+
+/*General & Layout
+----------------------------------------------------*/ 
+html{width: 100%; overflow-x: hidden;}
+hr.sep {margin: 2em auto 1em;}
+
+/*Mobile Nav 
+----------------------------------------------------*/
+nav{display: none !important;}
+.menu-btn{display: block !important;}
+
+/*Header Bar & Nav
+----------------------------------------------------*/ 
+#header-bar, 
+#header-bar.sticky {background: #060d15; /*#0c1d31*/}
+#header-bar h1#logo, 
+#header-bar.sticky h1#logo{font-size: 1.5em; width: 190px;}
+
+/*Hero & Banner Sections
+----------------------------------------------------*/ 
+.home #masthead {background-size: 235%;min-height: 36em;}
+.about #masthead {padding: 10em 0 6em;}
+.about #masthead {padding: 10em 0 9em;}
+.about #masthead h2{font-size: 2em;}
+.blog #masthead, .archive #masthead{padding: 9em 0 10em !important;background-size: 110%;}
+.blog #masthead h2, .archive #masthead h2{font-size: 2.5em;}
+.blog #masthead p, .archive #masthead p{font-size: 1em;}
+.single #masthead {background-attachment: scroll;background-size: 140%;padding: 9em 0 8em !important;}
+.single-post #filter-bar {padding: 1em 0em 0 1em;max-height: 4em;}
+.single-portfolio #masthead {min-height: 23em;}
+.single-portfolio #title-section img {margin: -6em auto 3em;}
+
+/*Titles - section and title-section
+----------------------------------------------------*/ 
+#title-section p{font-size: 1.2em;}
+.section-title {margin: 3em 0 2em}
+.section-title h3, #setup-section h3 {font-size: 2em;}
+
+/*Homepage Sections
+----------------------------------------------------*/ 
+#services-section h3 {font-size: 1.5em;}
+#quote-section{padding: 2% 0;background-size: 150%;background-attachment: scroll !important;}
+.quote{font-size: 1.5em;}
+.quoter{font-size: 1.2em;}
+#testimonial-slider {min-height: 5em;}
+#testimonial-slider .icon{display: none;}
+#tweets {margin:1em  1%;}
+
+/*About Page Sections
+----------------------------------------------------*/ 
+#about-services-section h4 {font-size: 1.5em; line-height: 1.4;}
+.about-tabs ul.btn-group a {font-size: 1em;}
+#team-section h2 {font-size: 2em;}
+#team-section p {font-size: 1.7em;}
+#team-bios-section .link-list li {font-size: 1.5em;}
+#makesusunique h3{font-size: 2em;}
+#about-services-section .three.columns.mobile-two {min-height: 20em;}
+
+/*Contact Page Sections
+----------------------------------------------------*/ 
+#contact-info-section .big p{font-size: 1em;}
+#contact-info-section ul.vert-list {font-size: 1em;margin: -.5em 0 2em;}
+#contact-info-section img{max-width: 30%;}
+
+/*Blog Elements - archive and blog page
+----------------------------------------------------*/ 
+.box h4 {font-size: 1.3em; }
+#blog-section .box{min-height: 410px;margin: 0 auto 2em;}
+#blog-section .box:hover{min-height: 410px;margin: 0em auto 2em !important;box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.4)}
+.single-content p{font-size: 1.3em;}
+.single-content h3{font-size: 1.8em;}
+.single-content h4{font-size: 1.6em;}
+
+
+/*Footer
+----------------------------------------------------*/ 
+footer ul li{padding-left: .4em;}
+}
+
+
+/*----------------------------------------------------  
+@ < device width 48em - tablets
+=====================================================*/ 
+@media only screen and (max-device-width:48em) {
+
+/*Hero & Banner Sections
+----------------------------------------------------*/ 
+.home #masthead {background-size: 200% !important; min-height: 39em;}
+#banner-section{position: relative;max-height: 2em;}
+#quote-section {background-size: 200%;}
+#testimonial-slider {min-height: 28em;}
+}
+
+/*----------------------------------------------------  
+@ < 38 em - Smaller Still (approx 600px)
+=====================================================*/ 
+@media only screen and (max-width:38em) {
+
+/*General & Layout
+----------------------------------------------------*/ 
+.multicol-2 {-webkit-column-gap:1.4em;-moz-column-gap:1.4em;-o-column-gap:1.4em;column-gap:1.4em; text-align: justify;}
+/*prevent cols from breaking */
+#about-services-section .three.columns.mobile-two {min-height: 18em;}
+
+/*Header Bar & Nav
+----------------------------------------------------*/ 
+h1#logo, #header-bar.sticky  h1#logo{width: 150px !important;}
+.menu-btn{font-size: .9em;top: .8em;}
+#header-bar {padding: 1em 0 .4em}
+
+/*Mastheads, Heros, Banners
+----------------------------------------------------*/
+.home #masthead {background: #061316 url('../images/bg-home-hero.jpg'); background-size: 260%; min-height: 22em;}
+#hero-section #intro {padding: 34% 0 15%;}  
+#hero-section #intro h2{font-size: 1.8em;line-height: 1.2;padding-top: 1.2em;}
+#hero-section #intro h3{font-size: 1em;}
+/*--Remove the button in hero -- */ 
+#hero-section .btn{display: none;}
+#banner-section h2{font-size: 1.5em;}
+#banner-section p{font-size: .8em !important;}
+
+.about #masthead {background: url('../images/bg-hero-about-small.jpg'); padding: 8em 0 6em;background-size: 141%;}
+.about #banner-section h2{font-size: 1.4em;}
+
+.blog #masthead, .archive #masthead {padding: 8em 0 !important;background-size: 190%;}
+.blog #masthead h2, .archive #masthead h2{font-size: 2em;}
+.blog #masthead p, .archive #masthead p{font-size: .9em;}
+
+.single #masthead {padding: 6em 0 4em !important;}
+.single-portfolio #title-section img {margin: -3em auto 3em;}
+.single-portfolio #masthead {min-height: 17em;}
+
+#foliobanner-section #intro {padding: 5em 0 0;}
+#foliobanner-section h1{font-size:2em;}
+#foliobanner-section h2{font-size:1.6em;}
+
+.contact #masthead {background-position: center 4%;padding: 28% 0 28%;background-repeat: no-repeat;background-size: 125%;}
+
+/*Section Titles
+----------------------------------------------------*/ 
+.section-title p{font-size: 1.3em;padding:0.5em 0 0}
+.section-title h3, #setup-section h3 {font-size: 1.8em;}
+.divline h3 {padding: 0 1em;}
+#title-section {padding: 1em 0 0;}
+#title-section h3 {font-size: 1.65em;line-height: 1.4;}
+#title-section .icon-amp.blue {padding-right: .3em;}
+#title-section p{font-size: 1.25em !important; text-align: justify;}
+.section-title img { max-width: 75px !important;}
+
+/*Homepage Sections
+----------------------------------------------------*/ 
+
+#services-section h3 {font-size: 1.5em;}
+#services-section .btn-small{font-size: .9em !important;}
+
+/*Folio-Section block-grid ebreak */
+#folio-section .block-grid > li{width: 100%;padding: 0 0px 0.1em !important;display: table;margin: 0 auto;}
+.hover-over p {font-size: 1.4em;line-height: 2;}
+.hover-over-sub {padding-top: 0.6em}
+
+#quote-section{background-position: 50% 100%;background-size: 250%;background-attachment: scroll;}                                                                  
+.quote{font-size: 1.2em;}
+
+/*About Page Sections
+----------------------------------------------------*/ 
+#about-services-section h4{font-size: 1.3em;}
+#about-services-section h5{font-size: 1em; padding: 0;}
+#about-services-section .bullet{font-size: 1em;padding: 0 0.5em;}
+#about-services-section p{font-size: 1em;}
+
+#team-section h2 {font-size: 1.5em;}
+#team-section p {font-size: 1.2em;}
+#team-section img {max-width: 75%;}
+#team-bios-section h3 {font-size:1.5em}
+#team-bios-section h4 {font-size:1.3em}
+#team-bios-section .link-list li {font-size: .8em;margin: 0 0.3em 0;padding: 0;}
+
+#makesusunique h3{font-size: 1.3em;}
+.about-tabs ul.btn-group a {font-size: .9em; padding: .9em 1.5em .7em; min-width: 0em;}
+
+/*Folio Pages
+----------------------------------------------------*/ 
+#folioquote-section {padding: 3em 0 2em;}
+#work-with-us .biggie {font-size: 1.1em;}
+#work-with-us .icon{display: none;}
+
+/*Contact Page
+----------------------------------------------------*/ 
+.wpcf7-submit.btn.btn-blue.btn-large {width: 100%;font-size: .8em !important;}
+#contact-title-section .section-title h3, 
+#contact-info-section h3{font-size: 1.5em;}
+#contact-info-section img.alignleft{float: none;}
+#contact-info-section img {width: 57%;min-width: 57%;margin: 0;}
+#contact-info-section  .big li {font-size: 1.1em;}
+/*#contact-info-section ul.vert-list {font-size: .9em;}*/
+form h6 {font-size: 1.1em !important;}
+
+/*Twitter Section
+----------------------------------------------------*/ 
+#tweets p, .tweethandle {font-size: 1.1em;}
+#tweet-section .icon{font-size: 2em;}
+
+/*Blog Elements
+----------------------------------------------------*/ 
+#filter-bar ul.link-list li{margin-left:.5em}
+.single #filter-bar .left ul.link-list li {padding: 0 1em 0 .5em;}
+.metas {font-size: .7em;}
+.metas .icon{padding: 0.7em;}
+#blog-posts .box {min-height: 28em;}
+#blog-article h1 {font-size: 1.65em;line-height: 1.4;}
+.single-content h3 {font-size: 1.5em;line-height: 1.4;}
+.single-content h4{font-size: 1.3em;}
+.single-content p{font-size: 1.1em;}
+.single-content p:first-of-type {font-size: 1.2em;}
+.single-content ul, .single-content ol {font-size: 1em;}
+.single-content ol > li {margin-left: 1.6em;}
+#more-posts-section h4 {font-size: 1.25em;padding: 0 0 0.8em;}
+#sociallove-section {padding: 1.3em 0 3.1em;}
+h5.sharelove {font-size: 1em; padding: .4em 0 0;}
+.gplusshare {margin-left: 1em !important;}
+	
+/*Footer
+----------------------------------------------------*/ 
+footer p{font-size: 1em;}
+footer ul li{font-size: 1.1em;padding-left: 0;}
+footer .icon{font-size: 1.2em;}
+footer ul.link-list{margin:0 0 1.1em -.5em;}
+footer ul.link-list li{margin-left:.4em;}
+}
+
+/*----------------------------------------------------  
+@ < 22 em - Smaller Still (approx 320px)
+=====================================================*/ 
+@media only screen and (max-width:22em) {
+
+/*General
+----------------------------------------------------*/ 
+.btn-large {font-size: 1em!important; min-width: 90%;margin: 0 auto;padding: 1.3em 2em !important;}
+.scroll_to_top {bottom: 20px;right: 1px;}
+.box-inner {padding: 0em .8em .5em;}
+
+/*Mastheads, Heros, Banners
+----------------------------------------------------*/
+.about #masthead {padding: 8em 0 6em;background-size: 175%;}
+.about #banner-section h2{font-size: 1.4em;}
+#foliobanner-section h1 {font-size: 1.5em;}
+#foliobanner-section h2 {font-size: 1em;}
+.single-portfolio #masthead {min-height: 13em;}
+
+/*Homepage Sections
+----------------------------------------------------*/
+#quote-section{padding: 2% 0 !important;background-size: 260% !important;background-attachment: scroll !important; max-height: 17em !important;}
+#quote-section .mids {padding: 10% 0 0 !important;margin: 0 !important;max-width: 100% !important;}
+
+/*About Page Sections
+----------------------------------------------------*/
+#about-services-section h5{font-size: .95em; margin: .8em 0 .5em;}
+#about-services-section .bullet{font-size: 1em;padding: 0 0.5em;}
+#about-services-section p{font-size: .9em;}
+
+
+/*Portfolio Pages
+----------------------------------------------------*/
+#solution-section, #results-section, #highlights-section {padding: 0em 0 1em;}
+
+/*Footer
+----------------------------------------------------*/
+footer .row{padding: 0 0.1em;}
+footer p {font-size: .95em;}
+footer .icon-right-chev{font-size: 1em !important;}
+footer ul.link-list {margin: 0 0 1.1em -.5em;font-size: .95em;}
+
+}
+
+.margin-10{
+    margin: 0 10px;
+}
+

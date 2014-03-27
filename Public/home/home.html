@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html style="" class="js no-flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><!--<![endif]--><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <!-- Title and Meta
+    ================================================== -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <block name="title"><title>标题</title></block>
+    <meta name="description" content="ElasticLINQ connects ElasticSearch to LINQ">
+    <meta name="keywords" content="elasticsearch, linq">
+
+
+    <!-- Facebook Open Graph Meta
+    ================================================== -->
+   <!-- <meta property="og:title" content="Blog | Attack Pattern">
+    <meta property="og:url" content="http://attackpattern.com/2014/03/elasticlinq-brings-linq-and-elasticsearch-together/">
+    <meta property="og:site_name" content="Attack Pattern">
+    <meta property="og:description" content="ElasticLINQ connects ElasticSearch to LINQ">
+    <meta property="og:image" content="http://attackpattern.com/images/attackpattern-screen.jpg">-->
+
+    <!-- Mobile
+    ================================================== -->
+
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Fav and icons
+    ================================================== -->
+    <link rel="shortcut icon" type="image/ico" href="http://attackpattern.com/images/favicon.ico">
+    <link rel="alternate" type="application/rss+xml" title="Attack Pattern Feed" href="http://attackpattern.com/feed/">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://attackpattern.com/images/apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://attackpattern.com/images/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://attackpattern.com/images/favicons/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://attackpattern.com/images/apple-touch-icon-precomposed.png">
+
+    <!-- CSS & Js
+    ================================================== -->
+    <link rel="stylesheet" type="text/css" href="/Public/home/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/Public/home/css/page.css">
+    <link rel="stylesheet" type="text/css" href="/Public/home/css/fonts.css">
+    <script gapi_processed="true" id="gplus1js" src="/Public/home/js/plusone.js"></script>
+    <script src="/Public/home/js/analytics.js" async=""></script>
+    <script type="text/javascript" src="/Public/home/js/jquery.js"></script>
+    <script type="text/javascript" src="/Public/home/js/modernizr.js"></script>
+    <script>
+
+        //Fade in page
+        $('html').addClass('fade-in');
+
+        //Dump the fade-in class - prevent weird webkit stuff
+        setTimeout(function(){ $("html").removeClass("fade-in"); },2100);
+
+        //Scroll to anchor on new page load (for Work) Link
+        $(document).ready(function() {
+            if (window.location.hash) {
+                setTimeout(function() {
+                    $('html, body').scrollTop(0).show();
+                    $('html, body').animate({
+                        scrollTop: $(window.location.hash).offset().top-350
+                    }, 500, 'easeInOutQuad')
+                }, 9);
+            }
+
+        });
+    </script>
+<script>
+    (function(d, s) {
+        var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.src = url; js.id = id;
+            fjs.parentNode.insertBefore(js, fjs);
+        };
+        load('https://apis.google.com/js/plusone.js', 'gplus1js');
+//        load('//platform.twitter.com/widgets.js', 'tweetjs');
+    }(document, 'script'));
+</script>
+   <!-- <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-26180353-2', 'attackpattern.com');
+        ga('send', 'pageview');
+    </script>-->
+</head>
+
+<body id="top" class="blog all">
+
+<!-- Mobile Nav Drawer
+================================================== -->
+
+<div class="mobilenav mobilenav-right">
+    <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="#">网站案例</a></li>
+        <li><a href="#">新闻动态</a></li>
+        <li class=""><a href="#">联系我们</a></li>
+        <li><a href="blog.html">博客</a></li>
+    </ul>
+</div>
+<!-- Site Overlay: Click anywhere to close-->
+<div class="site-overlay"></div>
+
+<!-- Slides entire page over for mobile nav drawer -->
+<div id="content-slide">
+
+    <div class="menu-btn">
+        <span aria-hidden="true" class="icon-menu"></span>
+    </div>
+
+    <header id="masthead">
+        <div class="" id="header-bar">
+            <div class="row">
+                <h1 id="logo" class="">
+                    <a href="#">
+                        <img src="images/logo-attackpattern.png" alt="">
+                    </a>
+                </h1>
+                <nav role="navigation">
+                    <ul class="link-list">
+                        <li class="transition current_page_item">
+                            <a href="index.html">首页</a>
+                        </li>
+                        <li class="transition">
+                            <a href="#">网站案例</a>
+                        </li>
+                        <li>
+                            <a href="#">新闻动态</a>
+                        </li>
+                        <li class="transition">
+                            <a href="#">联系我们</a>
+                        </li>
+                        <li class="transition">
+                            <a href="blog.html">博客</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- Banner Section - Blog Main
+        ================================================== -->
+        <section id="banner-section">
+            <div class="row">
+                <div class="twelve columns">
+                    <h2 class="white">
+    			<block name="title"></block>
+		    </h2>		
+                    <p class="blue biggest text-center"></p>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <div id="page-content">
+    <block name="content"></block>
+        <footer id="footer">
+            <div class="row">
+                <div class="seven columns">
+                    <h4>1.0.2.4工作室</h4>
+
+                    <div class="f-block">
+                        <p>
+                            <span aria-hidden="true" class="icon icon-mail-3"></span>
+                            <a href="#" target="_blank">
+                                guoxiaoting_8@sina.com
+                            </a>
+                            <br>
+                            <span aria-hidden="true" class="icon icon-phone"></span>
+                            13758141861
+                        </p>
+
+                        <br>
+                        <p><span aria-hidden="true" class="icon icon-right-chev"></span>
+                            <a class="" href="#">
+                                <span class="blue">联系我们</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="five columns">
+                    <h4>友情链接</h4>
+                    <!--<p>Connect via our social networks</p>-->
+                    <ul class="link-list social-list">
+                        <li><a href="#">Amy的博客</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Github</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="copyright">
+                <div class="row">
+                    <div class="twelve columns">
+                        <hr>
+                        <p class="text-center">Copyright2014 © 1024Studio<br>
+                        </p></div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scroll To Top -->
+        <a style="display: none;" class="scroll_to_top" href="#">
+            <span aria-hidden="true" class="icon-double-angle-up">
+                <br>
+            </span>
+        </a>
+
+
+        <!-- Le javascript
+        ================================================== -->
+        <script type="text/javascript" src="/Public/home/js/plugins.js"></script>
+        <script type="text/javascript" src="/Public/home/js/scripts.js"></script>
+
+    </div> <!-- /page-content-->
+</div> <!-- closes the page-slide div required for offcanvas menu-->
+
+
+
+
+
+</body></html>
+<!-- Dynamic page generated in 0.173 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2014-03-17 10:38:11 -->
+<!-- Compression = gzip -->
