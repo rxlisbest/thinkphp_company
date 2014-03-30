@@ -175,6 +175,8 @@ class CaseController extends \admin\Controller\AdminController {
 
 	public function case_save($page=1){
 		$post = $_POST;
+		$old_img = $post["cs_image_old"];
+		unset($post["cs_image_old"]);
 		if($post){
 			$cs_id = $post["cs_id"];
 			unset($post["submit"]);
@@ -183,6 +185,7 @@ class CaseController extends \admin\Controller\AdminController {
 			$case_model = D("Case");
 			if($cs_id){
 				if($id=$case_model->where("cs_id = ".$cs_id)->save($post)){
+					unlink(".".$old_img);
 					$type = "success";
 					$infomation = "修改成功!";
 				}
@@ -249,5 +252,28 @@ class CaseController extends \admin\Controller\AdminController {
 		$json["url"] = "/index.php/admin/Case/caselist/page/".$page;
 		$json["path"] = "101011";
 		echo json_encode($json);
+	}
+	
+	public function upload(){
+		$time = date("YmdHms");
+		$file = $_FILES["image"];
+		$path = "./Public/uploads/images/case/";
+		if(!file_exists($path)){
+			mkdir($path);
+			chmod($path,0777);
+		}
+		$types = array("image/gif","image/pjpeg","image/jpeg","image/png");
+		if(!in_array($file["type"],$types)){
+			$type = "error";
+			$infomation = "图片类型不正确!";
+			$json["info"] = $this->getInfomation($type, $infomation);
+			return json_encode($json);
+		} 
+		$types = array("image/gif"=>".gif","image/pjpeg"=>".pjpeg","image/jpeg"=>".jpeg","image/png"=>".png"); 
+		$image_type = $types[$file["type"]];
+		$image_name = $path.$time.$image_type;
+		move_uploaded_file($file["tmp_name"],$image_name);
+		$image_url = str_replace("./","/",$image_name);
+		echo '{error:"",msg:"'.$image_url.'"}';
 	}
 }

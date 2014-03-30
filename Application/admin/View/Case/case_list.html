@@ -1,3 +1,49 @@
+
+	<script type="text/javascript">
+	function ajaxFileUpload()
+	{
+		$.ajaxFileUpload
+		(
+			{
+				url:'/index.php/admin/Case/upload',
+				secureuri:false,
+				fileElementId:'image',
+				dataType: 'json',
+				data:{name:'logan', id:'id'},
+				success: function (data, status)
+				{
+					if(typeof(data.error) != 'undefined')
+					{
+						if(data.error != '')
+						{
+							alert(data.error);
+						}else
+						{
+							alert(data.msg);
+							$("#buttonUpload").hide();
+							$("#buttonSelect").hide();
+							$("#image_upload").hide();
+							$("#cs_image").attr("value",data.msg);
+						}
+					}
+				},
+				error: function (data, status, e)
+				{
+					alert(e);
+				}
+			}
+		)
+		
+		return false;
+
+	}
+	</script>	
+<script type="text/javascript">
+        $(document).ready(function() {
+            //建议在#imgDiv的父元素上加个overflow:hidden;的css样式
+            $("#image").uploadPreview({ width: 255, height: 165, imgDiv: "#imgDiv", imgType: ["bmp", "gif", "png", "jpg"] });
+        });
+    </script> 
 			<!-- Page Head -->
 			<h2>案例管理</h2>
 			<p id="page-intro">添加、删除和修改案例。</p>
@@ -108,7 +154,7 @@
 					
 					<div class="tab-content<?php if(isset($case)){echo ' default-tab';}?>" id="tab2">
 					
-						<form action="/index.php/admin/Case/case_save/page/<?php echo $page;?>" method="post" onsubmit="return form_post(this,'www.baidu.com')">
+						<form action="/index.php/admin/Case/case_save/page/<?php echo $page;?>" method="post" onsubmit="return form_post(this,'www.baidu.com')" enctype="multipart/form-data">
 							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								<input name="cs_id" style="display:none;" value="<?php echo $case["cs_id"];?>" />
 								<p>
@@ -128,8 +174,20 @@
 
 								<p>
 									<label>案例图片:</label>
-										<input class="text-input small-input" type="file" name="cs_image" value="<?php echo $case["cs_image"];?>"/> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
-										<br /><!--small></small-->
+								<?php if(isset($case)){ ?>
+									<img id="imgDiv" style="width:255px;height:165px;" src="<?php echo $case['cs_image'];?>" />
+								<?php }else{ ?>
+        								<div id="imgDiv">
+        								</div> <br />
+								<?php } ?>
+								</p>
+
+								<p id="image_upload">
+						<input type="text" name="cs_image" style="display:none;" id="cs_image" value="<?php echo $case["cs_image"];?>" /> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
+
+						<input type="text" name="cs_image_old" style="display:none;" id="cs_image" value="<?php echo $case["cs_image"];?>" />						
+						<a class="button" id="buttonSelect" onclick="image.click()">选择图片</a>
+						<a class="button" id="buttonUpload" onclick="return ajaxFileUpload();" style="display:none;">上传图片</a>						<br /><!--small></small-->
 								</p>
 
 								<p>
@@ -153,6 +211,7 @@
 							<div class="clear"></div><!-- End .clear -->
 							
 						</form>
+						<input type="file" name="image" style="display:none;" id="image" /> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
 						
 					</div> <!-- End #tab2 -->        
 					
