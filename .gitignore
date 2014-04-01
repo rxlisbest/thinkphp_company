@@ -1,3 +1,7 @@
 Application/Runtime/Cache/
 Application/Runtime/Logs/
+<<<<<<< HEAD
 ThinkPHP/Conf/convention.php
+=======
+Public/uploads/images/
+>>>>>>> upstream/master

@@ -1,0 +1,227 @@
+
+	<script type="text/javascript">
+	function ajaxFileUpload()
+	{
+		$.ajaxFileUpload
+		(
+			{
+				url:'/index.php/admin/Case/upload',
+				secureuri:false,
+				fileElementId:'image',
+				dataType: 'json',
+				data:{name:'logan', id:'id'},
+				success: function (data, status)
+				{
+					if(typeof(data.error) != 'undefined')
+					{
+						if(data.error != '')
+						{
+							alert(data.error);
+						}else
+						{
+							alert(data.msg);
+							$("#buttonUpload").hide();
+							$("#buttonSelect").hide();
+							$("#image_upload").hide();
+							$("#cs_image").attr("value",data.msg);
+						}
+					}
+				},
+				error: function (data, status, e)
+				{
+					alert(e);
+				}
+			}
+		)
+		
+		return false;
+
+	}
+	</script>	
+<script type="text/javascript">
+        $(document).ready(function() {
+            //建议在#imgDiv的父元素上加个overflow:hidden;的css样式
+            $("#image").uploadPreview({ width: 255, height: 165, imgDiv: "#imgDiv", imgType: ["bmp", "gif", "png", "jpg"] });
+        });
+    </script> 
+			<!-- Page Head -->
+			<h2>案例管理</h2>
+			<p id="page-intro">添加、删除和修改案例。</p>
+			
+			<div class="clear"></div> <!-- End .clear -->
+			
+			<div class="content-box"><!-- Start Content Box -->
+				
+				<div class="content-box-header">
+					
+					<h3>案例管理</h3>
+					
+					<ul class="content-box-tabs">
+						<li><a href="#tab1" class="<?php if(!isset($case)){echo 'current';}?>">列表</a></li> <!-- href must be unique and match the id of target div -->
+						<li><a href="#tab2" class="<?php if(isset($case)){echo 'current';}?>">添加/修改</a></li>
+					</ul>
+					
+					<div class="clear"></div>
+					
+				</div> <!-- End .content-box-header -->
+				
+				<div class="content-box-content" style="height:580px;">
+					
+					<div class="tab-content<?php if(!isset($case)){echo ' default-tab';}?>" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
+						
+						<!--div class="notification attention png_bg">
+							<a href="#" class="close"><img src="/Public/resources/images/icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
+							<div>
+								This is a Content Box. You can put whatever you want in it. By the way, you can close this notification with the top-right cross.
+							</div>
+						</div-->
+					<form method="post" action="/index.php/admin/Case/case_batch/page/<?php echo $page;?>" onsubmit="return form_post(this,'www.baidu.com')" >	
+						<table>
+							
+							<thead>
+								<tr>
+								   <th><input class="check-all" type="checkbox" /></th>
+								   <th>标题</th>
+								   <th>所属分类</th>
+								   <th>链接</th>
+								   <th>添加时间</th>
+								   <th>排序</th>
+								   <th>操作</th>
+								</tr>
+								
+							</thead>
+						 
+							<tfoot>
+								<tr>
+									<td colspan="6">
+										<div class="bulk-actions align-left">
+											<select name="choose">
+												<option value="select">选择...</option>
+												<option value="delete">删除</option>
+											</select>
+											<input type="submit" class="button" value="提交选择" />
+										</div>
+									<?php echo $pagination;?>	
+										<div class="clear"></div>
+									</td>
+								</tr>
+							</tfoot>
+						 
+							<tbody>
+								<?php 
+									$n = 12 - count($case_list );
+									foreach($case_list as $value){  
+								?>
+								<tr>
+									<td><input type="checkbox" name="<?php echo $value["cs_id"];?>" /></td>
+									<td><?php echo $value["cs_title"];?></td>
+									<td><?php echo $caseclass[$value["c_id"]];?></td>
+									<td><?php echo $value["cs_url"];?></td>
+									<td><?php echo $value["cs_time"];?></td>
+									<td><?php echo $value["cs_sort"];?></td>
+									<td>
+										<!-- Icons -->
+										 <a href="#" title="Edit" onclick="show_frame('/index.php/admin/Case/caselist/page/<?php echo $page;?>/cs_id/<?php echo $value["cs_id"];?>')"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
+										 <a href="#" title="Delete" onclick="url_post('/index.php/admin/Case/case_delete/page/<?php echo $page;?>/cs_id/<?php echo $value["cs_id"];?>')"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
+										 <!--a href="#" title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a-->
+									</td>
+								</tr>
+								<?php } ?>
+								<?php for($i=0;$i<$n;$i++){  ?>
+								<tr>
+									<td><!--input type="checkbox" /--></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td>
+										<!-- Icons -->
+										 <!--a title="Edit"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
+										 <a title="Delete"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
+										 <a title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a-->
+										<div style="height:20px;width:20px;"></div>
+									</td>
+								</tr>
+								<?php } ?>
+								
+							</tbody>
+							
+						</table>
+					</form>
+						
+					</div> <!-- End #tab1 -->
+					
+					<div class="tab-content<?php if(isset($case)){echo ' default-tab';}?>" id="tab2">
+					
+						<form action="/index.php/admin/Case/case_save/page/<?php echo $page;?>" method="post" onsubmit="return form_post(this,'www.baidu.com')" enctype="multipart/form-data">
+							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
+								<input name="cs_id" style="display:none;" value="<?php echo $case["cs_id"];?>" />
+								<p>
+									<label>案例名称:</label>
+										<input class="text-input small-input" type="text" name="cs_title" value="<?php echo $case["cs_title"];?>"/> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
+										<br /><!--small></small-->
+								</p>
+
+								<p>
+									<label>案例分类:</label>              
+									<select name="c_id" class="small-input">
+									<?php foreach($caseclass as $key=>$value){?>
+										<option value="<?php echo $key;?>" <?php if($key==$case["c_id"]){echo "selected";} ?> ><?php echo $value;?></option>
+									<?php } ?>
+									</select> 
+								</p>
+
+								<p>
+									<label>案例图片:</label>
+								<?php if(isset($case)){ ?>
+									<img id="imgDiv" style="width:255px;height:165px;" src="<?php echo $case['cs_image'];?>" />
+								<?php }else{ ?>
+        								<div id="imgDiv">
+        								</div> <br />
+								<?php } ?>
+								</p>
+
+								<p id="image_upload">
+						<input type="text" name="cs_image" style="display:none;" id="cs_image" value="<?php echo $case["cs_image"];?>" /> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
+
+						<input type="text" name="cs_image_old" style="display:none;" id="cs_image" value="<?php echo $case["cs_image"];?>" />						
+						<a class="button" id="buttonSelect" onclick="image.click()">选择图片</a>
+						<a class="button" id="buttonUpload" onclick="return ajaxFileUpload();" style="display:none;">上传图片</a>						<br /><!--small></small-->
+								</p>
+
+								<p>
+									<label>案例链接:</label>
+										<input class="text-input small-input" type="text" name="cs_url" value="<?php echo $case["cs_url"];?>"/> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
+										<br /><!--small></small-->
+								</p>
+
+								<p>
+									<label>案例排序:</label>
+										<input class="text-input small-input" type="text" name="cs_sort" value="<?php echo $case["cs_sort"];?>" /> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
+										<br /><!--small>右侧导航显示顺序</small-->
+								</p>
+								
+								<p>
+									<input class="button" type="submit" value="Submit" />
+								</p>
+								
+							</fieldset>
+							
+							<div class="clear"></div><!-- End .clear -->
+							
+						</form>
+						<input type="file" name="image" style="display:none;" id="image" /> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
+						
+					</div> <!-- End #tab2 -->        
+					
+				</div> <!-- End .content-box-content -->
+				
+			</div> <!-- End .content-box -->
+			
+			<div class="clear"></div>
+			<div id="footer">
+				<small> <!-- Remove this notice or replace it with whatever you want -->
+						&#169; Copyright 2014 1024Studio | Powered by <a href="http://www.baidu.com">1024Studio</a> | <a href="#">Top</a>
+				</small>
+			</div><!-- End #footer -->

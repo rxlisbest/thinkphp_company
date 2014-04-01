@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html style="" class="js no-flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!-- Title and Meta
+================================================== -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<title>网站案例 | 1.0.2.4</title>
+<meta name="description" content="ElasticLINQ connects ElasticSearch to LINQ">
+<meta name="keywords" content="elasticsearch, linq">
+
+
+<!-- Facebook Open Graph Meta
+================================================== -->
+<!--<meta property="og:title" content="ElasticLINQ brings LINQ and ElasticSearch together | Attack Pattern">
+<meta property="og:url" content="http://attackpattern.com/2014/03/elasticlinq-brings-linq-and-elasticsearch-together/">
+<meta property="og:site_name" content="Attack Pattern">
+<meta property="og:description" content="ElasticLINQ connects ElasticSearch to LINQ">
+<meta property="og:image" content="http://attackpattern.com/images/attackpattern-screen.jpg">-->
+
+<!-- Mobile
+================================================== -->
+
+<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- Fav and icons
+================================================== -->
+<!--<link rel="shortcut icon" type="image/ico" href="http://attackpattern.com/images/favicon.ico">
+<link rel="alternate" type="application/rss+xml" title="Attack Pattern Feed" href="http://attackpattern.com/feed/">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://attackpattern.com/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://attackpattern.com/images/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://attackpattern.com/images/favicons/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="http://attackpattern.com/images/apple-touch-icon-precomposed.png">-->
+
+<!-- CSS & Js
+================================================== -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/page.css">
+<link rel="stylesheet" href="css/fonts.css">
+<script src="detail_files/analytics.js" async=""></script>
+<script gapi_processed="true" id="gplus1js" src="js/plusone.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/modernizr.js"></script>
+
+<script>
+    (function(d, s) {
+        var js, fjs = d.getElementsByTagName(s)[0], load = function(url, id) {
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.src = url; js.id = id;
+            fjs.parentNode.insertBefore(js, fjs);
+        };
+        load('https://apis.google.com/js/plusone.js', 'gplus1js');
+//        load('//platform.twitter.com/widgets.js', 'tweetjs');
+    }(document, 'script'));
+</script>
+<script>
+
+    //Fade in page
+    $('html').addClass('fade-in');
+
+    //Dump the fade-in class - prevent weird webkit stuff
+    setTimeout(function(){ $("html").removeClass("fade-in"); },2100);
+
+    //Scroll to anchor on new page load (for Work) Link
+    $(document).ready(function() {
+        if (window.location.hash) {
+            setTimeout(function() {
+                $('html, body').scrollTop(0).show();
+                $('html, body').animate({
+                    scrollTop: $(window.location.hash).offset().top-350
+                }, 500, 'easeInOutQuad')
+            }, 9);
+        }
+
+    });
+</script>
+</head>
+
+<body id="top" class="single single-post postid-203 single-format-standard elasticlinq-brings-linq-and-elasticsearch-together all">
+
+<!-- Mobile Nav Drawer
+================================================== -->
+
+<div class="mobilenav mobilenav-right">
+    <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="#">网站案例</a></li>
+        <li><a href="#">新闻动态</a></li>
+        <li class=""><a href="#">联系我们</a></li>
+        <li><a href="blog.html">博客</a></li>
+    </ul>
+</div>
+<!-- Site Overlay: Click anywhere to close-->
+<div class="site-overlay"></div>
+
+<!-- Slides entire page over for mobile nav drawer -->
+<div id="content-slide">
+
+<div class="menu-btn"><span aria-hidden="true" class="icon-menu"></span></div>
+
+<header id="masthead">
+    <div class="sticky" id="header-bar">
+        <div class="row">
+            <h1 id="logo" class=""><a href="http://attackpattern.com/#top"><img src="detail_files/logo-attackpattern.png" alt=""></a></h1>
+            <nav role="navigation">
+                <ul class="link-list">
+                    <li class="transition current_page_item">
+                        <a href="index.html">首页</a>
+                    </li>
+                    <li class="transition">
+                        <a href="#">网站案例</a>
+                    </li>
+                    <li>
+                        <a href="#">新闻动态</a>
+                    </li>
+                    <li class="transition">
+                        <a href="#">联系我们</a>
+                    </li>
+                    <li class="transition">
+                        <a href="blog.html">博客</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- Banner Section - Blog Single Post
+    ================================================== -->
+    <section id="banner-section">
+        <div class="row">
+            <div class="twelve columns">
+                <h2 class="white">Example Detail</h2>
+            </div>
+        </div>
+    </section>
+</header>
+
+<!-- Page Content Offset
+================================================== -->
+<div id="page-content">
+
+<!-- Blog Article
+================================================== -->
+<section id="blog-article">
+
+    <!-- SubNav Bar
+    ================================================== -->
+    <div id="filter-bar" class="grey-blue-bg">
+        <div class="row">
+            <div class="twelve columns">
+<!--                <div class="right">
+                    <ul class="link-list">
+                        <li><a href="https://twitter.com/ttackPattern"><span aria-hidden="true" class="icon icon-twitter"></span></a></li>
+                        <li><a href="https://www.facebook.com/AttackPattern"><span aria-hidden="true" class="icon icon-facebook"></span></a></li>
+                    </ul>
+                </div>-->
+                <div class="left">
+                    <ul class="link-list">
+                        <li>
+                            <a href="#" rel="prev">
+                                <span aria-hidden="true" class="icon icon-angle-left"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a rel="next" href="#">
+                                 <span aria-hidden="true" class="icon icon-angle-right" ></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="blog.html">
+                                <span aria-hidden="true" class="icon icon-grid"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Post
+    ================================================== -->
+    <div class="row ">
+        <div class="eight columns centered">
+            <article class="post-203 post type-post status-publish format-standard hentry category-all tag-elasticsearch tag-linq" id="post-203">
+                <!--<div class="metas">
+                    <p class="text-center">
+                        <a href="#" rel="author" class="fn">1.0.2.4工作室</a>
+                        <span aria-hidden="true" class="icon icon-atom"></span>
+                        <time class="updated date blue">2014.3.20</time>
+                    </p>
+                </div>-->
+                <h1 class="entry-title text-center">企业开展搜索营销</h1>
+                <div class="metas">
+                    <p class="text-center">
+                        <a href="#" rel="author" class="fn">1.0.2.4工作室</a>
+                        <span aria-hidden="true" class="icon icon-atom"></span>
+                        <time class="updated date blue">上传于2014.3.20</time>
+                    </p>
+                </div>
+                <div class="single-content">
+                    <figure>
+                        <img class="alignnone size-medium wp-image-207" alt="ElasticLINQ" src="images/ElasticLINQ-850x550.png">
+                        <p style="text-indent: 18pt;">
+                            <span style="line-height: 1.5em;">
+                                ARIA 是 W3C Web 无障碍倡议 (WAI) 的一部分，它定义使 Web 内容和 Web 应用程序更易于访问的方式。
+                                ARIA 用于提高使用 HTML、CSS、JavaScript、AJAX 和相关技术开发的动态内容和高级 UI 控件的辅助功能。
+                                ARIA 现在正式成为 HTML5 规范的一部分，还可以嵌入在常用的 JavaScript 库（如 JQuery、Dojo 和 YUI）中。
+                            </span>
+                        </p>
+                    </figure>
+                    <p  style="text-indent: 18pt;">
+                        <span style="line-height: 1.5em;">
+                          ARIA 属性类似于 ARIA 状态，但是在页面上是相对静态的，它们作为 HTML 元素的其他属性。 小组件属性与小组件状态相似，但是该值在页面范围内保持不变。 有 11 个全局属性和 14 个小组件属性（请参阅图 3）。
+                        </span>
+                    </p>
+                    <p  style="text-indent: 18pt;">
+                        语义 HTML 表示页面中的 HTML 标记应以与其含义而非表示有关的方式描述内容。 有关内容修饰的所有信息应放入 CSS 文件，
+                        而应在加载页面和分析并应用样式表后通过外部链接的 JavaScript 添加网页的逻辑和客户端行为。 逐渐增强确保了
+                        JavaScript 文件出错时，仍可以正确样式加载页面。
+                        如果忽略 CSS 文件（例如，通过屏幕阅读器），HTML 页面仍包含所有内容。
+                    </p>
+                    <p>
+                        残障人士辅助功能旨在提供以下四个主要方面的解决方案：
+                    </p>
+                    <ul>
+                        <li>听力</li>
+                        <li>移动性</li>
+                        <li>认知能力</li>
+                        <li>视觉</li>
+                    </ul>
+                    <p  style="text-indent: 18pt;">
+                        听力问题是指用户可能无法听到网站上的任何声音。
+                        其解决方法是针对所有非文本内容（如字幕和隐藏字幕）使用替代文本来帮助用户感知内容。
+                        这包括改写成文字的言语和符号语言（如果可能）。
+                    </p>
+                    <br class="clear">
+                </div>
+                <!---->
+               </article>
+        </div>
+    </div>
+</section>
+
+<!-- Comments Section
+================================================== 
+<section id="comments-section">
+  <div class="row">	
+    <div class="eight columns centered">		
+      <a class="expand-comments">Show Comments <span class="icon icon-plus"></span></a>
+        <span class="open">			      
+		              </span>
+		</div>
+	</div>
+</section>
+-->
+
+<!-- More Posts Section
+================================================== -->
+
+<section id="more-posts-section" class="white-bg">
+    <div class="row">
+        <div class="twelve columns section-title">
+            <h3>更多案例</h3>
+        </div>
+    </div>
+    <div class="row">
+
+
+        <div class="four columns">
+            <a rel="" class="invert" href="#">
+                <img class="fadeimg" src="images/blogimg-fanfinity-850x550.jpg">
+                <br>
+                <p class="meta date">2014.3.20</p>
+                <h4>果中皇后你值得一尝</h4>
+            </a>
+        </div>
+
+
+        <div class="four columns">
+            <a rel="" class="invert" href="#">
+            <img class="fadeimg" src="images/blogimg-win8-850x550.jpg">
+                <br>
+                <p class="meta date">2014.4.30</p>
+                <h4>发现一个很红的搭配微博，推荐爱美的MM关注</h4>
+            </a>
+        </div>
+
+
+        <div class="four columns">
+            <a rel="" class="invert" href="#">
+                <img class="fadeimg" src="images/blogimg-csharp-850x550.jpg">
+                <br>
+                <p class="meta date">2014.4.30</p>
+                <h4>使用 HTML5 设计辅助功能</h4>
+            </a>
+        </div>
+
+
+    </div>
+</section>
+
+<!-- Tweet Section
+================================================== -->
+<!--<section id="tweet-section" class="blue-bg">
+    <div class="row">
+        <div class="twelve columns">
+            <div class="centering"><a href="http://twitter.com/@ttackpattern"><span aria-hidden="true" class="icon icon-twitter-2"></span></a></div>
+            <div id="tweets"> <ul class="tweetList"></ul></div>
+            <br>
+            <a class="centered tweethandle" href="http://twitter.com/@ttackpattern">@ttackPattern</a>
+        </div>
+    </div>
+</section>-->
+<!-- Footer
+================================================== -->
+<footer id="footer">
+    <div class="row">
+        <div class="seven columns">
+            <h4>1.0.2.4工作室</h4>
+
+            <div class="f-block">
+                <p>
+                    <span aria-hidden="true" class="icon icon-mail-3"></span>
+                    <a href="#" target="_blank">
+                        guoxiaoting_8@sina.com
+                    </a>
+                    <br>
+                    <span aria-hidden="true" class="icon icon-phone"></span>
+                    13758141861
+                </p>
+
+                <br>
+                <p><span aria-hidden="true" class="icon icon-right-chev"></span>
+                    <a class="" href="#">
+                        <span class="blue">联系我们</span>
+                    </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="five columns">
+            <h4>友情链接</h4>
+            <!--<p>Connect via our social networks</p>-->
+            <ul class="link-list social-list">
+                <li><a href="#">Amy的博客</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Github</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="copyright">
+        <div class="row">
+            <div class="twelve columns">
+                <hr>
+                <p class="text-center">Copyright © 1.0.2.4工作室 2014<br>
+                </p></div>
+        </div>
+    </div>
+</footer>
+
+<!-- Scroll To Top -->
+<a style="display: inline;" class="scroll_to_top" href="#">
+    <span aria-hidden="true" class="icon-double-angle-up">
+        <br>
+    </span>
+</a>
+
+
+<!-- Le javascript
+================================================== -->
+<script type="text/javascript" src="detail_files/plugins.js"></script>
+<script type="text/javascript" src="detail_files/scripts.js"></script>
+
+</div> <!-- /page-content-->
+</div> <!-- closes the page-slide div required for offcanvas menu-->
+
+
+</body>
+</html>
+<!-- Dynamic page generated in 0.167 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2014-03-17 10:32:15 -->
+<!-- Compression = gzip -->
