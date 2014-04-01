@@ -1,0 +1,39 @@
+<div class="content-box">
+    <!-- Start Content Box -->
+    <div class="content-box-header">
+        <h3 style="cursor: s-resize;">文章管理</h3>
+        <div class="clear">
+        </div>
+    </div>
+    <!-- End .content-box-header -->
+    <div class="content-box-content">
+        <div class="tab-content default-tab">
+            <form method="post" action="{$PageSaveUrl}" onsubmit="return form_post(this)" >	
+                <fieldset>
+                    <input type="hidden" name="p_id" value="{$PageInfo.p_id}" />
+                    <p>
+                        <label>标题</label>
+                        <input class="text-input small-input" type="text" name="p_title" value="{$PageInfo.p_title}">
+                    </p>
+                    <p>
+                        <label>添加时间</label>
+                        <input class="text-input small-input" type="text" name="p_date" value="<?=date('Y-m-d H:i:s',($PageInfo[p_date]?:time()))?>">
+                    </p>
+                    <p>
+                        <div id="editor">
+                          Go ahead&hellip;
+                        </div>
+                        <script type="text/javascript" charset="utf-8">
+                            $('#editor').wysiwyg();
+                        </script>
+                    </p>
+                    <p>
+                        <input class="button" type="submit" value="Submit">
+                    </p>
+                </fieldset>
+                <div class="clear">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
