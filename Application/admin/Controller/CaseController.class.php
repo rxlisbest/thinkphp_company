@@ -3,8 +3,8 @@
  *create by roy
  */
 namespace admin\Controller;
-use Think\Controller;
-class CaseController extends \admin\Controller\AdminController {
+use admin\Common\YuController;
+class CaseController extends YuController {
 	public function index(){
 		//echo 111;
 		//$nav_model = \admin\Model\NavModel();
@@ -33,6 +33,12 @@ class CaseController extends \admin\Controller\AdminController {
 		$this->assign('page',$page);
 		$this->assign('caseclass_list',$caseclass_list );
 		$this->assign('pagination',$pagination);
+
+		$this->assign('caseClassUrl',U('Case/caseClass',array('page'=>$page),''));
+		$this->assign('edit_caseclassUrl',U('Case/edit_caseclass',array('page'=>$page),''));
+		$this->assign('caseclass_saveUrl',U('Case/caseclass_save',array('page'=>$page),''));
+		$this->assign('deleteUrl',U('Case/delete',array('page'=>$page),''));
+		$this->assign('batchUrl',U('Case/batch',array('page'=>$page),''));
 		$content = $this->fetch("caseClass_list");
 		$this->show($content);
 		//$this->display("login");
@@ -40,7 +46,7 @@ class CaseController extends \admin\Controller\AdminController {
 
 	public function edit_caseclass($page=1, $c_id=0){
 		$caseclass_model = D("Caseclass");
-		$url = "/index.php/admin/Case/caseClass";
+		$url = U('Case/caseClass',array('page'=>$page),'');
 
 		$rowNum = $caseclass_model->count();
 		$pageSize = 12;
@@ -58,6 +64,12 @@ class CaseController extends \admin\Controller\AdminController {
 		$this->assign('caseclass_list',$caseclass_list);
 		$this->assign('caseclass',$caseclass);
 		$this->assign('pagination',$pagination);
+
+		$this->assign('caseClassUrl',U('Case/caseClass',array('page'=>$page),''));
+		$this->assign('edit_caseclassUrl',U('Case/edit_caseclass',array('page'=>$page),''));
+		$this->assign('caseclass_saveUrl',U('Case/caseclass_save',array('page'=>$page),''));
+		$this->assign('deleteUrl',U('Case/delete',array('page'=>$page),''));
+		$this->assign('batchUrl',U('Case/batch',array('page'=>$page),''));
 		$content = $this->fetch("caseClass_list");
 		$this->show($content);
 	}
@@ -92,7 +104,7 @@ class CaseController extends \admin\Controller\AdminController {
 			
 			$json["info"] = $this->getInfomation($type, $infomation);
 			$json["value"] = $post["n_path"] ;
-			$json["url"] = "/index.php/admin/Case/caseClass/page/".$page;
+			$json["url"] = U('Case/caseClass',array('page'=>$page),'');
 			$json["path"] = "101010";
 			echo json_encode($json);
 		}
@@ -111,7 +123,7 @@ class CaseController extends \admin\Controller\AdminController {
 			$infomation = "删除失败!";
 		}
 		$json["info"] = $this->getInfomation($type, $infomation);
-		$json["url"] = "/index.php/admin/Case/caseClass/page/".$page;
+		$json["url"] = U('Case/caseClass',array('page'=>$page),'');
 		$json["path"] = "101010";
 		echo json_encode($json);
 	}
@@ -135,7 +147,7 @@ class CaseController extends \admin\Controller\AdminController {
 			}
 		}
 		$json["info"] = $this->getInfomation($type, $infomation);
-		$json["url"] = "/index.php/admin/Case/caseClass/page/".$page;
+		$json["url"] = U('Case/caseClass',array('page'=>$page),'');
 		$json["path"] = "101010";
 		echo json_encode($json);
 	}
@@ -147,10 +159,10 @@ class CaseController extends \admin\Controller\AdminController {
 			$caseclass[$value["c_id"]] = $value["c_title"];
 		}
 		$case_model = D("Case");
-		$url = "/index.php/admin/Case/caselist";
+		$url = U('Case/caselist',array('page'=>$page),'');
 
 		$rowNum = $case_model->count();
-		$pageSize = 12;
+		$pageSize = 15;
 		$pages = ceil($rowNum/$pageSize);
 		if($page > $pages)
 			$page = $pages;
@@ -168,6 +180,11 @@ class CaseController extends \admin\Controller\AdminController {
 		}
 		$this->assign('case_list',$case_list);
 		$this->assign('pagination',$pagination);
+
+		$this->assign('caselistUrl',U('Case/caselist',array('page'=>$page),''));
+		$this->assign('case_saveUrl',U('Case/case_save',array('page'=>$page),''));
+		$this->assign('case_deleteUrl',U('Case/case_delete',array('page'=>$page),''));
+		$this->assign('case_batchUrl',U('Case/case_batch',array('page'=>$page),''));
 		$content = $this->fetch("case_list");
 		$this->show($content);
 		//$this->display("login");
@@ -177,6 +194,13 @@ class CaseController extends \admin\Controller\AdminController {
 		$post = $_POST;
 		$old_img = $post["cs_image_old"];
 		unset($post["cs_image_old"]);
+		if($post["cs_image"]==""){
+			$type = "error";
+			$infomation = "图片没上传，添加失败!";
+			$json["info"] = $this->getInfomation($type, $infomation);
+			echo json_encode($json);
+			return ;
+		} 
 		if($post){
 			$cs_id = $post["cs_id"];
 			unset($post["submit"]);
@@ -206,7 +230,7 @@ class CaseController extends \admin\Controller\AdminController {
 			}
 			
 			$json["info"] = $this->getInfomation($type, $infomation);
-			$json["url"] = "/index.php/admin/Case/caselist/page/".$page;
+			$json["url"] = U('Case/caselist',array('page'=>$page),'');
 			$json["path"] = "101011";
 			echo json_encode($json);
 		}
@@ -225,7 +249,7 @@ class CaseController extends \admin\Controller\AdminController {
 			$infomation = "删除失败!";
 		}
 		$json["info"] = $this->getInfomation($type, $infomation);
-		$json["url"] = "/index.php/admin/Case/caselist/page/".$page;
+		$json["url"] = U('Case/caselist',array('page'=>$page),'');
 		$json["path"] = "101011";
 		echo json_encode($json);
 	}
@@ -249,7 +273,7 @@ class CaseController extends \admin\Controller\AdminController {
 			}
 		}
 		$json["info"] = $this->getInfomation($type, $infomation);
-		$json["url"] = "/index.php/admin/Case/caselist/page/".$page;
+		$json["url"] = U('Case/caselist',array('page'=>$page),'');
 		$json["path"] = "101011";
 		echo json_encode($json);
 	}
@@ -268,7 +292,7 @@ class CaseController extends \admin\Controller\AdminController {
 			$infomation = "图片类型不正确!";
 			$json["info"] = $this->getInfomation($type, $infomation);
 			return json_encode($json);
-		} 
+		}
 		$types = array("image/gif"=>".gif","image/pjpeg"=>".pjpeg","image/jpeg"=>".jpeg","image/png"=>".png"); 
 		$image_type = $types[$file["type"]];
 		$image_name = $path.$time.$image_type;

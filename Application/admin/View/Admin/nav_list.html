@@ -29,7 +29,7 @@
 								This is a Content Box. You can put whatever you want in it. By the way, you can close this notification with the top-right cross.
 							</div>
 						</div-->
-					<form method="post" action="/index.php/admin/Admin/batch/page/<?php echo $page;?>" onsubmit="return form_post(this,'www.baidu.com')" >	
+					<form method="post" action="<?php echo $batchUrl;?>/page/<?php echo $page;?>" onsubmit="return form_post(this,'www.baidu.com')" >	
 						<table>
 							
 							<thead>
@@ -73,8 +73,8 @@
 									<td><?php echo $value["n_sort"];?></td>
 									<td>
 										<!-- Icons -->
-										 <a href="#" title="Edit" onclick="show_frame('/index.php/admin/Admin/edit_nav/page/<?php echo $page;?>/n_id/<?php echo $value["n_id"];?>')"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete" onclick="url_post('/index.php/admin/Admin/delete/page/<?php echo $page;?>/n_id/<?php echo $value["n_id"];?>')"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
+										 <a href="#" title="Edit" onclick="show_frame('<?php echo $edit_navUrl;?>/n_id/<?php echo $value["n_id"];?>')"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
+										 <a href="#" title="Delete" onclick="url_post('<?php echo $deleteUrl;?>/n_id/<?php echo $value["n_id"];?>')"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
 										 <a href="#" title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
 									</td>
 								</tr>
@@ -105,7 +105,7 @@
 					
 					<div class="tab-content<?php if(isset($nav)){echo ' default-tab';}?>" id="tab2">
 					
-						<form action="/index.php/admin/Admin/nav_save/page/<?php echo $page;?>" method="post" onsubmit="return form_post(this,'www.baidu.com')">
+						<form action="<?php echo $nav_saveUrl;?>" method="post" onsubmit="return form_post(this,'www.baidu.com')">
 							
 							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								<input name="n_id" style="display:none;" value="<?php echo $nav["n_id"];?>" />

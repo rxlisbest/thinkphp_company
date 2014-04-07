@@ -32,7 +32,8 @@ class PageController extends YuController {
     {
         $this->assign('PageSaveUrl',U('PageSave'));
         $this->assign('PageInfo',$this->Page->find($id));
-        $this->display('PageAdd');
+	$content = $this->fetch("PageAdd");
+        $this->show($content);
     }
 
     public function PageDel($id)

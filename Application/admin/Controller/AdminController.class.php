@@ -13,6 +13,13 @@ class AdminController extends YuController {
 		$nav = $nav_model->order("n_sort")->select();
 		//var_dump($nav);
 		$this->assign('nav',$nav);
+
+		$this->assign('add_navUrl',U('Admin/add_nav',array('page'=>$page),''));
+		$this->assign('edit_navUrl',U('Admin/edit_nav',array('page'=>$page),''));
+		$this->assign('nav_saveUrl',U('Admin/nav_save',array('page'=>$page),''));
+		$this->assign('deleteUrl',U('Admin/delete',array('page'=>$page),''));
+		$this->assign('batchUrl',U('Admin/batch',array('page'=>$page),''));
+		
 		$view = $this->display("index");
 	}
 
@@ -23,7 +30,7 @@ class AdminController extends YuController {
 
 	public function add_nav($page=1){
 		$nav_model = D("Nav");
-		$url = "/index.php/admin/Admin/add_nav";
+		$url = U('Admin/add_nav',array('page'=>$page),'');
 
 		$rowNum = $nav_model->count();
 		$pageSize = 12;
@@ -41,13 +48,20 @@ class AdminController extends YuController {
 		$this->assign('nav_class',$nav_class);
 		$this->assign('nav_list',$nav_list);
 		$this->assign('pagination',$pagination);
+
+		$this->assign('add_navUrl',U('Admin/add_nav',array('page'=>$page),''));
+		$this->assign('edit_navUrl',U('Admin/edit_nav',array('page'=>$page),''));
+		$this->assign('nav_saveUrl',U('Admin/nav_save',array('page'=>$page),''));
+		$this->assign('deleteUrl',U('Admin/delete',array('page'=>$page),''));
+		$this->assign('batchUrl',U('Admin/batch',array('page'=>$page),''));
 		$content = $this->fetch("nav_list");
+
 		$this->show($content);
 	}
 
 	public function edit_nav($page=1, $n_id=0){
 		$nav_model = D("Nav");
-		$url = "/index.php/admin/Admin/add_nav";
+		$url = U('Admin/add_nav',array('page'=>$page),'');
 
 		$rowNum = $nav_model->count();
 		$pageSize = 12;
@@ -69,6 +83,12 @@ class AdminController extends YuController {
 		$this->assign('nav',$nav);
 		$this->assign('nav_list',$nav_list);
 		$this->assign('pagination',$pagination);
+
+		$this->assign('add_navUrl',U('Admin/add_nav',array('page'=>$page),''));
+		$this->assign('edit_navUrl',U('Admin/edit_nav',array('page'=>$page),''));
+		$this->assign('nav_saveUrl',U('Admin/nav_save',array('page'=>$page),''));
+		$this->assign('deleteUrl',U('Admin/delete',array('page'=>$page),''));
+		$this->assign('batchUrl',U('Admin/batch',array('page'=>$page),''));
 		$content = $this->fetch("nav_list");
 		$this->show($content);
 	}
@@ -115,7 +135,7 @@ class AdminController extends YuController {
 
 			$json["info"] = $this->getInfomation($type, $infomation);
 			$json["value"] = $post["n_path"] ;
-			$json["url"] = "/index.php/admin/Admin/add_nav/page/".$page;
+			$json["url"] = U('Admin/add_nav',array('page'=>$page),'');
 			$json["path"] = "last_1";
 			$json["nav"] = $this->getNavHtml();
 			echo json_encode($json);
@@ -135,7 +155,7 @@ class AdminController extends YuController {
 			$infomation = "删除失败!";
 		}
 		$json["info"] = $this->getInfomation($type, $infomation);
-		$json["url"] = "/index.php/admin/Admin/add_nav/page/".$page;
+		$json["url"] = U('Admin/add_nav',array('page'=>$page),'');
 		$json["path"] = "last_1";
 		$json["nav"] = $this->getNavHtml();
 		echo json_encode($json);
@@ -160,7 +180,7 @@ class AdminController extends YuController {
 			}
 		}
 		$json["info"] = $this->getInfomation($type, $infomation);
-		$json["url"] = "/index.php/admin/Admin/add_nav/page/".$page;
+		$json["url"] = U('Admin/add_nav',array('page'=>$page),'');
 		$json["path"] = "last_1";
 		$json["nav"] = $this->getNavHtml();
 		echo json_encode($json);

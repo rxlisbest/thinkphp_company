@@ -65,7 +65,7 @@
 					
 				</div> <!-- End .content-box-header -->
 				
-				<div class="content-box-content" style="height:580px;">
+				<div class="content-box-content" style="height:690px;">
 					
 					<div class="tab-content<?php if(!isset($case)){echo ' default-tab';}?>" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
 						
@@ -75,7 +75,7 @@
 								This is a Content Box. You can put whatever you want in it. By the way, you can close this notification with the top-right cross.
 							</div>
 						</div-->
-					<form method="post" action="/index.php/admin/Case/case_batch/page/<?php echo $page;?>" onsubmit="return form_post(this,'www.baidu.com')" >	
+					<form method="post" action="<?php echo $case_batchUrl;?>" onsubmit="return form_post(this,'www.baidu.com')" >	
 						<table>
 							
 							<thead>
@@ -109,7 +109,7 @@
 						 
 							<tbody>
 								<?php 
-									$n = 12 - count($case_list );
+									$n = 15 - count($case_list );
 									foreach($case_list as $value){  
 								?>
 								<tr>
@@ -121,8 +121,8 @@
 									<td><?php echo $value["cs_sort"];?></td>
 									<td>
 										<!-- Icons -->
-										 <a href="#" title="Edit" onclick="show_frame('/index.php/admin/Case/caselist/page/<?php echo $page;?>/cs_id/<?php echo $value["cs_id"];?>')"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete" onclick="url_post('/index.php/admin/Case/case_delete/page/<?php echo $page;?>/cs_id/<?php echo $value["cs_id"];?>')"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
+										 <a href="#" title="Edit" onclick="show_frame('<?php echo $caselistUrl;?>/cs_id/<?php echo $value["cs_id"];?>')"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
+										 <a href="#" title="Delete" onclick="url_post('<?php echo $case_deleteUrl;?>/cs_id/<?php echo $value["cs_id"];?>')"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
 										 <!--a href="#" title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a-->
 									</td>
 								</tr>
@@ -154,7 +154,7 @@
 					
 					<div class="tab-content<?php if(isset($case)){echo ' default-tab';}?>" id="tab2">
 					
-						<form action="/index.php/admin/Case/case_save/page/<?php echo $page;?>" method="post" onsubmit="return form_post(this,'www.baidu.com')" enctype="multipart/form-data">
+						<form action="<?php echo $case_saveUrl;?>" method="post" onsubmit="return form_post(this,'www.baidu.com')" enctype="multipart/form-data">
 							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								<input name="cs_id" style="display:none;" value="<?php echo $case["cs_id"];?>" />
 								<p>
@@ -203,7 +203,7 @@
 								</p>
 								
 								<p>
-									<input class="button" type="submit" value="Submit" />
+									<button class="button" type="submit" value="Submit" >提交</button>
 								</p>
 								
 							</fieldset>

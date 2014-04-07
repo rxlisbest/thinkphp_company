@@ -126,5 +126,7 @@ function form_bridge(json){
 		$("[id^='p_nav_']").click(function(){$("[id^='p_nav_']").removeClass("current"),$(this).addClass("current");});
 		$("[id^='s_nav_']").click(function(){$("[id^='s_nav_']").removeClass("current"),$(this).addClass("current");});
 	}
-	show_frame(obj["url"], obj["path"]);
+	if(obj["url"]){
+		show_frame(obj["url"]);
+	}
 }

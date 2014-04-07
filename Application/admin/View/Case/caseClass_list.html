@@ -29,7 +29,7 @@
 								This is a Content Box. You can put whatever you want in it. By the way, you can close this notification with the top-right cross.
 							</div>
 						</div-->
-					<form method="post" action="/index.php/admin/Case/batch/page/<?php echo $page;?>" onsubmit="return form_post(this,'www.baidu.com')" >	
+					<form method="post" action="<?php echo $batchUrl;?>" onsubmit="return form_post(this,'www.baidu.com')" >	
 						<table>
 							
 							<thead>
@@ -69,8 +69,8 @@
 									<td><?php echo $value["c_sort"];?></td>
 									<td>
 										<!-- Icons -->
-										 <a href="#" title="Edit" onclick="show_frame('/index.php/admin/Case/edit_caseclass/page/<?php echo $page;?>/c_id/<?php echo $value["c_id"];?>')"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
-										 <a href="#" title="Delete" onclick="url_post('/index.php/admin/Case/delete/page/<?php echo $page;?>/c_id/<?php echo $value["c_id"];?>')"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
+										 <a href="#" title="Edit" onclick="show_frame('<?php echo $edit_caseclassUrl;?>/c_id/<?php echo $value["c_id"];?>')"><img src="/Public/resources/images/icons/pencil.png" alt="Edit" /></a>
+										 <a href="#" title="Delete" onclick="url_post('<?php echo $deleteUrl;?>/c_id/<?php echo $value["c_id"];?>')"><img src="/Public/resources/images/icons/cross.png" alt="Delete" /></a> 
 										 <a href="#" title="Edit Meta"><img src="/Public/resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
 									</td>
 								</tr>
@@ -99,7 +99,7 @@
 					
 					<div class="tab-content<?php if(isset($caseclass)){echo ' default-tab';}?>" id="tab2">
 					
-						<form action="/index.php/admin/Case/caseclass_save/page/<?php echo $page;?>" method="post" onsubmit="return form_post(this,'www.baidu.com')">
+						<form action="<?php echo $caseclass_saveUrl;?>" method="post" onsubmit="return form_post(this,'www.baidu.com')">
 							
 							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								<input name="c_id" style="display:none;" value="<?php echo $caseclass["c_id"];?>" />
