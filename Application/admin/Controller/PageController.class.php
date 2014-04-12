@@ -2,6 +2,7 @@
 namespace admin\Controller;
 
 use admin\Model\PageModel;
+use admin\Model\PageclassModel;
 use admin\Common\YuController;
 
 class PageController extends YuController {
@@ -9,6 +10,44 @@ class PageController extends YuController {
     public function _initialize()
     {
         $this->Page = new PageModel();
+        $this->PageClass = new PageclassModel();
+    }
+
+    public function PageClassList()
+    {
+        $this->assign('PageClassAddUrl',U('PageClassAdd'));
+        $this->assign('PageClassEditUrl',U('PageClassEdit','',''));
+        $this->assign('PageClassDelUrl',U('PageClassDel','',''));
+
+        $this->assign('PageClassLists',$this->PageClass->select());
+        $this->display();
+    }
+
+    public function PageClassAdd()
+    {
+        $this->assign('PageClassSaveUrl',U('PageClassSave'));
+        $this->assign('PageClassLists',$this->PageClass->select());
+        $this->display();
+    }
+
+    public function PageClassSave()
+    {
+        if ($_POST) {
+            $data['pc_sort']      = I('post.pc_sort');
+            $data['pc_title']   = I('post.pc_title');
+
+            if ($this->PageClass->add($data,'',TRUE)){
+                $type = "success";
+                $infomation = "操作成功";
+            }else{
+                $type = "error";
+                $infomation = "操作失败!";
+            }
+
+            $json["info"] = $this->getInfomation($type,$infomation);
+            $json["url"]  = U('PageClassList');
+            echo $this->ajaxReturn($json);
+        }
     }
 
     public function PageList()
