@@ -5,6 +5,22 @@ use Think\Controller;
 
 class YuController extends Controller
 {
+	function _initialize(){
+		if(!isset($_SESSION["user"])){
+			$this->login();
+		}
+	}
+
+	public function login(){
+		$this->display(T("Admin/login"));
+		exit;		
+	} 
+
+	public function login(){
+		$this->display(T("Admin/login"));
+		exit;		
+	} 
+		
     public function getNavHtml(){
         $nav_model = D("Nav");
         $nav_list = $nav_model->select();

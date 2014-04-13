@@ -1,6 +1,8 @@
 <script type="text/javascript">
 $(function() {
-	var editor = KindEditor.create('textarea[name="content"]');
+	var editor = KindEditor.create('textarea[name="p_content"]',{
+		afterBlur: function () { this.sync(); }
+	});
 });
 KindEditor.ready(function(K){
 	window.editor = K.create('#editor_id');
@@ -22,14 +24,18 @@ KindEditor.ready(function(K){
                     <input type="hidden" name="p_id" value="{$PageInfo.p_id}" />
                     <p>
                         <label>标题</label>
-                        <input class="text-input small-input" type="text" name="p_title" value="{$PageInfo.p_title}">
+                        <input class="text-input small-input" value="{$PageInfo.p_title}" type="text" name="p_title" >
                     </p>
                     <p>
-                        <label>添加时间</label>
-                        <input class="text-input small-input" type="text" name="p_date" value="<?=date('Y-m-d H:i:s',($PageInfo[p_date]?:time()))?>">
+                        <label>所属分类</label>
+			<select name="pc_id" class="small-input" value="{$PageInfo.pc_id}" >
+                    	<foreach name="PageClassLists" item="PageClassList">
+				<option value="{$PageClassList.pc_id}"  <?php if($PageInfo.pc_id==$PageClassList.pc_id){echo "selected";}?>>{$PageClassList.pc_title}</option>
+                    	</foreach>
+			</select>
                     </p>
                     <p>
-			<textarea id="editor_id" name="content" style="width:700px;height:300px;"></textarea>
+			<textarea id="editor_id" name="p_content" style="width:700px;height:300px;">{$PageInfo.p_content}</textarea>
                     </p>
                     <p>
                         <input class="button" type="submit" value="Submit">
