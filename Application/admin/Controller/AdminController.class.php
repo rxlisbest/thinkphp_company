@@ -3,9 +3,12 @@
  *create by roy
  */
 namespace admin\Controller;
+use admin\Model\UserModel;
 use admin\Common\YuController;
+use admin\Controller\LoginController;
 
 class AdminController extends YuController {
+
 	public function index(){
 		//echo 111;
 		//$nav_model = \admin\Model\NavModel();
@@ -19,6 +22,8 @@ class AdminController extends YuController {
 		$this->assign('nav_saveUrl',U('Admin/nav_save',array('page'=>$page),''));
 		$this->assign('deleteUrl',U('Admin/delete',array('page'=>$page),''));
 		$this->assign('batchUrl',U('Admin/batch',array('page'=>$page),''));
+
+		$this->assign('LogoutUrl',U('Login/Logout','',''));
 		
 		$view = $this->display("index");
 	}

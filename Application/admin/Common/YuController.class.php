@@ -2,24 +2,20 @@
 namespace admin\Common;
 
 use Think\Controller;
+use admin\Controller\AdminController;
+use admin\Controller\LoginController;
 
 class YuController extends Controller
 {
 	function _initialize(){
-		if(!isset($_SESSION["user"])){
-			$this->login();
+		$Login = new LoginController();
+		if($Login->islogin()){
+		}
+		else{
+			$this->redirect('Login/index');
 		}
 	}
-
-	public function login(){
-		$this->display(T("Admin/login"));
-		exit;		
-	} 
-
-	public function login(){
-		$this->display(T("Admin/login"));
-		exit;		
-	} 
+ 
 		
     public function getNavHtml(){
         $nav_model = D("Nav");

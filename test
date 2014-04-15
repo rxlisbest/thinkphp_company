@@ -1,0 +1,14 @@
+
+		if(isset($_SESSION["user"]) AND isset($_SESSION["password"])){
+			$UM = new UserModel();
+			$user = $UM->where("u_name=".$_SESSION["user"])->find();
+			if($user AND $_SESSION["password"]==$user["u_password"]){
+				$this->redirect("");
+			}
+			else{
+				$this->Login();
+			}
+		}
+		else{
+			$this->Login();
+		}

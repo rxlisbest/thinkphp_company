@@ -11,6 +11,28 @@
 <script type="text/javascript" src="/Public/resources/scripts/simpla.jquery.configuration.js"></script>
 <script type="text/javascript" src="/Public/resources/scripts/facebox.js"></script>
 <script type="text/javascript" src="/Public/resources/scripts/jquery.wysiwyg.js"></script>
+<script type="text/javascript">
+function form_post(form, url){
+	var $form = $(form);
+	var _submit = function(){$.ajax({
+		type: 'POST',
+		url: $form.attr("action"),
+		data:$form.serialize(),
+		success: Message,
+		dataType:"json",
+		cache:false, 
+	})};
+	_submit();
+	return false;
+}
+function Message(json){
+	var url = "{$AdminUrl}";
+	$("#message").html(json["message"]);	
+	if(json["login"]){
+		location = url;
+	}
+}
+</script>
 </head>
   
 	<body id="login">
@@ -25,26 +47,26 @@
 			
 			<div id="login-content">
 				
-				<form action="index.html">
+				<form action="{$LoginCheck}" method="post" onsubmit="return form_post(this)">
 				
 					<div class="notification information png_bg">
-						<div>
-							Just click "Sign In". No password needed.
+						<div id="message">
+							{$Message}	
 						</div>
 					</div>
 					
 					<p>
 						<label>Username</label>
-						<input class="text-input" type="text" />
+						<input class="text-input" type="text" name="u_name" />
 					</p>
 					<div class="clear"></div>
 					<p>
 						<label>Password</label>
-						<input class="text-input" type="password" />
+						<input class="text-input" type="password" name="u_password"/>
 					</p>
 					<div class="clear"></div>
 					<p id="remember-password">
-						<input type="checkbox" />Remember me
+						<input type="checkbox" name="remember" value="1"/>Remember me
 					</p>
 					<div class="clear"></div>
 					<p>
