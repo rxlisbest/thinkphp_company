@@ -17,6 +17,8 @@ class AdminController extends YuController {
 		//var_dump($nav);
 		$this->assign('nav',$nav);
 
+		$this->assign('User',$_SESSION["user"]);
+
 		$this->assign('add_navUrl',U('Admin/add_nav',array('page'=>$page),''));
 		$this->assign('edit_navUrl',U('Admin/edit_nav',array('page'=>$page),''));
 		$this->assign('nav_saveUrl',U('Admin/nav_save',array('page'=>$page),''));
