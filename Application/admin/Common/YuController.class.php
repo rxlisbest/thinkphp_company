@@ -12,7 +12,8 @@ class YuController extends Controller
 		if($Login->islogin()){
 		}
 		else{
-			$this->redirect('Login/index');
+			$Url = new \Org\Url\Url;
+			redirect($Url->LOGIN_URL());
 		}
 	}
  

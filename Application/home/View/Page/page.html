@@ -37,13 +37,12 @@
 		<?php foreach($page as $value){ ?>
                     <li class="mix all <?php echo $value["p_id"];?> mix_all">
                         <article id="post-203" class="box" style="min-height:22em">
-                            <!--a href="#" class="divlink invert">
-                                <img src="images/ElasticLINQ-850x550.png">
-                            </a-->
-                            <div style="height:10px">
-                            </div>
+                            <a href="<?php echo $detailUrl.'/id/'.$value["p_id"];?>" class="divlink invert">
+                            	<div style="height:10px">
+                            	</div>
+                            </a>
                             <div class="box-inner invert">
-                                <h4><a href="<?php echo $detailUrl.'/'.$value["p_id"];?>"><?php echo $value["p_title"];?></a></h4>
+                                <h4><?php echo $value["p_title"];?></h4>
                                 <p class="meta date"><?php echo date("Y-m-d",strtotime($value["p_date"]));?></p>
                                 <p><?php echo mb_substr(strip_tags($value["p_content"]), 0 , 500); ?></p>
                             </div>

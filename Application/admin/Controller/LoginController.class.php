@@ -9,9 +9,14 @@ use admin\Model\UserModel;
 class LoginController extends Controller {
 
 	public function index($message="欢迎登陆后台系统!"){
-		$this->assign('LoginCheck',U("LoginCheck",'',''));
+		$Url = new \Org\Url\Url;
+		//var_dump($Url->LOGIN_URL());
+		if($this->islogin()){
+			redirect($Url->ADMIN_URL());
+		}
+		$this->assign('LoginCheck', $Url->LOGIN_URL('LoginCheck'));
 		$this->assign('Message', $message);
-		$this->assign('AdminUrl', U('Admin/index', '', ''));
+		$this->assign('AdminUrl', $Url->ADMIN_URL());
 		$this->display();
 	} 
 
@@ -76,6 +81,8 @@ class LoginController extends Controller {
 		unset($_SESSION["user"]);
 		unset($_SESSION["password"]);
 		cookie(session_name(), null);
-		$this->redirect('Login/index');
+		$Url = new \Org\Url\Url;
+		//var_dump($Url->LOGIN_URL());
+		redirect($Url->LOGIN_URL());
 	}
 }

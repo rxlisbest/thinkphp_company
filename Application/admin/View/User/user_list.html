@@ -36,6 +36,8 @@
 								<tr>
 								   <th><input class="check-all" type="checkbox" /></th>
 								   <th>用户名</th>
+								   <th>电话</th>
+								   <th>邮箱</th>
 								   <th>添加时间</th>
 								   <th>操作</th>
 								</tr>
@@ -66,6 +68,8 @@
 								<tr>
 									<td><input type="checkbox" name="<?php echo $value["u_id"];?>" /></td>
 									<td><?php echo $value["u_name"];?></td>
+									<td><?php echo $value["u_phone"];?></td>
+									<td><?php echo $value["u_email"];?></td>
 									<td><?php echo $value["u_time"];?></td>
 									<td>
 										<!-- Icons -->
@@ -78,6 +82,8 @@
 								<?php for($i=0;$i<$n;$i++){  ?>
 								<tr>
 									<td><!--input type="checkbox" /--></td>
+									<td></td>
+									<td></td>
 									<td></td>
 									<td></td>
 									<td>
@@ -105,6 +111,18 @@
 								<p>
 									<label>用户名:</label>
 										<input class="text-input small-input" type="text" name="u_name" value="<?php echo $User["u_name"];?>"/> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
+										<br /><!--small></small-->
+								</p>
+
+								<p>
+									<label>电话:</label>
+										<input class="text-input small-input" type="text" name="u_phone" value="<?php echo $User["u_phone"];?>"/> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
+										<br /><!--small></small-->
+								</p>
+
+								<p>
+									<label>邮箱:</label>
+										<input class="text-input small-input" type="text" name="u_email" value="<?php echo $User["u_email"];?>"/> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
 										<br /><!--small></small-->
 								</p>
 

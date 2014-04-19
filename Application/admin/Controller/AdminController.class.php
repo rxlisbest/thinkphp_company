@@ -24,8 +24,9 @@ class AdminController extends YuController {
 		$this->assign('nav_saveUrl',U('Admin/nav_save',array('page'=>$page),''));
 		$this->assign('deleteUrl',U('Admin/delete',array('page'=>$page),''));
 		$this->assign('batchUrl',U('Admin/batch',array('page'=>$page),''));
-
-		$this->assign('LogoutUrl',U('Login/Logout','',''));
+		
+		$Url = new \Org\Url\Url;
+		$this->assign('LogoutUrl',$Url->LOGIN_URL('Logout'));
 		
 		$view = $this->display("index");
 	}
