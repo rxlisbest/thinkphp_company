@@ -1,0 +1,134 @@
+        <extend name="./Public/home/home.html" />
+	<block name="title"><title><?php echo $title;?></title></block>
+<block name="banner">
+    <section id="hero-section">
+        <div class="row">
+            <div class="twelve columns">
+                <div id="intro">
+                    <h3 class="blue">我们是1.0.2.4</h3>
+                    <h2 class="">世界是我想象，一切从改变开始...</h2>
+                    <div class="fademe fade-up">
+                        <a class="btn btn-large btn-outline has-icon" href="#services-section">了解更多
+                            <span aria-hidden="true" class="btn-icon icon-eye "></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</block>
+<block name="content">
+<section id="services-section" class="centering js-sect2 fade-up">
+    <div class="row">
+        <div class="four columns">
+            <img class="img-1" src="/Public/home/images/icon-big-appdesign-2.png" alt="">
+            <h3>网站解决方案</h3>
+            <p>用案例见证实力，采用最新技术和最前沿的设计理念</p>
+        </div>
+
+        <div class="four columns">
+            <img class="img-2" src="/Public/home/images/icon-big-softwaredev-2.png" alt="">
+            <h3>案例分析</h3>
+            <p>多选功能模块，量身定做，采用最新技术和最前沿的设计理念</p>
+        </div>
+
+        <div class="four columns">
+            <img class="img-3" src="/Public/home/images/icon-big-consult-2.png" alt="">
+            <h3>设计理念</h3>
+            <p>个性网站四部曲，满足您不同需求，采用最前沿的设计理念</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <a class="btn btn-large btn-blue has-icon" href="#">
+                查看详情
+                <span aria-hidden="true" class="btn-icon icon-rocket "></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Folio Section
+================================================== -->
+<section id="folio-section-title" class="white-bg js-sect3 fade-up">
+    <div class="row">
+        <div class="twelve columns section-title">
+            <h3>案例
+                <span aria-hidden="true" class="icon-amp blue margin-10 " ></span>
+                展示</h3>
+            <hr class="sep">
+            <p>多选功能模块，量身定做，采用最新技术和最前沿的设计理念</p>
+        </div>
+    </div>
+</section>
+
+<section id="folio-section" class="white-bg js-sect3 fade-up">
+    <div class="row">
+        <div class="twelve columns">
+            <div class="row-inside nopadding">
+                <ul class="block-grid three-up folio-items">
+		<foreach name="Cases" item="case">
+                    <li class="folio-item">
+                        <a href="{$CaseUrl}" class="folio-img">
+                            <img class="hover" src="{$case.cs_image}" style="width:358px;height:239px" alt="">
+                            <div class="hover-over">
+                                <p>
+					{$case.cs_title}
+                                    <br>
+                                    <span class="hover-over-sub">最前沿的设计理念</span>
+                                </p>
+                            </div>
+                        </a>
+                    </li>
+		</foreach>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Blog Section
+================================================== -->
+<section id="blog-section-title" class="js-sect5">
+    <div class="row">
+        <div class="twelve columns section-title">
+            <h3>新闻文章</h3>
+            <hr class="sep">
+        </div>
+    </div>
+</section>
+
+<section id="blog-section" class="js-sect5">
+    <div class="row half-padding">
+        <div class="row-inside">
+
+	<foreach name="Pages" item="page">
+            <div class="four columns">
+                <article class="box">
+                    <a rel="external" class="divlink invert" href="{$PageUrl}/id/{$page.p_id}">
+                        <img src="/Public/home/images/blogimg-fanfinity-850x550.jpg">
+                        <div class="box-inner">
+                            <h4>企业开展搜索营销</h4>
+                            <p class="meta date">2014.3.18</p>
+                            <p class="excerpt">个性网站四部曲，满足您不同需求，采用最前沿的设计理念</p>
+                        </div>
+                    </a>
+                </article>
+            </div>
+	</foreach>
+        </div>
+    </div>
+</section>
+
+<!-- Quote Section
+================================================== -->
+<!-- <section id="quote-section" class="quotes-bg">
+  </section> -->
+</block>
+
+<block name="friend">
+	<foreach name="Friends" item="friend">
+		<li><a href="{$friend.f_url}">{$friend.f_name}</a></li>
+	</foreach>
+</block>

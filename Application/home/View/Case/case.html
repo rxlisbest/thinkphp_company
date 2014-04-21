@@ -1,5 +1,17 @@
         <extend name="./Public/home/home.html" />
 	<block name="title"><title><?php echo $title;?></title></block>
+<block name="banner">
+        <section id="banner-section">
+            <div class="row">
+                <div class="twelve columns">
+                    <h2 class="white">
+			{$title}
+		    </h2>		
+                    <p class="blue biggest text-center"></p>
+                </div>
+            </div>
+        </section>
+</block>
 <block name="content">
 	<!-- Filter Bar
         ================================================== -->
@@ -37,7 +49,7 @@
 		<?php foreach($case as $value){ ?>
                     <li class="mix all <?php echo $value["c_id"];?> mix_all">
                         <article id="post-116" class="box">
-                            <a href="#" class="divlink invert">
+                            <a href="<?php echo $value["cs_url"];?>" class="divlink invert">
                                 <img style="width:253px;height:169px" src="<?php echo $value["cs_image"];?>">
                             </a>
                             <div class="box-inner invert">
@@ -50,4 +62,9 @@
                 </ul>
             </div>
         </section>
+</block>
+<block name="friend">
+	<foreach name="Friends" item="friend">
+		<li><a href="{$friend.f_url}">{$friend.f_name}</a></li>
+	</foreach>
 </block>

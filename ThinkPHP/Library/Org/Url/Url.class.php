@@ -7,7 +7,7 @@ namespace Org\Url;
 class Url {
 
 	public function ADMIN_URL($method=''){
-		$url = "/admin.php";
+		$url = "/admin/index.php";
 		if($method){
 			$url .= '/'.$method;
 		}
@@ -15,7 +15,7 @@ class Url {
 	}
 
 	public function LOGIN_URL($method=''){
-		$url = "/login.php";
+		$url = "/admin/login.php";
 		if($method){
 			$url .= '/'.$method;
 		}

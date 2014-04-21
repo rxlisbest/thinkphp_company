@@ -1,5 +1,17 @@
         <extend name="./Public/home/home.html" />
 	<block name="title"><title><?php echo $title;?></title></block>
+<block name="banner">
+        <section id="banner-section">
+            <div class="row">
+                <div class="twelve columns">
+                    <h2 class="white">
+			{$title}
+		    </h2>		
+                    <p class="blue biggest text-center"></p>
+                </div>
+            </div>
+        </section>
+</block>
 <block name="content">
 	<!-- Filter Bar
         ================================================== -->
@@ -14,10 +26,10 @@
                 </div>-->
 
                 <div class="left ddwrap">
-                    <span>案例分类</span>
+                    <span>文章分类</span>
                     <ul class="dd">
                         <li class="filter" data-filter="all">
-                            全部案例 
+                            全部文章
                         </li>
 		<?php foreach($pageclass as $value){ ?>
                         <li class="filter active" data-filter="<?php echo $value["pc_id"];?>">
@@ -35,7 +47,7 @@
             <div class="row">
                 <ul id="Grid" class="block-grid four-up">
 		<?php foreach($page as $value){ ?>
-                    <li class="mix all <?php echo $value["p_id"];?> mix_all">
+                    <li class="mix all <?php echo $value["pc_id"];?> mix_all">
                         <article id="post-203" class="box" style="min-height:22em">
                             <a href="<?php echo $detailUrl.'/id/'.$value["p_id"];?>" class="divlink invert">
                             	<div style="height:10px">
@@ -52,4 +64,9 @@
                 </ul>
             </div>
         </section>
+</block>
+<block name="friend">
+	<foreach name="Friends" item="friend">
+		<li><a href="{$friend.f_url}">{$friend.f_name}</a></li>
+	</foreach>
 </block>

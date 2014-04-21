@@ -240,6 +240,7 @@ class PageController extends YuController {
 	    else{
             	$data['pc_id']      = I('post.pc_id');
 		$data['p_title']   = I('post.p_title');
+		$data['p_author']   = I('post.p_author');
 		$data['p_content'] = $_POST["p_content"];
 		$data['p_date']    = date("Y-m-d H:m:s");
 

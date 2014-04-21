@@ -6,6 +6,10 @@ namespace home\Controller;
 use Think\Controller;
 class PageController extends Controller {
 	public function index(){
+		$FriendModel = D("Friend");
+		$Friends = $FriendModel->order('f_sort DESC')->select();
+		$this->assign('Friends',$Friends);
+
 		$PageModel = D("Page");
 		$PageClassModel = D("Pageclass");
 		$page = $PageModel->select();
@@ -19,6 +23,10 @@ class PageController extends Controller {
 	}
 	
 	public function detail($id=0){
+		$FriendModel = D("Friend");
+		$Friends = $FriendModel->order('f_sort DESC')->select();
+		$this->assign('Friends',$Friends);
+
 		$PageModel = D("Page");
 		$page = $PageModel->where('p_id='.$id)->find();
 		$LastPage = $PageModel->where('p_id<'.$id)->order(array('p_id'=>'desc'))->find();
@@ -26,7 +34,7 @@ class PageController extends Controller {
 		//var_dump($NextPage);
 		$title = "新闻阅览";
 		$this->assign('title',$title);
-		$this->assign('ListUrl',U('list','',''));
+		$this->assign('ListUrl',U('index','',''));
 		$this->assign('detailUrl',U('detail','',''));
 		$this->assign('page',$page);
 		$this->assign('LastPage',$LastPage);

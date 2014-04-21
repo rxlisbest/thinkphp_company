@@ -20,11 +20,11 @@ define('APP_DEBUG',False);
 //绑定admin模块
 $_GET['m'] = 'admin';
 //绑定Admin控制器
-$_GET['c'] = 'Login';
+$_GET['c'] = 'Admin';
 // 定义应用目录
-define('APP_PATH','./Application/');
+define('APP_PATH','../Application/');
 
 // 引入ThinkPHP入口文件
-require './ThinkPHP/ThinkPHP.php';
+require '../ThinkPHP/ThinkPHP.php';
 
 // 亲^_^ 后面不需要任何代码了 就是如此简单

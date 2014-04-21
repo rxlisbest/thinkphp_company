@@ -34,7 +34,7 @@ KindEditor.ready(function(K){
                         <label>所属分类</label>
 			<select name="pc_id" class="small-input" value="{$PageInfo.pc_id}" >
                     	<foreach name="PageClassLists" item="PageClassList">
-				<option value="{$PageClassList.pc_id}"  <?php if($PageInfo.pc_id==$PageClassList.pc_id){echo "selected";}?>>{$PageClassList.pc_title}</option>
+				<option value="{$PageClassList.pc_id}"  <?php if($PageInfo["pc_id"]==$PageClassList["pc_id"]){echo "selected";}?>>{$PageClassList.pc_title}</option>
                     	</foreach>
 			</select>
                     </p>
