@@ -1457,6 +1457,7 @@ ul.socials li a{
 .single-content{
 	padding: 1em 0 1.5em;
     font-family: "Microsoft YaHei", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	line-height:1.8em;
 }
 
 .single-content p, .single-content h3{

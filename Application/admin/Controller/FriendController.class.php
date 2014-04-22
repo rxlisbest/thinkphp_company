@@ -41,7 +41,6 @@ class FriendController extends YuController {
 	public function FriendSave($page=1){
 		$post = $_POST;
 		if($post){
-			$post["f_password"] = md5($post["f_password"]);
 			$f_id = $post["f_id"];
 			unset($post["submit"]);
 			unset($post["f_id"]);

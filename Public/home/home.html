@@ -94,11 +94,7 @@
 
 <div class="mobilenav mobilenav-right">
     <ul>
-        <li><a href="index.html">首页</a></li>
-        <li><a href="/index.php/home/Case">网站案例</a></li>
-        <li><a href="#">新闻动态</a></li>
-        <li class=""><a href="#">联系我们</a></li>
-        <li><a href="blog.html">博客</a></li>
+    	<block name="nav"></block>
     </ul>
 </div>
 <!-- Site Overlay: Click anywhere to close-->
@@ -116,26 +112,13 @@
             <div class="row">
                 <h1 id="logo" class="">
                     <a href="#">
-                        <img src="images/logo-attackpattern.png" alt="">
+                        <img src="/Public/home/images/logo-attackpattern.png" alt="">
                     </a>
                 </h1>
                 <nav role="navigation">
                     <ul class="link-list">
-                        <li class="transition current_page_item">
-                            <a href="index.html">首页</a>
-                        </li>
-                        <li class="transition">
-                            <a href="/index.php/home/Case">网站案例</a>
-                        </li>
-                        <li>
-                            <a href="#">新闻动态</a>
-                        </li>
-                        <li class="transition">
-                            <a href="#">联系我们</a>
-                        </li>
-                        <li class="transition">
-                            <a href="blog.html">博客</a>
-                        </li>
+			<block name="nav">
+			</block>
                     </ul>
                 </nav>
             </div>
@@ -150,24 +133,22 @@
         <footer id="footer">
             <div class="row">
                 <div class="seven columns">
-                    <h4>1.0.2.4工作室</h4>
+                    <h4>1024工作室</h4>
 
                     <div class="f-block">
                         <p>
+                            <span aria-hidden="true" class="icon icon-phone"></span>
+    				<block name="contact_phone"></block>
+                            <br>
                             <span aria-hidden="true" class="icon icon-mail-3"></span>
                             <a href="#" target="_blank">
-                                guoxiaoting_8@sina.com
+    				<block name="contact_email"></block>
                             </a>
-                            <br>
-                            <span aria-hidden="true" class="icon icon-phone"></span>
-                            13758141861
                         </p>
 
                         <br>
                         <p><span aria-hidden="true" class="icon icon-right-chev"></span>
-                            <a class="" href="#">
-                                <span class="blue">联系我们</span>
-                            </a>
+    				<block name="contact_us"></block>
                         </p>
                     </div>
                 </div>

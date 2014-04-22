@@ -1,5 +1,12 @@
         <extend name="./Public/home/home.html" />
 	<block name="title"><title><?php echo $title;?></title></block>
+<block name="nav">
+        <li><a href="{$IndexUrl}">首页</a></li>
+        <li><a href="{$CaseUrl}">网站案例</a></li>
+        <li><a href="{$PageUrl}">新闻动态</a></li>
+        <li class="{$ContactUrl}"><a href="">联系我们</a></li>
+        <li><a href="{$BlogUrl}">博客</a></li>
+</block>
 <block name="banner">
         <section id="banner-section">
             <div class="row">
@@ -50,7 +57,7 @@
                     <li class="mix all <?php echo $value["c_id"];?> mix_all">
                         <article id="post-116" class="box">
                             <a href="<?php echo $value["cs_url"];?>" class="divlink invert">
-                                <img style="width:253px;height:169px" src="<?php echo $value["cs_image"];?>">
+                                <img src="<?php echo $value["cs_image"];?>">
                             </a>
                             <div class="box-inner invert">
                                 <h4><a href="<?php echo $value["cs_url"];?>"><?php echo $value["cs_title"];?></a></h4>
@@ -62,6 +69,13 @@
                 </ul>
             </div>
         </section>
+</block>
+<block name="contact_email">{$Contact["con_email"]}</block>
+<block name="contact_phone">{$Contact["con_phone"]}</block>
+<block name="contact_us">     
+	<a class="" href="{$ContactUrl}">
+       		<span class="blue">联系我们</span>
+        </a>
 </block>
 <block name="friend">
 	<foreach name="Friends" item="friend">

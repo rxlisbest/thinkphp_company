@@ -9,6 +9,9 @@ class PageController extends Controller {
 		$FriendModel = D("Friend");
 		$Friends = $FriendModel->order('f_sort DESC')->select();
 		$this->assign('Friends',$Friends);
+		$ContactModel = D("Contact");
+		$Contact = $ContactModel->where('con_istop = 1')->find();
+		$this->assign('Contact',$Contact);
 
 		$PageModel = D("Page");
 		$PageClassModel = D("Pageclass");
@@ -19,6 +22,12 @@ class PageController extends Controller {
 		$this->assign('title',$title);
 		$this->assign('page',$page);
 		$this->assign('pageclass',$pageclass);
+
+		$this->assign('IndexUrl',U("Index/index","",""));
+		$this->assign('CaseUrl',U("Case/index","",""));
+		$this->assign('PageUrl',U("Page/index","",""));
+		$this->assign('ContactUrl',U("Contact/index","",""));
+		$this->assign('BlogUrl',U("Blog/index","",""));
 		$this->display("page");
 	}
 	
@@ -26,6 +35,9 @@ class PageController extends Controller {
 		$FriendModel = D("Friend");
 		$Friends = $FriendModel->order('f_sort DESC')->select();
 		$this->assign('Friends',$Friends);
+		$ContactModel = D("Contact");
+		$Contact = $ContactModel->where('con_istop = 1')->find();
+		$this->assign('Contact',$Contact);
 
 		$PageModel = D("Page");
 		$page = $PageModel->where('p_id='.$id)->find();
@@ -39,6 +51,12 @@ class PageController extends Controller {
 		$this->assign('page',$page);
 		$this->assign('LastPage',$LastPage);
 		$this->assign('NextPage',$NextPage);
+
+		$this->assign('IndexUrl',U("Index/index","",""));
+		$this->assign('CaseUrl',U("Case/index","",""));
+		$this->assign('PageUrl',U("Page/index","",""));
+		$this->assign('ContactUrl',U("Contact/index","",""));
+		$this->assign('BlogUrl',U("Blog/index","",""));
 		$this->display("detail");
 	}
 }

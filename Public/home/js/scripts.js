@@ -250,7 +250,7 @@ text5.shuffleLetters();
 
 setTimeout(function(){
 text1.shuffleLetters({
-	"text": "专业建站——From 1.0.2.4"
+	"text": "专业建站——From 1.02..4...."
 });
 },3800);
 
