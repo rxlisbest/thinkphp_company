@@ -40,6 +40,15 @@ class ContactController extends YuController {
 
 	public function ContactSave($page=1){
 		$post = $_POST;
+		$old_img = $post["con_pic_old"];
+		unset($post["con_pic_old"]);
+		if($post["con_pic"]==""){
+			$type = "error";
+			$infomation = "图片没上传，添加失败!";
+			$json["info"] = $this->getInfomation($type, $infomation);
+			echo json_encode($json);
+			return ;
+		} 
 		if($post){
 			$con_id = $post["con_id"];
 			unset($post["submit"]);
@@ -114,5 +123,28 @@ class ContactController extends YuController {
 		$json["info"] = $this->getInfomation($type, $infomation);
 		$json["url"] = U('ContactList',array('page'=>$page),'');
 		echo $this->ajaxReturn($json);
+	}
+	
+	public function upload(){
+		$time = date("YmdHms");
+		$file = $_FILES["image"];
+		$path = "./Public/uploads/images/Contact/";
+		if(!file_exists($path)){
+			mkdir($path);
+			chmod($path,0777);
+		}
+		$types = array("image/gif","image/pjpeg","image/jpeg","image/png");
+		if(!in_array($file["type"],$types)){
+			$type = "error";
+			$infomation = "图片类型不正确!";
+			$json["info"] = $this->getInfomation($type, $infomation);
+			return json_encode($json);
+		}
+		$types = array("image/gif"=>".gif","image/pjpeg"=>".pjpeg","image/jpeg"=>".jpeg","image/png"=>".png"); 
+		$image_type = $types[$file["type"]];
+		$image_name = $path.$time.$image_type;
+		move_uploaded_file($file["tmp_name"],$image_name);
+		$image_url = str_replace("./","/",$image_name);
+		echo '{error:"",msg:"'.$image_url.'"}';
 	}
 }

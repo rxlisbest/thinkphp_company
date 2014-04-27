@@ -1,4 +1,49 @@
-			<!-- Page Head -->
+	<script type="text/javascript">
+	function ajaxFileUpload()
+	{
+		$.ajaxFileUpload
+		(
+			{
+				url:'/index.php/admin/Contact/upload',
+				secureuri:false,
+				fileElementId:'image',
+				dataType: 'json',
+				data:{name:'logan', id:'id'},
+				success: function (data, status)
+				{
+					if(typeof(data.error) != 'undefined')
+					{
+						if(data.error != '')
+						{
+							alert(data.error);
+						}else
+						{
+							alert(data.msg);
+							$("#buttonUpload").hide();
+							$("#buttonSelect").hide();
+							$("#image_upload").hide();
+							$("#con_pic").attr("value",data.msg);
+						}
+					}
+				},
+				error: function (data, status, e)
+				{
+					alert(e);
+				}
+			}
+		)
+		
+		return false;
+
+	}
+	</script>	
+<script type="text/javascript">
+        $(document).ready(function() {
+            //建议在#imgDiv的父元素上加个overflow:hidden;的css样式
+            $("#image").uploadPreview({ width: 255, height: 165, imgDiv: "#imgDiv", imgType: ["bmp", "gif", "png", "jpg"] });
+        });
+    </script> 
+<!-- Page Head -->
 			<h2>联系我们</h2>
 			<p id="page-intro">添加、删除和修改联系我们。</p>
 			
@@ -105,12 +150,42 @@
 					
 					<div class="tab-content<?php if(isset($Contact)){echo ' default-tab';}?>" id="tab2">
 					
-						<form action="<?php echo $ContactSaveUrl;?>" method="post" onsubmit="return form_post(this,'www.baidu.com')" enctype="multipart/form-data">
+						<form action="<?php echo $ContactSaveUrl;?>" method="POST" onsubmit="return form_post(this,'www.baidu.com')" enctype="multipart/form-data">
 							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								<input name="con_id" style="display:none;" value="<?php echo $Contact["con_id"];?>" />
 								<p>
 									<label>姓名:</label>
 										<input class="text-input small-input" type="text" name="con_name" value="<?php echo $Contact["con_name"];?>"/> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
+										<br /><!--small></small-->
+								</p>
+
+								<p>
+									<label>英文名:</label>
+										<input class="text-input small-input" type="text" name="con_ename" value="<?php echo $Contact["con_ename"];?>"/> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
+										<br /><!--small></small-->
+								</p>
+
+								<p>
+									<label>头像:</label>
+								<?php if(isset($Contact)){ ?>
+									<img id="imgDiv" style="width:255px;height:165px;" src="<?php echo $Contact['con_pic'];?>" />
+								<?php }else{ ?>
+        								<div id="imgDiv">
+        								</div> <br />
+								<?php } ?>
+								</p>
+
+								<p id="image_upload">
+						<input type="text" name="con_pic" style="display:none;" id="con_pic" value="<?php echo $Contact["con_pic"];?>" /> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
+
+						<input type="text" name="con_pic_old" style="display:none;" id="con_pic_old" value="<?php echo $Contact["con_pic"];?>" />						
+						<a class="button" id="buttonSelect" onclick="image.click()">选择图片</a>
+						<a class="button" id="buttonUpload" onclick="return ajaxFileUpload();" style="display:none;">上传图片</a>						<br /><!--small></small-->
+								</p>
+
+								<p>
+									<label>职位:</label>
+										<input class="text-input small-input" type="text" name="con_position" value="<?php echo $Contact["con_position"];?>"/> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
 										<br /><!--small></small-->
 								</p>
 
@@ -139,6 +214,17 @@
 									<input type="radio" name="con_istop" value="1" <?php if($Contact["con_istop"]){echo "checked";}?> />是 <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
 										<br /><!--small></small-->
 								</p>
+                    						
+								<p>
+									<label>座佑铭:</label>
+										<input class="text-input medium-input" type="text" name="con_oneword" value="<?php echo $Contact["con_oneword"];?>"/> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
+										<br /><!--small></small-->
+								</p>
+
+								<p>
+									<label>个人简介:</label>
+									<textarea name="con_myself" style="width:300;height:80;">{$Contact.con_myself}</textarea>
+                    						</p>
 								
 								<p>
 									<button class="button" type="submit" value="Submit" >提交</button>
@@ -149,6 +235,7 @@
 							<div class="clear"></div><!-- End .clear -->
 							
 						</form>
+						<input type="file" name="image" style="display:none;" id="image" /> <!--span class="input-notification success png_bg">Successful message</span--> <!-- Classes for input-notification: success, error, information, attention -->
 					
 					</div> <!-- End #tab2 -->        
 					

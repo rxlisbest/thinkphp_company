@@ -4,7 +4,7 @@
         <li><a href="{$IndexUrl}">首页</a></li>
         <li><a href="{$CaseUrl}">网站案例</a></li>
         <li><a href="{$PageUrl}">新闻动态</a></li>
-        <li class="{$ContactUrl}"><a href="">联系我们</a></li>
+        <li class=""><a href="{$ContactUrl}">联系我们</a></li>
         <li><a href="{$BlogUrl}">博客</a></li>
 </block>
 <block name="banner">
@@ -20,7 +20,16 @@
         </section>
 </block>
 <block name="content">
-	敬请期待
+        <section class="white-bg centered js-sect2 fade-up" id="team-section">
+            <div class="row">
+                <div class="twelve columns section-title">
+                    <img alt="" src="/Public/home/images/xiaohuangren.gif" class="centered">
+                    <h3>敬请期待</h3>
+                    <hr class="sep">
+                    <p class="grey-blue">1.02..4....</p>
+                </div>
+            </div>
+        </section>
 </block>
 <block name="contact_email">{$Contact["con_email"]}</block>
 <block name="contact_phone">{$Contact["con_phone"]}</block>
