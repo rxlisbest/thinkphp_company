@@ -4,7 +4,8 @@
  */
 namespace home\Controller;
 use Think\Controller;
-class CaseController extends Controller {
+use home\Common\HomeController;
+class CaseController extends HomeController {
 	public function index(){
 		$FriendModel = D("Friend");
 		$Friends = $FriendModel->order('f_sort DESC')->select();
@@ -22,11 +23,6 @@ class CaseController extends Controller {
 		$this->assign('case',$case);
 		$this->assign('caseclass',$caseclass);
 
-		$this->assign('IndexUrl',U("Index/index","",""));
-		$this->assign('CaseUrl',U("Case/index","",""));
-		$this->assign('PageUrl',U("Page/index","",""));
-		$this->assign('ContactUrl',U("Contact/index","",""));
-		$this->assign('BlogUrl',U("Blog/index","",""));
 		$this->display("case");
 	}
 }

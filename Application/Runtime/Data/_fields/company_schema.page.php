@@ -1,0 +1,1 @@
+a:8:{i:0;s:4:"p_id";i:1;s:5:"pc_id";i:2;s:7:"p_title";i:3;s:8:"p_author";i:4;s:6:"p_date";i:5;s:9:"p_content";s:3:"_pk";s:4:"p_id";s:5:"_type";a:6:{s:4:"p_id";s:21:"mediumint(8) unsigned";s:5:"pc_id";s:7:"int(11)";s:7:"p_title";s:12:"varchar(255)";s:8:"p_author";s:11:"varchar(50)";s:6:"p_date";s:8:"datetime";s:9:"p_content";s:8:"longtext";}}

@@ -1,0 +1,1 @@
+a:9:{i:0;s:5:"cs_id";i:1;s:4:"c_id";i:2;s:8:"cs_title";i:3;s:8:"cs_image";i:4;s:6:"cs_url";i:5;s:7:"cs_sort";i:6;s:7:"cs_time";s:3:"_pk";s:5:"cs_id";s:5:"_type";a:7:{s:5:"cs_id";s:7:"int(11)";s:4:"c_id";s:7:"int(11)";s:8:"cs_title";s:12:"varchar(100)";s:8:"cs_image";s:12:"varchar(255)";s:6:"cs_url";s:12:"varchar(255)";s:7:"cs_sort";s:7:"int(11)";s:7:"cs_time";s:8:"datetime";}}

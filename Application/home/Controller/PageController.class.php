@@ -4,7 +4,8 @@
  */
 namespace home\Controller;
 use Think\Controller;
-class PageController extends Controller {
+use home\Common\HomeController;
+class PageController extends HomeController {
 	public function index(){
 		$FriendModel = D("Friend");
 		$Friends = $FriendModel->order('f_sort DESC')->select();
@@ -18,16 +19,11 @@ class PageController extends Controller {
 		$page = $PageModel->select();
 		$pageclass = $PageClassModel->select();
 		$title = "新闻列表";
-		$this->assign('detailUrl',U('detail','',''));
+
 		$this->assign('title',$title);
 		$this->assign('page',$page);
 		$this->assign('pageclass',$pageclass);
 
-		$this->assign('IndexUrl',U("Index/index","",""));
-		$this->assign('CaseUrl',U("Case/index","",""));
-		$this->assign('PageUrl',U("Page/index","",""));
-		$this->assign('ContactUrl',U("Contact/index","",""));
-		$this->assign('BlogUrl',U("Blog/index","",""));
 		$this->display("page");
 	}
 	
@@ -46,17 +42,10 @@ class PageController extends Controller {
 		//var_dump($NextPage);
 		$title = "新闻阅览";
 		$this->assign('title',$title);
-		$this->assign('ListUrl',U('index','',''));
-		$this->assign('detailUrl',U('detail','',''));
 		$this->assign('page',$page);
 		$this->assign('LastPage',$LastPage);
 		$this->assign('NextPage',$NextPage);
 
-		$this->assign('IndexUrl',U("Index/index","",""));
-		$this->assign('CaseUrl',U("Case/index","",""));
-		$this->assign('PageUrl',U("Page/index","",""));
-		$this->assign('ContactUrl',U("Contact/index","",""));
-		$this->assign('BlogUrl',U("Blog/index","",""));
 		$this->display("detail");
 	}
 }

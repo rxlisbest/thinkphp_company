@@ -1,0 +1,1 @@
+a:7:{i:0;s:4:"f_id";i:1;s:6:"f_name";i:2;s:5:"f_url";i:3;s:6:"f_time";i:4;s:6:"f_sort";s:3:"_pk";s:4:"f_id";s:5:"_type";a:5:{s:4:"f_id";s:7:"int(11)";s:6:"f_name";s:11:"varchar(50)";s:5:"f_url";s:11:"varchar(50)";s:6:"f_time";s:8:"datetime";s:6:"f_sort";s:7:"int(11)";}}

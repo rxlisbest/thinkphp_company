@@ -4,7 +4,8 @@
  */
 namespace home\Controller;
 use Think\Controller;
-class AboutController extends Controller {
+use home\Common\HomeController;
+class AboutController extends HomeController {
 	public function index(){
 		$FriendModel = D("Friend");
 		$Friends = $FriendModel->order('f_sort DESC')->select();
@@ -16,11 +17,6 @@ class AboutController extends Controller {
 		$title = "关于本站";
 		$this->assign('title',$title);
 
-		$this->assign('IndexUrl',U("Index/index","",""));
-		$this->assign('CaseUrl',U("Case/index","",""));
-		$this->assign('PageUrl',U("Page/index","",""));
-		$this->assign('ContactUrl',U("Contact/index","",""));
-		$this->assign('BlogUrl',U("Blog/index","",""));
 		$this->display("about");
 	}
 }
